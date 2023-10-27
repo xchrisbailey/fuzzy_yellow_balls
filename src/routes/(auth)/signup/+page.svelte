@@ -1,16 +1,25 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import type { ActionData } from './$types';
+	import * as Form from '$lib/components/ui/form';
+	import { formSchema, type FormSchema } from './schema';
+	import type { SuperValidated } from 'sveltekit-superforms';
 
-	export let form: ActionData;
+	export let form: SuperValidated<FormSchema>;
 </script>
 
-<form method="POST" use:enhance>
-	<input type="text" name="email" />
-	<input type="password" name="password" />
-	<button>Sign Up</button>
-</form>
-
-{#if form?.message}
-	<p class="error">{form.message}</p>
-{/if}
+<Form.Root method="POST" {form} schema={formSchema} let:config>
+	<Form.Field {config} name="email">
+		<Form.Item>
+			<Form.Label>Email</Form.Label>
+			<Form.Input />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Field {config} name="password">
+		<Form.Item>
+			<Form.Label>password</Form.Label>
+			<Form.Input type="password" />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Button>Submit</Form.Button>
+</Form.Root>

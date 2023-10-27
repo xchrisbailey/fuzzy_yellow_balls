@@ -6,8 +6,6 @@
 	import { LogIn } from 'lucide-svelte';
 
 	export let data: PageData;
-
-	console.log(data);
 </script>
 
 <header class="container flex justify-between my-3 mx-auto">

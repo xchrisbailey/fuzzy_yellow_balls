@@ -4,14 +4,12 @@
 	import { Button } from './ui/button';
 	import { enhance } from '$app/forms';
 	import { LogOut } from 'lucide-svelte';
-
-	export let image: string | undefined;
 </script>
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger>
 		<Avatar.Root>
-			<Avatar.Image src={image} alt="@shadcn" />
+			<Avatar.Image src="/tennis_ball.jpg" alt="@shadcn" />
 			<Avatar.Fallback>CN</Avatar.Fallback>
 		</Avatar.Root>
 	</DropdownMenu.Trigger>
