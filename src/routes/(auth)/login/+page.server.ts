@@ -1,13 +1,19 @@
 import { auth } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import { LuciaError } from 'lucia';
+import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
+import { formSchema } from './schema';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (session) {
 		throw redirect(302, '/');
 	}
+
+	return {
+		form: superValidate(formSchema)
+	};
 };
 
 export const actions = {
