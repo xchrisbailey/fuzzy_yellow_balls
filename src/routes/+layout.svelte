@@ -1,18 +1,25 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { Button } from '$lib/components/ui/button';
+	import UserButton from '$lib/components/user_button.svelte';
 	import '../app.postcss';
 	import type { PageData } from './$types';
+	import { LogIn } from 'lucide-svelte';
 
 	export let data: PageData;
 </script>
 
-<header>
+<header class="container flex justify-between my-3 mx-auto">
+	<div class="text-3xl font-bold">The String Bar</div>
 	{#if !data.session?.user}
-		<a href="/login">login</a>
+		<Button href="/login">
+			<LogIn class="mr-2 w-4 h-4" />
+			login</Button
+		>
 	{:else}
-		<form method="post" action="/logout?" use:enhance>
-			<button>logout</button>
-		</form>
+		<UserButton image={data?.session?.user?.image} />
 	{/if}
 </header>
-<slot />
+
+<main class="container my-5 mx-auto">
+	<slot />
+</main>
