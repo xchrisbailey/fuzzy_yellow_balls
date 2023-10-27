@@ -39,5 +39,11 @@
 		"vite": "^4.4.2",
 		"vitest": "^0.32.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@lucia-auth/adapter-prisma": "^3.0.2",
+		"@prisma/client": "^5.5.2",
+		"lucia": "^2.7.2",
+		"prisma": "^5.5.2"
+	}
 }
