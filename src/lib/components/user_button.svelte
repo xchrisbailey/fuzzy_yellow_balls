@@ -24,7 +24,7 @@
 		<DropdownMenu.Item>
 			<form method="post" action="/logout?" use:enhance class="p-0 m-0">
 				<Button variant="ghost" class="p-0 m-0">
-					<LogOut class="mr-2 w-4 h-4" />
+					<LogOut class="w-4 h-4 mr-2 text-red-600" />
 					logout
 				</Button>
 			</form>
