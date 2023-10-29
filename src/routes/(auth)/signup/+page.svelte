@@ -6,12 +6,26 @@
 	export let form: SuperValidated<FormSchema>;
 </script>
 
-<div class="w-1/3 max-w-full mx-auto">
-	<h1 class="mb-4 text-4xl font-extrabold tracking-tight scroll-m-20 lg:text-5xl">Sign Up</h1>
+<div class="mx-auto w-1/3 max-w-full">
+	<h1 class="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl scroll-m-20">Sign Up</h1>
 	<Form.Root method="POST" {form} schema={formSchema} let:config>
 		<Form.Field {config} name="email">
 			<Form.Item>
 				<Form.Label>Email</Form.Label>
+				<Form.Input />
+				<Form.Validation />
+			</Form.Item>
+		</Form.Field>
+		<Form.Field {config} name="first_name">
+			<Form.Item>
+				<Form.Label>First Name</Form.Label>
+				<Form.Input />
+				<Form.Validation />
+			</Form.Item>
+		</Form.Field>
+		<Form.Field {config} name="last_name">
+			<Form.Item>
+				<Form.Label>Last Name</Form.Label>
 				<Form.Input />
 				<Form.Validation />
 			</Form.Item>
@@ -26,7 +40,7 @@
 		<Form.Button>Submit</Form.Button>
 	</Form.Root>
 
-	<p class="mt-2 font-medium leading-none text-small text-primary hover:underline">
+	<p class="mt-2 font-medium leading-none hover:underline text-small text-primary">
 		<a href="/login">or login</a>
 	</p>
 </div>
