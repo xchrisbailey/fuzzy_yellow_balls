@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { title_case } from '$lib/helpers/title_case';
 	import type { PageData } from './$types';
-	import UpdateForm from './update_form.svelte';
+	import Form from './form.svelte';
 
 	export let data: PageData;
 </script>
@@ -24,6 +24,6 @@
 		>
 			Edit Your Profile
 		</h2>
-		<UpdateForm form={data.form} />
+		<Form form={data.form} />
 	</article>
 </section>
