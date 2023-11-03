@@ -3,7 +3,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { Button } from './ui/button';
 	import { enhance } from '$app/forms';
-	import { LogOut } from 'lucide-svelte';
+	import { LogOut, Pen, User } from 'lucide-svelte';
 </script>
 
 <DropdownMenu.Root>
@@ -17,14 +17,20 @@
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>My Account</DropdownMenu.Label>
 			<DropdownMenu.Separator />
-			<DropdownMenu.Item>Profile</DropdownMenu.Item>
-			<DropdownMenu.Item>Reviews</DropdownMenu.Item>
+			<DropdownMenu.Item
+				><a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a
+				></DropdownMenu.Item
+			>
+			<DropdownMenu.Item
+				><a href="/" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Reviews</a
+				></DropdownMenu.Item
+			>
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
 		<DropdownMenu.Item>
 			<form method="post" action="/logout?" use:enhance class="p-0 m-0">
 				<Button variant="ghost" class="p-0 m-0">
-					<LogOut class="mr-2 w-4 h-4" />
+					<LogOut class="mr-2 w-4 h-4 text-red-600" />
 					logout
 				</Button>
 			</form>

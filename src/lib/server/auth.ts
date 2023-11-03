@@ -12,7 +12,9 @@ export const auth = lucia({
 	adapter: prisma(client),
 	getUserAttributes: (data) => {
 		return {
-			email: data.email
+			email: data.email,
+			first_name: data.first_name,
+			last_name: data.last_name
 		};
 	}
 });
