@@ -26,12 +26,17 @@ model Brand {
   strings TennisString[]
 }
 
-model User {
-  id         String @id @unique
-  email      String @unique
-  first_name String
-  last_name  String
+enum Role {
+  User
+  Admin
+}
 
+model User {
+  id           String    @id @unique
+  email        String    @unique
+  first_name   String
+  last_name    String
+  role         Role      @default(User)
   auth_session Session[]
   key          Key[]
 }
