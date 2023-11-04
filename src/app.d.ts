@@ -18,6 +18,7 @@ declare global {
 			email: string;
 			first_name: string;
 			last_name: string;
+			role: string;
 		};
 		type DatabaseSessionAttributes = {};
 	}
