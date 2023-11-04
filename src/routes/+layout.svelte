@@ -8,11 +8,17 @@
 	export let data: PageData;
 </script>
 
-<header class="container mx-auto my-3 flex justify-between">
+<header class="container flex justify-between my-3 mx-auto">
 	<div class="text-3xl font-bold">The String Bar</div>
+	<nav class="flex items-center">
+		<ul class="flex gap-5">
+			<li><a href="/">home</a></li>
+			<li><a href="/strings">strings</a></li>
+		</ul>
+	</nav>
 	{#if !data.session?.user}
 		<Button href="/login">
-			<LogIn class="mr-2 h-4 w-4" />
+			<LogIn class="mr-2 w-4 h-4" />
 			login</Button
 		>
 	{:else}
@@ -20,6 +26,6 @@
 	{/if}
 </header>
 
-<main class="container mx-auto my-5">
+<main class="container my-5 mx-auto">
 	<slot />
 </main>
