@@ -30,7 +30,8 @@ export const actions: Actions = {
 				attributes: {
 					email: form.data.email.toLowerCase(),
 					first_name: form.data.first_name,
-					last_name: form.data.last_name
+					last_name: form.data.last_name,
+					role: 'User'
 				}
 			});
 			const session = await auth.createSession({
