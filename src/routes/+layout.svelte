@@ -4,9 +4,12 @@
 	import '../app.postcss';
 	import type { PageData } from './$types';
 	import { LogIn } from 'lucide-svelte';
+	import { Toaster } from 'svelte-french-toast';
 
 	export let data: PageData;
 </script>
+
+<Toaster />
 
 <header class="container flex justify-between my-3 mx-auto">
 	<div class="text-3xl font-bold">The String Bar</div>

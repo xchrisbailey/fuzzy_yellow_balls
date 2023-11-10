@@ -53,5 +53,5 @@
 			<Form.Validation />
 		</Form.Item>
 	</Form.Field>
-	<Form.Button>Add</Form.Button>
+	<Form.Button type="submit">Add</Form.Button>
 </Form.Root>

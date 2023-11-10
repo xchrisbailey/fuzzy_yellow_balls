@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import { schema, type FormSchema } from './schema';
 	import type { Brand } from '@prisma/client';
+	import { schema, type FormSchema } from './schema';
 
 	export let form: SuperValidated<FormSchema>;
 	export let current_brand: Brand | undefined;
@@ -54,5 +54,5 @@
 			<Form.Validation />
 		</Form.Item>
 	</Form.Field>
-	<Form.Button>Add</Form.Button>
+	<Form.Button type="submit">Update</Form.Button>
 </Form.Root>
