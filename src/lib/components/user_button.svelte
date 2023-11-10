@@ -28,8 +28,8 @@
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
 		<DropdownMenu.Item>
-			<form method="post" action="/logout?" use:enhance class="p-0 m-0">
-				<Button variant="ghost" class="p-0 m-0">
+			<form method="POST" action="/?/logout" use:enhance class="p-0 m-0">
+				<Button variant="ghost" class="p-0 m-0" type="submit">
 					<LogOut class="mr-2 w-4 h-4 text-red-600" />
 					logout
 				</Button>

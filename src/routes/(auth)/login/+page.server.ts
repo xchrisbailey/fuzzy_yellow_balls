@@ -3,7 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { LuciaError } from 'lucia';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { formSchema } from './schema';
+import { schema } from './schema';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	}
 
 	return {
-		form: superValidate(formSchema)
+		form: superValidate(schema)
 	};
 };
 
