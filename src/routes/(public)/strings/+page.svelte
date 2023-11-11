@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import * as Table from '$lib/components/ui/table';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { title_case } from '$lib/helpers/title_case';
 	import { Edit, Eye } from 'lucide-svelte';
+	import { Button } from '$lib/components/ui/button';
 
 	export let data: PageData;
 </script>
@@ -29,10 +31,34 @@
 					<Table.Cell>{title_case(string.name)}</Table.Cell>
 					<Table.Cell>{title_case(string.material)}</Table.Cell>
 					<Table.Cell>{string.description}</Table.Cell>
-					<Table.Cell class="flex gap-4 justify-between"
-						><a href={`/strings/${string.id}`}><Eye class="w-4 h-4" /></a>
-						<a href={`/strings/${string.id}/update`}><Edit class="w-4 h-4" /></a></Table.Cell
-					>
+					<Table.Cell class="flex gap-4 justify-between">
+						<Tooltip.Root>
+							<Tooltip.Trigger asChild let:builder>
+								<Button
+									builders={[builder]}
+									href={`/strings/${string.id}`}
+									size="icon"
+									variant="ghost"><Eye class="w-4 h-4" /></Button
+								>
+							</Tooltip.Trigger>
+							<Tooltip.Content>
+								<p>View String</p>
+							</Tooltip.Content>
+						</Tooltip.Root>
+						<Tooltip.Root>
+							<Tooltip.Trigger asChild let:builder>
+								<Button
+									builders={[builder]}
+									href={`/strings/${string.id}/update`}
+									size="icon"
+									variant="ghost"><Edit class="w-4 h-4" /></Button
+								>
+							</Tooltip.Trigger>
+							<Tooltip.Content>
+								<p>Edit String</p>
+							</Tooltip.Content>
+						</Tooltip.Root>
+					</Table.Cell>
 				</Table.Row>
 			{/each}
 		</Table.Body>
