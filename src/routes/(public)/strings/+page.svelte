@@ -30,7 +30,8 @@
 					<Table.Cell>{title_case(string.material)}</Table.Cell>
 					<Table.Cell>{string.description}</Table.Cell>
 					<Table.Cell class="flex gap-4 justify-between"
-						><Eye class="w-4 h-4" /> <Edit class="w-4 h-4" /></Table.Cell
+						><a href={`/strings/${string.id}`}><Eye class="w-4 h-4" /></a>
+						<a href={`/strings/${string.id}/update`}><Edit class="w-4 h-4" /></a></Table.Cell
 					>
 				</Table.Row>
 			{/each}
