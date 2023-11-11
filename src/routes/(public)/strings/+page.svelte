@@ -21,6 +21,7 @@
 				<Table.Head>Model</Table.Head>
 				<Table.Head>Material</Table.Head>
 				<Table.Head>Description</Table.Head>
+				<Table.Head>Rating</Table.Head>
 				<Table.Head></Table.Head>
 			</Table.Row>
 		</Table.Header>
@@ -31,7 +32,8 @@
 					<Table.Cell>{title_case(string.name)}</Table.Cell>
 					<Table.Cell>{title_case(string.material)}</Table.Cell>
 					<Table.Cell>{string.description}</Table.Cell>
-					<Table.Cell class="flex gap-4 justify-between">
+					<Table.Cell>4/5</Table.Cell>
+					<Table.Cell class="flex gap-1 justify-between">
 						<Tooltip.Root>
 							<Tooltip.Trigger asChild let:builder>
 								<Button
@@ -45,19 +47,21 @@
 								<p>View String</p>
 							</Tooltip.Content>
 						</Tooltip.Root>
-						<Tooltip.Root>
-							<Tooltip.Trigger asChild let:builder>
-								<Button
-									builders={[builder]}
-									href={`/strings/${string.id}/update`}
-									size="icon"
-									variant="ghost"><Edit class="w-4 h-4" /></Button
-								>
-							</Tooltip.Trigger>
-							<Tooltip.Content>
-								<p>Edit String</p>
-							</Tooltip.Content>
-						</Tooltip.Root>
+						{#if data.session?.user.role === 'Admin'}
+							<Tooltip.Root>
+								<Tooltip.Trigger asChild let:builder>
+									<Button
+										builders={[builder]}
+										href={`/strings/${string.id}/update`}
+										size="icon"
+										variant="ghost"><Edit class="w-4 h-4" /></Button
+									>
+								</Tooltip.Trigger>
+								<Tooltip.Content>
+									<p>Edit String</p>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						{/if}
 					</Table.Cell>
 				</Table.Row>
 			{/each}

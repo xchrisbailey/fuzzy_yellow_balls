@@ -13,14 +13,15 @@ declare global {
 		// interface Platform {}
 	}
 	namespace Lucia {
-		type Auth = import('$lib/server/lucia').Auth;
+		type Auth = import('$lib/server/auth').Auth;
 		type DatabaseUserAttributes = {
 			email: string;
 			first_name: string;
 			last_name: string;
-			role: string;
+			role: 'Admin' | 'User';
 		};
-		type DatabaseSessionAttributes = {};
+		// type DatabaseSessionAttributes = {};
+		type DatabaseSessionAttributes = Record<string, unknown>;
 	}
 }
 
