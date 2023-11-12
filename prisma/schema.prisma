@@ -10,13 +10,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Review {
+  id String @id @default(cuid())
+
+  power       Int @default(0)
+  feel        Int @default(0)
+  control     Int @default(0)
+  durability  Int @default(0)
+  spin        Int @default(0)
+  comfort     Int @default(0)
+  playability Int @default(0)
+
+  comments String
+
+  user      User         @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id   String
+  string_id String
+  string    TennisString @relation(fields: [string_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([user_id, string_id])
+}
+
 model TennisString {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   material    String
   description String
-  Brand       Brand  @relation(fields: [brand_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Brand       Brand    @relation(fields: [brand_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   brand_id    String
+  Review      Review[]
 }
 
 model Brand {
@@ -39,6 +61,7 @@ model User {
   role         Role      @default(User)
   auth_session Session[]
   key          Key[]
+  Review       Review[]
 }
 
 model Session {
