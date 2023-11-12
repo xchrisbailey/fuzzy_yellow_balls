@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.1.1",
-		"@sveltejs/kit": "^1.27.4",
+		"@sveltejs/kit": "^1.27.5",
 		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.9",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -46,6 +46,7 @@
 		"@prisma/client": "^5.5.2",
 		"bits-ui": "^0.9.4",
 		"clsx": "^2.0.0",
+		"escape-goat": "^4.0.0",
 		"formsnap": "^0.4.1",
 		"lucia": "^2.7.4",
 		"lucide-svelte": "^0.292.0",
