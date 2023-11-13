@@ -11,7 +11,7 @@
 
 <Toaster />
 
-<header class="container flex justify-between my-3 mx-auto">
+<header class="container mx-auto my-3 flex justify-between">
 	<div class="text-3xl font-bold">The String Bar</div>
 	<nav class="flex items-center">
 		<ul class="flex gap-5">
@@ -21,7 +21,7 @@
 	</nav>
 	{#if !data.session?.user}
 		<Button href="/login">
-			<LogIn class="mr-2 w-4 h-4" />
+			<LogIn class="mr-2 h-4 w-4" />
 			login</Button
 		>
 	{:else}
@@ -29,6 +29,6 @@
 	{/if}
 </header>
 
-<main class="container my-5 mx-auto">
+<main class="container mx-auto my-5">
 	<slot />
 </main>
