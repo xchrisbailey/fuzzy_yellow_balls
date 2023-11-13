@@ -22,7 +22,9 @@
 			<p>reviews here...</p>
 
 			<div class="flex justify-center">
-				<Button href="/" variant="secondary"><Pencil1 class="mr-2 w-4 h-4" />Add Review</Button>
+				<Button href="/strings/{data.string.id.trimEnd()}/review/add" variant="secondary"
+					><Pencil1 class="mr-2 w-4 h-4" />Add Review</Button
+				>
 			</div>
 		</div>
 		<div>
