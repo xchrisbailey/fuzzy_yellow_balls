@@ -6,7 +6,7 @@ import type { YoutubeSearchResponse } from '../../../api/youtube/[brand]/[string
 export const load: PageServerLoad = async ({ params, fetch }) => {
 	const string = await db.tennisString.findFirst({
 		where: { id: params.id },
-		include: { Brand: true }
+		include: { Brand: true, Review: { take: 10 } }
 	});
 
 	if (!string) {
