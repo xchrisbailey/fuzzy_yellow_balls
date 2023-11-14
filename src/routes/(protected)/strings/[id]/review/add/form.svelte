@@ -8,30 +8,30 @@
 </script>
 
 <h1 class="mb-2">Add A Review</h1>
-<Form.Root method="POST" {form} {schema} let:config>
+<Form.Root method="POST" action="?/add" {form} {schema} let:config>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="grid grid-cols-2 gap-4">
 			<Form.Field {config} name="power">
 				<Form.Item class="space-y-3">
 					<Form.Label>Power</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -43,23 +43,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Spin</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -71,23 +71,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Feel</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -99,23 +99,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Control</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -127,23 +127,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Durability</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -155,23 +155,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Comfort</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
@@ -183,23 +183,23 @@
 				<Form.Item class="space-y-3">
 					<Form.Label>Playability</Form.Label>
 					<Form.RadioGroup class="flex space-y-1">
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="2" id="2" />
 							<Label for="2" class="font-normal">2</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="3" id="3" />
 							<Label for="3" class="font-normal">3</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="4" id="4" />
 							<Label for="4" class="font-normal">4</Label>
 						</Form.Item>
-						<Form.Item class="flex items-center space-x-3 space-y-0">
+						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="5" id="5" />
 							<Label for="5" class="font-normal">5</Label>
 						</Form.Item>
