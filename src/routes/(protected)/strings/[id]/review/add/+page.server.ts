@@ -31,7 +31,8 @@ export const actions = {
 					string: { connect: { id: params.id } }
 				}
 			});
-			return { form };
+
+			return redirect(302, `/string/${params.id}`);
 		} catch (err) {
 			console.error(err);
 			return fail(500, {
