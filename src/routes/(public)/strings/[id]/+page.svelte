@@ -65,7 +65,7 @@
 			{/each}
 
 			<div class="flex justify-center mt-3">
-				<Button href="/strings/{data.string.id.trimEnd()}/review/add" variant="secondary"
+				<Button href="/reviews/add/{data.string.id.trimEnd()}" variant="secondary"
 					><Pencil1 class="mr-2 w-4 h-4" />Add Review</Button
 				>
 			</div>

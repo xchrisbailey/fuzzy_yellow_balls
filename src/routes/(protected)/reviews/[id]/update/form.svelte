@@ -1,10 +1,10 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import { type FormSchema, schema } from './schema';
+	import { schema, type Schema } from './schema';
 	import { Label } from '$lib/components/ui/label';
 
-	export let form: SuperValidated<FormSchema>;
+	export let form: SuperValidated<Schema>;
 </script>
 
 <h1 class="mb-2">Add A Review</h1>
@@ -14,7 +14,7 @@
 			<Form.Field {config} name="power">
 				<Form.Item class="space-y-3">
 					<Form.Label>Power</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.power.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -42,7 +42,7 @@
 			<Form.Field {config} name="spin">
 				<Form.Item class="space-y-3">
 					<Form.Label>Spin</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.spin.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -70,7 +70,7 @@
 			<Form.Field {config} name="feel">
 				<Form.Item class="space-y-3">
 					<Form.Label>Feel</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.feel.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -98,7 +98,7 @@
 			<Form.Field {config} name="control">
 				<Form.Item class="space-y-3">
 					<Form.Label>Control</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.control.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -126,7 +126,7 @@
 			<Form.Field {config} name="durability">
 				<Form.Item class="space-y-3">
 					<Form.Label>Durability</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.durability.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -154,7 +154,7 @@
 			<Form.Field {config} name="comfort">
 				<Form.Item class="space-y-3">
 					<Form.Label>Comfort</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.comfort.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
@@ -182,7 +182,7 @@
 			<Form.Field {config} name="playability">
 				<Form.Item class="space-y-3">
 					<Form.Label>Playability</Form.Label>
-					<Form.RadioGroup class="flex space-y-1">
+					<Form.RadioGroup class="flex space-y-1" value={form.data.playability.toString()}>
 						<Form.Item class="flex items-center space-y-0 space-x-3">
 							<Form.RadioItem value="1" id="1" />
 							<Label for="1" class="font-normal">1</Label>
