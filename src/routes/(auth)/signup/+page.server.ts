@@ -9,8 +9,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 	if (session) {
 		throw redirect(302, '/');
 	}
+
+	const form = await superValidate(formSchema);
+
 	return {
-		form: superValidate(formSchema)
+		form
 	};
 };
 
@@ -20,6 +23,7 @@ export const actions: Actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
+
 		try {
 			const user = await auth.createUser({
 				key: {
