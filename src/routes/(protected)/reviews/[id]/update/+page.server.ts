@@ -1,9 +1,8 @@
-import { redirect } from 'sveltekit-flash-message/server';
 import type { Actions, PageServerLoad } from './$types';
 import db from '$lib/db';
 import { superValidate } from 'sveltekit-superforms/server';
 import { schema } from './schema';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals, params } = event;
@@ -16,18 +15,13 @@ export const load: PageServerLoad = async (event) => {
 	});
 
 	if (!review) {
-		throw redirect(
-			302,
-			`/string/${params.id}`,
-			{
-				type: 'error',
-				message: 'You have not reviewed this string yet.'
-			},
-			event
-		);
+		throw redirect(302, `/string/${params.id}`);
 	}
+
+	const form = await superValidate(review, schema);
+
 	return {
-		form: superValidate(review, schema)
+		form
 	};
 };
 
