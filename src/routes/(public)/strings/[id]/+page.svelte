@@ -4,6 +4,7 @@
 	import type { PageData } from './$types';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Pencil1 } from 'radix-icons-svelte';
+	import { Star } from 'lucide-svelte';
 
 	export let data: PageData;
 </script>
@@ -13,16 +14,60 @@
 	<section>
 		<article>
 			<h2>Info</h2>
-			<p>{data.string.description}</p>
+			<p class="py-2">{data.string.description}</p>
 		</article>
 	</section>
 	<section>
 		<div class="mb-4">
 			<h2>User Reviews</h2>
-			<p>reviews here...</p>
+			{#each data.string.Review as review}
+				<article class="py-2 mb-4 border-b">
+					<p>{review.comments}</p>
+					<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
+						<div class="flex gap-1 items-center">
+							comfort: {#each Array(review.comfort) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							power: {#each Array(review.power) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							feel: {#each Array(review.feel) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							control: {#each Array(review.control) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							durability: {#each Array(review.durability) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							spin: {#each Array(review.spin) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+						<div class="flex gap-2 items-center">
+							playability: {#each Array(review.playability) as id}
+								<Star {id} class="w-4 h-4" />
+							{/each}
+						</div>
+					</div>
+					<grid-cols-2></grid-cols-2>
+				</article>
+			{/each}
 
-			<div class="flex justify-center">
-				<Button href="/" variant="secondary"><Pencil1 class="mr-2 w-4 h-4" />Add Review</Button>
+			<div class="flex justify-center mt-3">
+				<Button href="/strings/{data.string.id.trimEnd()}/review/add" variant="secondary"
+					><Pencil1 class="mr-2 w-4 h-4" />Add Review</Button
+				>
 			</div>
 		</div>
 		<div>

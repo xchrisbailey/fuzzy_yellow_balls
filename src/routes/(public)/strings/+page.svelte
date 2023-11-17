@@ -33,14 +33,14 @@
 					<Table.Cell>{title_case(string.material)}</Table.Cell>
 					<Table.Cell>{string.description}</Table.Cell>
 					<Table.Cell>4/5</Table.Cell>
-					<Table.Cell class="flex gap-1 justify-between">
+					<Table.Cell class="flex justify-between gap-1">
 						<Tooltip.Root>
 							<Tooltip.Trigger asChild let:builder>
 								<Button
 									builders={[builder]}
 									href={`/strings/${string.id}`}
 									size="icon"
-									variant="ghost"><Eye class="w-4 h-4" /></Button
+									variant="ghost"><Eye class="h-4 w-4" /></Button
 								>
 							</Tooltip.Trigger>
 							<Tooltip.Content>
@@ -54,7 +54,7 @@
 										builders={[builder]}
 										href={`/strings/${string.id}/update`}
 										size="icon"
-										variant="ghost"><Edit class="w-4 h-4" /></Button
+										variant="ghost"><Edit class="h-4 w-4" /></Button
 									>
 								</Tooltip.Trigger>
 								<Tooltip.Content>

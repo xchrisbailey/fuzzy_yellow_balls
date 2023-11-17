@@ -4,6 +4,10 @@
 /// <reference types="lucia" />
 declare global {
 	namespace App {
+		interface PageData {
+			flash?: { type: 'success' | 'error'; message: string };
+		}
+
 		interface Locals {
 			auth: import('lucia').AuthRequest;
 		}

@@ -18,19 +18,19 @@
 			<DropdownMenu.Label>My Account</DropdownMenu.Label>
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item
-				><a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a
+				><a href="/profile" class="flex align-middle"><User class="mr-2 inline h-4 w-4" />Profile</a
 				></DropdownMenu.Item
 			>
 			<DropdownMenu.Item
-				><a href="/" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Reviews</a
+				><a href="/" class="flex align-middle"><Pen class="mr-2 inline h-4 w-4" />Reviews</a
 				></DropdownMenu.Item
 			>
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
 		<DropdownMenu.Item>
-			<form method="POST" action="/?/logout" use:enhance class="p-0 m-0">
-				<Button variant="ghost" class="p-0 m-0" type="submit">
-					<LogOut class="mr-2 w-4 h-4 text-red-600" />
+			<form method="POST" action="/?/logout" use:enhance class="m-0 p-0">
+				<Button variant="ghost" class="m-0 p-0" type="submit">
+					<LogOut class="mr-2 h-4 w-4 text-red-600" />
 					logout
 				</Button>
 			</form>

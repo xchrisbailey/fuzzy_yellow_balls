@@ -7,7 +7,7 @@
 </script>
 
 <div class="mx-auto w-1/3 max-w-full">
-	<h1 class="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl scroll-m-20">Log In</h1>
+	<h1 class="mb-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Log In</h1>
 	<Form.Root method="POST" {form} {schema} let:config>
 		<Form.Field {config} name="email">
 			<Form.Item>
@@ -26,7 +26,7 @@
 		<Form.Button>Submit</Form.Button>
 	</Form.Root>
 
-	<p class="mt-2 font-medium leading-none hover:underline text-small text-primary">
+	<p class="text-small mt-2 font-medium leading-none text-primary hover:underline">
 		<a href="/signup">or sign up</a>
 	</p>
 

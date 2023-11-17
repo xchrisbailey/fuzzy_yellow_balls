@@ -5,35 +5,35 @@
 
 	export let form: SuperValidated<FormSchema>;
 </script>
-	<Form.Root method="POST" {form} schema={formSchema} let:config>
-		<Form.Field {config} name="email">
-			<Form.Item>
-				<Form.Label>Email</Form.Label>
-				<Form.Input />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Field {config} name="first_name">
-			<Form.Item>
-				<Form.Label>First Name</Form.Label>
-				<Form.Input />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Field {config} name="last_name">
-			<Form.Item>
-				<Form.Label>Last Name</Form.Label>
-				<Form.Input />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Field {config} name="password">
-			<Form.Item>
-				<Form.Label>password</Form.Label>
-				<Form.Input type="password" />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Button>Submit</Form.Button>
-	</Form.Root>
 
+<Form.Root method="POST" {form} schema={formSchema} let:config>
+	<Form.Field {config} name="email">
+		<Form.Item>
+			<Form.Label>Email</Form.Label>
+			<Form.Input />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Field {config} name="first_name">
+		<Form.Item>
+			<Form.Label>First Name</Form.Label>
+			<Form.Input />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Field {config} name="last_name">
+		<Form.Item>
+			<Form.Label>Last Name</Form.Label>
+			<Form.Input />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Field {config} name="password">
+		<Form.Item>
+			<Form.Label>password</Form.Label>
+			<Form.Input type="password" />
+			<Form.Validation />
+		</Form.Item>
+	</Form.Field>
+	<Form.Button>Submit</Form.Button>
+</Form.Root>
