@@ -1,39 +1,28 @@
 <script lang="ts">
-	import * as DropdownMenu from './ui/dropdown-menu';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Button } from './ui/button';
+	import { Avatar, popup, type PopupSettings } from '@skeletonlabs/skeleton';
 	import { enhance } from '$app/forms';
 	import { LogOut, Pen, User } from 'lucide-svelte';
+
+	const popup_avatar: PopupSettings = {
+		event: 'click',
+		target: 'popup_menu',
+		placement: 'bottom'
+	};
 </script>
 
-<DropdownMenu.Root>
-	<DropdownMenu.Trigger>
-		<Avatar.Root>
-			<Avatar.Image src="/tennis_ball.jpg" alt="@shadcn" />
-			<Avatar.Fallback>CN</Avatar.Fallback>
-		</Avatar.Root>
-	</DropdownMenu.Trigger>
-	<DropdownMenu.Content>
-		<DropdownMenu.Group>
-			<DropdownMenu.Label>My Account</DropdownMenu.Label>
-			<DropdownMenu.Separator />
-			<DropdownMenu.Item
-				><a href="/profile" class="flex align-middle"><User class="mr-2 inline h-4 w-4" />Profile</a
-				></DropdownMenu.Item
-			>
-			<DropdownMenu.Item
-				><a href="/" class="flex align-middle"><Pen class="mr-2 inline h-4 w-4" />Reviews</a
-				></DropdownMenu.Item
-			>
-		</DropdownMenu.Group>
-		<DropdownMenu.Separator />
-		<DropdownMenu.Item>
-			<form method="POST" action="/?/logout" use:enhance class="m-0 p-0">
-				<Button variant="ghost" class="m-0 p-0" type="submit">
-					<LogOut class="mr-2 h-4 w-4 text-red-600" />
-					logout
-				</Button>
-			</form>
-		</DropdownMenu.Item>
-	</DropdownMenu.Content>
-</DropdownMenu.Root>
+<button use:popup={popup_avatar}>
+	<Avatar src="/tennis_ball.jpg" alt="tennis ball avatar" rounded="rounded-full" class="w-8" />
+</button>
+<div class="p-4 w-72 shadow-xl card" data-popup="popup_menu">
+	My Account
+	<a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a><a
+		href="/"
+		class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Reviews</a
+	>
+	<form method="POST" action="/?/logout" use:enhance class="p-0 m-0">
+		<button class="p-0 m-0 btn variant-filled-warning" type="submit">
+			<LogOut class="mr-2 w-4 h-4 text-red-600" />
+			logout
+		</button>
+	</form>
+</div>

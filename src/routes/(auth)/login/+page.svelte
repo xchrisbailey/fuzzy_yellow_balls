@@ -1,36 +1,39 @@
 <script lang="ts">
-	import type { SuperValidated } from 'sveltekit-superforms';
-	import { type FormSchema, schema } from './schema';
-	import * as Form from '$lib/components/ui/form';
+	import { superForm } from 'sveltekit-superforms/client';
+	import type { PageData } from './$types';
 
-	export let form: SuperValidated<FormSchema>;
+	export let data: PageData;
+
+	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <div class="mx-auto w-1/3 max-w-full">
-	<h1 class="mb-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Log In</h1>
-	<Form.Root method="POST" {form} {schema} let:config>
-		<Form.Field {config} name="email">
-			<Form.Item>
-				<Form.Label>Email</Form.Label>
-				<Form.Input />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Field {config} name="password">
-			<Form.Item>
-				<Form.Label>password</Form.Label>
-				<Form.Input type="password" />
-				<Form.Validation />
-			</Form.Item>
-		</Form.Field>
-		<Form.Button>Submit</Form.Button>
-	</Form.Root>
+	<h1 class="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl scroll-m-20">Log In</h1>
+	<form method="POST" class="flex flex-col gap-4" use:enhance>
+		<label class="label"
+			><span>Email</span>
+			<input
+				type="text"
+				name="email"
+				aria-invalid={$errors.email ? 'true' : undefined}
+				bind:value={$form.email}
+				class="input {$errors.email ? 'input-error' : ''}"
+			/>
+			{#if $errors.email}<span class="text-sm text-rose-500">{$errors.email}</span>{/if}
+		</label>
 
-	<p class="text-small mt-2 font-medium leading-none text-primary hover:underline">
-		<a href="/signup">or sign up</a>
-	</p>
+		<label class="label"
+			><span>Password</span>
+			<input
+				type="password"
+				name="password"
+				aria-invalid={$errors.password ? 'true' : undefined}
+				bind:value={$form.password}
+				class="input {$errors.password ? 'input-error' : ''}"
+			/>
+			{#if $errors.password}<span class="text-sm text-rose-500">{$errors.password}</span>{/if}
+		</label>
 
-	{#if form?.message}
-		<p class="error">{form.message}</p>
-	{/if}
+		<button class="btn variant-soft-primary">Log In</button>
+	</form>
 </div>
