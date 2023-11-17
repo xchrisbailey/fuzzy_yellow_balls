@@ -4,8 +4,8 @@
 	import type { PageData } from './$types';
 	import { LogIn } from 'lucide-svelte';
 	import { Toaster } from 'svelte-french-toast';
-	import { getFlash } from 'sveltekit-flash-message';
-	import { page } from '$app/stores';
+	// import { getFlash } from 'sveltekit-flash-message';
+	// import { page } from '$app/stores';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 
