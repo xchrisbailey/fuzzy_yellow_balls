@@ -1,10 +1,10 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { redirect as flash_redirect } from 'sveltekit-flash-message/server';
-import type { Actions, PageServerLoad } from './$types';
-import { schema } from './schema';
-import { superValidate } from 'sveltekit-superforms/server';
 import db from '$lib/db';
 import { Prisma } from '@prisma/client';
+import { fail, redirect } from '@sveltejs/kit';
+import { redirect as flash_redirect } from 'sveltekit-flash-message/server';
+import { superValidate } from 'sveltekit-superforms/server';
+import type { Actions, PageServerLoad } from './$types';
+import { schema } from './schema';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
