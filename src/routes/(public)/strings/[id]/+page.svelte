@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Pencil1 } from 'radix-icons-svelte';
-	import { Star } from 'lucide-svelte';
+	import { Pencil, Star } from 'lucide-svelte';
 
 	export let data: PageData;
 </script>
@@ -60,7 +60,13 @@
 							{/each}
 						</div>
 					</div>
-					<grid-cols-2></grid-cols-2>
+					{#if review.user_id === data.session?.user.userId}
+						<div class="flex justify-end">
+							<Button href="/reviews/{review.id}/update" variant="ghost"
+								><Pencil class="mr-1 w-4 h-4" /> edit</Button
+							>
+						</div>
+					{/if}
 				</article>
 			{/each}
 

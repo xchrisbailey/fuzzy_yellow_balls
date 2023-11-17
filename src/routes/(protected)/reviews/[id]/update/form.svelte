@@ -8,7 +8,7 @@
 </script>
 
 <h1 class="mb-2">Add A Review</h1>
-<Form.Root method="POST" action="?/add" {form} {schema} let:config>
+<Form.Root method="POST" {form} {schema} let:config>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="grid grid-cols-2 gap-4">
 			<Form.Field {config} name="power">
