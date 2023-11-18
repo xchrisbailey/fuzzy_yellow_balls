@@ -11,30 +11,20 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/');
 	}
 
+	const form = await superValidate(schema);
+
 	return {
-		form: superValidate(schema)
+		form
 	};
 };
 
 export const actions = {
 	default: async ({ request, locals }) => {
-		const formData = await request.formData();
-		const email = formData.get('email');
-		const password = formData.get('password');
-
-		if (typeof email !== 'string' || email.length < 1 || email.length > 255) {
-			return fail(400, {
-				message: 'Invalid email'
-			});
-		}
-		if (typeof password !== 'string' || password.length < 1 || password.length > 255) {
-			return fail(400, {
-				message: 'Invalid password'
-			});
-		}
+		const form = await superValidate(request, schema);
+		if (!form.valid) return fail(400, { form });
 
 		try {
-			const key = await auth.useKey('email', email.toLowerCase(), password);
+			const key = await auth.useKey('email', form.data.email.toLowerCase(), form.data.password);
 			const session = await auth.createSession({
 				userId: key.userId,
 				attributes: {}

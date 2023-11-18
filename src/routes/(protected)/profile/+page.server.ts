@@ -14,8 +14,10 @@ export const load: PageServerLoad = async ({ locals }) => {
 	});
 	if (!user) throw redirect(302, '/login');
 
+	const form = await superValidate(user, formSchema);
+
 	return {
-		form: superValidate(user, formSchema),
+		form,
 		session
 	};
 };

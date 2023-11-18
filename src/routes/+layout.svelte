@@ -1,31 +1,24 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import UserButton from '$lib/components/user_button.svelte';
 	import '../app.postcss';
+	import UserButton from '$lib/components/user_button.svelte';
 	import type { PageData } from './$types';
 	import { LogIn } from 'lucide-svelte';
 	import { Toaster } from 'svelte-french-toast';
-	import { getFlash } from 'sveltekit-flash-message';
-	import { page } from '$app/stores';
-	import * as Alert from '$lib/components/ui/alert';
+	// import { getFlash } from 'sveltekit-flash-message';
+	// import { page } from '$app/stores';
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
 
-	const flash = getFlash(page, {
-		clearAfterMs: 4000
-	});
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
+	// const flash = getFlash(page, {
+	// 	clearAfterMs: 4000
+	// });
+	//
 	export let data: PageData;
 </script>
 
 <Toaster />
-{#if $flash}
-	<Alert.Root
-		variant={$flash.message === 'error' ? 'destructive' : 'default'}
-		class="absolute right-5 bottom-5 w-1/3 opacity-75 bg-destructive text-destructive-foreground"
-	>
-		<Alert.Title>{$flash.type === 'error' ? 'Uh Oh' : 'Yippy'}</Alert.Title>
-		<Alert.Description>{$flash.message}</Alert.Description>
-	</Alert.Root>
-{/if}
 
 <header class="container flex justify-between my-3 mx-auto">
 	<div class="text-3xl font-bold">The String Bar</div>
@@ -36,9 +29,9 @@
 		</ul>
 	</nav>
 	{#if !data.session?.user}
-		<Button href="/login">
+		<a href="/login" class="btn variant-soft-primary">
 			<LogIn class="mr-2 w-4 h-4" />
-			login</Button
+			login</a
 		>
 	{:else}
 		<UserButton />
