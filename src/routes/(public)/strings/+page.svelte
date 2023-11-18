@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Eye, Pen } from 'lucide-svelte';
 	import type { PageData } from './$types';
-	// import { title_case } from '$lib/helpers/title_case';
+	import { title_case } from '$lib/helpers/title_case';
 	// import { Edit, Eye } from 'lucide-svelte';
 
 	export let data: PageData;
@@ -27,9 +27,9 @@
 			<tbody>
 				{#each data.strings as string}
 					<tr>
-						<td>{string.Brand.name}</td>
-						<td>{string.name}</td>
-						<td>{string.material}</td>
+						<td>{title_case(string.Brand.name)}</td>
+						<td>{title_case(string.name)}</td>
+						<td>{title_case(string.material)}</td>
 						<td><p class="whitespace-pre-line">{string.description}</p></td>
 						<td>0/0</td>
 						<td class="flex gap-3">
