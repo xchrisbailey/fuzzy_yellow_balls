@@ -12,14 +12,16 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 	const id = params.id;
 	if (!id) throw redirect(302, '/strings');
 
-	const string = await db.tennisString.findUnique({ where: { id }, include: { Brand: true } });
+	const string = await db.tennisString.findUnique({ where: { id } });
+	if (!string) throw redirect(302, '/strings');
 
 	const brands: Brand[] = await db.brand.findMany({});
 
+	const form = await superValidate({ ...string, brand: string.brand_id }, schema);
+
 	return {
-		form: superValidate(string, schema),
-		brands,
-		current_brand: string?.Brand
+		form,
+		brands
 	};
 };
 
@@ -37,9 +39,7 @@ export const actions = {
 			await db.tennisString.update({
 				where: { id: params.id },
 				data: {
-					name: form.data.name,
-					material: form.data.material,
-					description: form.data.description,
+					...form.data,
 					Brand: {
 						connect: {
 							id: form.data.brand

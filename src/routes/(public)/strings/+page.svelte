@@ -30,7 +30,7 @@
 						<td>{string.Brand.name}</td>
 						<td>{string.name}</td>
 						<td>{string.material}</td>
-						<td>{string.description}</td>
+						<td><p class="whitespace-pre-line">{string.description}</p></td>
 						<td>0/0</td>
 						<td class="flex gap-3">
 							<a href="/strings/{string.id}" class="btn-icon variant-soft-primary btn-icon-sm">

@@ -14,7 +14,7 @@
 	<section>
 		<article>
 			<h2 class="h2 gradient-heading-blue drop-shadow-sm">Info</h2>
-			<p class="py-2">{data.string.description}</p>
+			<p class="py-2 whitespace-pre-line">{data.string.description}</p>
 		</article>
 	</section>
 	<section>
