@@ -8,16 +8,16 @@
 	const { form, errors, enhance } = superForm(data.form);
 </script>
 
-<h1 class="mb-3 text-primary">
+<h1 class="mb-3 leading-relaxed h1 gradient-heading-pink">
 	Hello {title_case(data.session.user.first_name)}
 </h1>
 
 <section class="grid grid-cols-1 gap-5 md:grid-cols-2">
 	<article>
-		<h2>Your reviews</h2>
+		<h2 class="leading-relaxed h2 gradient-heading-red">Your reviews</h2>
 	</article>
 	<article>
-		<h2>Edit Your Profile</h2>
+		<h2 class="leading-relaxed h2 gradient-heading-red">Edit Your Profile</h2>
 		<form method="POST" use:enhance class="flex flex-col gap-4">
 			<label class="label">
 				<span>Email</span>

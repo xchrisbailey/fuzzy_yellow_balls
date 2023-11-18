@@ -1,12 +1,19 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
+	import { title_case } from '$lib/helpers/title_case';
+	import { find_brand_by_id } from '$lib/helpers/find_brand_by_id';
 
 	export let data: PageData;
 
 	const { form, enhance } = superForm(data.form);
 	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
 </script>
+
+<h1 class="leading-relaxed h1 gradient-heading-pink">
+	Update {title_case(data.form.data.name)} by
+	{title_case(find_brand_by_id(data.form.data.brand, data.brands))}
+</h1>
 
 <form use:enhance method="POST" class="flex flex-col gap-4">
 	<label class="label">

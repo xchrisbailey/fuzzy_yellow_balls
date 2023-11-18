@@ -6,14 +6,23 @@ import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { schema } from './schema';
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
 	const form = await superValidate(schema);
+	const string = await db.tennisString.findUnique({
+		where: { id: params.id },
+		include: {
+			Brand: true
+		}
+	});
+
+	if (!string) throw redirect(302, '/strings');
 
 	return {
-		form
+		form,
+		string
 	};
 };
 
@@ -37,7 +46,7 @@ export const actions = {
 				}
 			});
 
-			return redirect(302, `/string/${params.id}`);
+			throw redirect(302, `/string/${params.id}`);
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Prisma.PrismaClientKnownRequestError) {
