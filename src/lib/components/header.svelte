@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppBar, getDrawerStore } from '@skeletonlabs/skeleton';
 	import type { Session } from 'lucia';
 	import UserButton from './user_button.svelte';
 	import { LogIn, Menu } from 'lucide-svelte';
 
 	export let session: Session | null;
+
+	const drawerStore = getDrawerStore();
+	function drawerOpen() {
+		drawerStore.open();
+	}
 </script>
 
 <AppBar
@@ -14,7 +19,7 @@
 	slotTrail="place-content-end"
 	background="bg-transparent"
 >
-	<svelte:fragment slot="lead"><Menu /></svelte:fragment>
+	<svelte:fragment slot="lead"><button on:click={drawerOpen}><Menu /></button></svelte:fragment>
 
 	<div class="font-bold leading-relaxed lowercase gradient-heading-pink h2 drop-shadow-sm">
 		The String Bar
