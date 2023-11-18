@@ -3,24 +3,11 @@
 	import type { PageData } from './$types';
 	// import { title_case } from '$lib/helpers/title_case';
 	// import { Edit, Eye } from 'lucide-svelte';
-	import { Table, tableMapperValues, type TableSource } from '@skeletonlabs/skeleton';
 
 	export let data: PageData;
-
-	const string_table: TableSource = {
-		head: ['Brand', 'Model', 'Material', 'Description', 'Rating', ''],
-		body: tableMapperValues(data.strings, [
-			'Brand.name',
-			'name',
-			'material',
-			'description',
-			'rating',
-			'id'
-		])
-	};
 </script>
 
-<h1 class="mb-3">Tennis Strings</h1>
+<h1 class="mb-3 leading-relaxed h1 gradient-heading-pink">Tennis Strings</h1>
 
 {#if !data.strings || data.strings.length === 0}
 	<p>no tennis strings added yet</p>
@@ -43,7 +30,7 @@
 						<td>{string.Brand.name}</td>
 						<td>{string.name}</td>
 						<td>{string.material}</td>
-						<td>{string.description}</td>
+						<td><p class="whitespace-pre-line">{string.description}</p></td>
 						<td>0/0</td>
 						<td class="flex gap-3">
 							<a href="/strings/{string.id}" class="btn-icon variant-soft-primary btn-icon-sm">
