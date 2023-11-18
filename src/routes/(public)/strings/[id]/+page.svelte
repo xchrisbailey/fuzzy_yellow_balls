@@ -7,17 +7,19 @@
 	export let data: PageData;
 </script>
 
-<h1 class="mb-4 h1">{title_case(data.string.name)} by {title_case(data.string.Brand.name)}</h1>
+<h1 class="mb-4 leading-relaxed h1 gradient-heading-pink">
+	{title_case(data.string.name)} by {title_case(data.string.Brand.name)}
+</h1>
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 	<section>
 		<article>
-			<h2 class="h2">Info</h2>
+			<h2 class="h2 gradient-heading-blue drop-shadow-sm">Info</h2>
 			<p class="py-2">{data.string.description}</p>
 		</article>
 	</section>
 	<section>
 		<div class="mb-4">
-			<h2 class="mb-2 h2">User Reviews</h2>
+			<h2 class="mb-2 h2 gradient-heading-blue drop-shadow-sm">User Reviews</h2>
 			{#each data.string.Review as review}
 				<article class="p-4 card variant-glass">
 					<p>{review.comments}</p>
@@ -75,8 +77,9 @@
 				>
 			</div>
 		</div>
+		<hr class="my-5 divide-gray-50" />
 		<div>
-			<h2 class="mb-2 h2">YouTube Reviews</h2>
+			<h2 class="mb-2 h2 gradient-heading-blue drop-shadow-sm">YouTube Reviews</h2>
 			<div class="space-y-4">
 				{#each data.youtube_reviews.items as youtube_review}
 					<article>
