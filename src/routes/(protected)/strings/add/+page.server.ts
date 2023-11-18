@@ -11,8 +11,10 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const brands: Brand[] = await db.brand.findMany({});
 
+	const form = await superValidate(schema);
+
 	return {
-		form: superValidate(schema),
+		form,
 		brands
 	};
 };
