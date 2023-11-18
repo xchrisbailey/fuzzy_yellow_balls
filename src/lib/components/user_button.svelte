@@ -6,7 +6,7 @@
 	const popup_avatar: PopupSettings = {
 		event: 'click',
 		target: 'popup_menu',
-		placement: 'bottom'
+		placement: 'left-start'
 	};
 </script>
 
