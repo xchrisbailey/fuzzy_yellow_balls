@@ -40,7 +40,7 @@
 				login</a
 			>
 		{:else}
-			<UserButton />
+			<UserButton user={session.user} />
 		{/if}
 	</svelte:fragment>
 </AppBar>
