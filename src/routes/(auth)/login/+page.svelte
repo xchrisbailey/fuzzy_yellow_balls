@@ -7,8 +7,8 @@
 	const { form, errors, enhance } = superForm(data.form);
 </script>
 
-<div class="mx-auto w-1/3 max-w-full">
-	<h1 class="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl scroll-m-20">Log In</h1>
+<div class="mx-auto w-full md:w-2/3">
+	<h1 class="mb-4 leading-relaxed gradient-heading-pink h1">Log In</h1>
 	<form method="POST" class="flex flex-col gap-4" use:enhance>
 		<label class="label"
 			><span>Email</span>
@@ -34,6 +34,7 @@
 			{#if $errors.password}<span class="text-sm text-rose-500">{$errors.password}</span>{/if}
 		</label>
 
-		<button class="btn variant-soft-primary">Log In</button>
+		<button class="variant-soft-primary btn">Log In</button>
 	</form>
+	<p>or <a href="/signup">signup</a></p>
 </div>
