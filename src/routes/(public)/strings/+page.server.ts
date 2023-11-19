@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	const strings = await db.tennisString.findMany({
-		include: { Brand: true }
+		include: { Brand: true, Review: true }
 	});
 	return {
 		strings

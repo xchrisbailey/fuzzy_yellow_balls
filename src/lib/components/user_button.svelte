@@ -18,7 +18,7 @@
 		src="/tennis_ball.jpg"
 		alt="tennis ball avatar"
 		rounded="rounded-full"
-		class="w-10 shadow hover:rotate-45"
+		class="shadow hover:rotate-45 w-[2.5rem]"
 		border="border-2 border-primary-300-600-token hover:!border-primary-400 transition duration-200"
 		cursor="cursor-pointer"
 	/>
