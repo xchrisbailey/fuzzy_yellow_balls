@@ -12,7 +12,6 @@
 </script>
 
 <nav class="p-3 md:p-0 list-nav">
-	<div class="p-4 h3">The String Bar</div>
 	<ul>
 		<li>
 			<a href="/" on:click={drawerClose} class={classesActive('/')}>
