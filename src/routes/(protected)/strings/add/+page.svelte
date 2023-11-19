@@ -9,6 +9,7 @@
 	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
 </script>
 
+<h1 class="leading-relaxed h1 gradient-heading-pink">Add A String</h1>
 <form use:enhance method="POST" class="flex flex-col gap-4">
 	<label class="label">
 		<span>Name</span>
