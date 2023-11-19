@@ -18,14 +18,16 @@
 		src="/tennis_ball.jpg"
 		alt="tennis ball avatar"
 		rounded="rounded-full"
-		class="w-9 shadow"
-		border="border-2 border-warning-300-600-token hover:!border-warning-500"
+		class="w-10 shadow hover:rotate-45"
+		border="border-2 border-primary-300-600-token hover:!border-primary-400 transition duration-200"
 		cursor="cursor-pointer"
 	/>
 </button>
 
 <div class="z-50 p-4 w-72 shadow-xl card" data-popup="popup_menu">
-	<h2 class="h4">{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}</h2>
+	<h2 class="mb-1 gradient-heading-blue h3">
+		{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}
+	</h2>
 	<nav class="gap-4 list-nav">
 		<ul>
 			<li>
