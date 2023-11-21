@@ -6,7 +6,7 @@
 </script>
 
 <section class="flex flex-col gap-4">
-	<h2 class="gradient-heading-pink h2">Reviews</h2>
+	<h2 class="gradient-heading-pink h2">String Reviews</h2>
 	{#if !data.reviews}
 		<p class="text-warning-500">you have not reviews anything yet!</p>
 	{:else}
