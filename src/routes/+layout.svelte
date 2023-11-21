@@ -16,11 +16,7 @@
 	<NavigationLinks />
 </Drawer>
 
-<AppShell
-	regionPage="relative"
-	slotPageHeader="sticky top-0 z-10"
-	slotSidebarLeft="p-4 w-0 md:w-64"
->
+<AppShell slotSidebarLeft="p-4 w-0 md:w-64" scrollbarGutter="auto">
 	<svelte:fragment slot="header"><Header session={data.session} /></svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
 		<NavigationLinks />
