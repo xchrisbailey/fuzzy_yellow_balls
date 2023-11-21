@@ -34,7 +34,8 @@
 				<a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a>
 			</li>
 			<li>
-				<a href="/" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Reviews</a>
+				<a href="/activity" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Activity</a
+				>
 			</li>
 			<li>
 				<form method="POST" action="/?/logout" use:enhance class="flex flex-col">

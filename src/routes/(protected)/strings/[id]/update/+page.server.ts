@@ -1,6 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import db from '$lib/db';
 import { superValidate } from 'sveltekit-superforms/server';
 import { schema } from './schema';
 import type { Brand } from '@prisma/client';
@@ -12,10 +11,10 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 	const id = params.id;
 	if (!id) throw redirect(302, '/strings');
 
-	const string = await db.tennisString.findUnique({ where: { id } });
+	const string = await locals.db.tennisString.findUnique({ where: { id } });
 	if (!string) throw redirect(302, '/strings');
 
-	const brands: Brand[] = await db.brand.findMany({});
+	const brands: Brand[] = await locals.db.brand.findMany({});
 
 	const form = await superValidate({ ...string, brand: string.brand_id }, schema);
 
@@ -36,7 +35,7 @@ export const actions = {
 		}
 
 		try {
-			await db.tennisString.update({
+			await locals.db.tennisString.update({
 				where: { id: params.id },
 				data: {
 					...form.data,

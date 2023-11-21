@@ -1,4 +1,3 @@
-import db from '$lib/db';
 import { Prisma } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
 import { redirect as flash_redirect } from 'sveltekit-flash-message/server';
@@ -11,7 +10,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 	if (!session) throw redirect(302, '/login');
 
 	const form = await superValidate(schema);
-	const string = await db.tennisString.findUnique({
+	const string = await locals.db.tennisString.findUnique({
 		where: { id: params.id },
 		include: {
 			Brand: true
@@ -38,7 +37,7 @@ export const actions = {
 		}
 
 		try {
-			await db.review.create({
+			await locals.db.review.create({
 				data: {
 					...form.data,
 					user: { connect: { id: session.user.userId } },

@@ -2,6 +2,9 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 /// <reference types="lucia" />
+
+import type { PrismaClient } from '@prisma/client';
+
 declare global {
 	namespace App {
 		interface PageData {
@@ -9,6 +12,7 @@ declare global {
 		}
 
 		interface Locals {
+			db: PrismaClient;
 			auth: import('lucia').AuthRequest;
 		}
 		// interface Error {}

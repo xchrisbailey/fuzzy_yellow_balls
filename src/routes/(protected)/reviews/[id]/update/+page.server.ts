@@ -1,5 +1,4 @@
 import type { Actions, PageServerLoad } from './$types';
-import db from '$lib/db';
 import { superValidate } from 'sveltekit-superforms/server';
 import { schema } from './schema';
 import { fail, redirect } from '@sveltejs/kit';
@@ -9,7 +8,7 @@ export const load: PageServerLoad = async (event) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
-	const review = await db.review.findFirst({
+	const review = await locals.db.review.findFirst({
 		where: { user_id: session.user.userId },
 		include: { string: true, user: true }
 	});
@@ -37,7 +36,7 @@ export const actions = {
 		}
 
 		try {
-			await db.review.update({
+			await locals.db.review.update({
 				where: { id: params.id, user_id: session.user.userId },
 				data: form.data
 			});
