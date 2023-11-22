@@ -1,4 +1,4 @@
-import type { Brand } from '@prisma/client';
+import type { Brand, TennisString } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
@@ -28,8 +28,10 @@ export const actions = {
 			return fail(400, { form });
 		}
 
+		let tennis_string: TennisString;
+
 		try {
-			await locals.db.tennisString.create({
+			tennis_string = await locals.db.tennisString.create({
 				data: {
 					name: form.data.name,
 					Brand: {
@@ -41,8 +43,6 @@ export const actions = {
 					material: form.data.material
 				}
 			});
-
-			return { form };
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
@@ -51,5 +51,7 @@ export const actions = {
 				return fail(500, { message: 'Unknown error' });
 			}
 		}
+
+		throw redirect(302, `/strings/${tennis_string.id}`);
 	}
 } satisfies Actions;

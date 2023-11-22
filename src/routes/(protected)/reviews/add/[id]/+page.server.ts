@@ -44,8 +44,6 @@ export const actions = {
 					string: { connect: { id: params.id } }
 				}
 			});
-
-			throw redirect(302, `/string/${params.id}`);
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Prisma.PrismaClientKnownRequestError) {
@@ -62,5 +60,7 @@ export const actions = {
 				message: 'An unknown error occurred'
 			});
 		}
+
+		throw redirect(302, `/string/${params.id}`);
 	}
 } satisfies Actions;
