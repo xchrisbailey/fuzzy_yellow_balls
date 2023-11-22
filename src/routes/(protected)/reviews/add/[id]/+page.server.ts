@@ -61,6 +61,6 @@ export const actions = {
 			});
 		}
 
-		throw redirect(302, `/string/${params.id}`);
+		throw redirect(302, `/strings/${params.id}`);
 	}
 } satisfies Actions;
