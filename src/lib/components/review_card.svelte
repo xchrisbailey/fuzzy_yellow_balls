@@ -7,7 +7,7 @@
 </script>
 
 <article class="p-4 card variant-glass">
-	<p>{review.comments}</p>
+	<h3 class="gradient-heading-red h3">Rating</h3>
 	<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
 		<div class="flex gap-1 items-center">
 			comfort: {#each Array(review.comfort) as id}
@@ -45,6 +45,10 @@
 			{/each}
 		</div>
 	</div>
+	<hr class="my-1 divide-gray-200" />
+	<h3 class="gradient-heading-red h3">Reviewer Notes</h3>
+	<p>{review.comments}</p>
+
 	{#if review.user_id === user_id}
 		<div class="flex justify-end">
 			<a href="/reviews/{review.id}/update" class="variant-ghost-primary btn-icon btn-icon-sm"
