@@ -1,13 +1,26 @@
 <script lang="ts">
-	import type { Review } from '@prisma/client';
+	import { title_case } from '$lib/helpers/title_case';
+	import type { Brand, Review as PrismaReview, TennisString } from '@prisma/client';
 	import { Pencil, Star } from 'lucide-svelte';
 
 	export let user_id: string | undefined;
 	export let review: Review;
+	export let header: boolean = false;
+
+	interface Review extends PrismaReview {
+		string?: TennisString & { Brand?: Brand };
+	}
+
+	console.log(review);
 </script>
 
 <article class="p-4 card variant-glass">
-	<h3 class="gradient-heading-red h3">Rating</h3>
+	{#if review.string?.Brand && header}
+		<h3 class="mb-1 gradient-heading-red h3">
+			{title_case(review.string.name)} by {title_case(review.string.Brand.name)}
+		</h3>
+	{/if}
+	<h4 class="h4">Rating</h4>
 	<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
 		<div class="flex gap-1 items-center">
 			comfort: {#each Array(review.comfort) as id}
@@ -46,7 +59,7 @@
 		</div>
 	</div>
 	<hr class="my-1 divide-gray-200" />
-	<h3 class="gradient-heading-red h3">Reviewer Notes</h3>
+	<h4 class="h4">Reviewer Notes</h4>
 	<p>{review.comments}</p>
 
 	{#if review.user_id === user_id}

@@ -10,6 +10,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const reviews = await locals.db.review.findMany({
 		where: {
 			user_id: session.user.userId
+		},
+		include: {
+			string: {
+				include: { Brand: true }
+			}
 		}
 	});
 
