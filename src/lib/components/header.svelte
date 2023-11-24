@@ -31,7 +31,7 @@
 	<svelte:fragment slot="lead"><button on:click={drawerOpen}><Menu /></button></svelte:fragment>
 
 	<div class="font-bold leading-relaxed lowercase gradient-heading-pink h2 drop-shadow-sm">
-		The String Bar
+		Fuzzy Yellow Balls
 	</div>
 	<svelte:fragment slot="trail">
 		{#if !session?.user}
