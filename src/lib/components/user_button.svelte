@@ -18,7 +18,7 @@
 		src="/tennis_ball.jpg"
 		alt="tennis ball avatar"
 		rounded="rounded-full"
-		class="w-10 shadow hover:rotate-45"
+		class="shadow hover:rotate-45 w-[2.5rem]"
 		border="border-2 border-primary-300-600-token hover:!border-primary-400 transition duration-200"
 		cursor="cursor-pointer"
 	/>
@@ -34,7 +34,8 @@
 				<a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a>
 			</li>
 			<li>
-				<a href="/" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Reviews</a>
+				<a href="/activity" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Activity</a
+				>
 			</li>
 			<li>
 				<form method="POST" action="/?/logout" use:enhance class="flex flex-col">

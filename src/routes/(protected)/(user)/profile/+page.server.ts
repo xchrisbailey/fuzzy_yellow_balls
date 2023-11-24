@@ -2,13 +2,12 @@ import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { formSchema } from './schema';
-import db from '$lib/db';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
-	const user = await db.user.findUnique({
+	const user = await locals.db.user.findUnique({
 		where: { id: session.user.userId },
 		select: { email: true, first_name: true, last_name: true }
 	});
@@ -33,7 +32,7 @@ export const actions = {
 		}
 
 		try {
-			await db.user.update({
+			await locals.db.user.update({
 				where: { id: session.user.userId },
 				data: { ...form.data }
 			});

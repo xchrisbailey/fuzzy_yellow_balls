@@ -1,10 +1,9 @@
-import db from '$lib/db';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { YoutubeSearchResponse } from '../../../api/youtube/[brand]/[string]/+server';
 
-export const load: PageServerLoad = async ({ params, fetch }) => {
-	const string = await db.tennisString.findFirst({
+export const load: PageServerLoad = async ({ locals, params, fetch }) => {
+	const string = await locals.db.tennisString.findFirst({
 		where: { id: params.id },
 		include: { Brand: true, Review: { take: 10 } }
 	});

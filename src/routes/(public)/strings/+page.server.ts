@@ -1,9 +1,8 @@
-import db from '$lib/db';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
-	const strings = await db.tennisString.findMany({
-		include: { Brand: true }
+export const load: PageServerLoad = async ({ locals }) => {
+	const strings = await locals.db.tennisString.findMany({
+		include: { Brand: true, Review: true }
 	});
 	return {
 		strings
