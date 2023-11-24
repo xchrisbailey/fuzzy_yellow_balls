@@ -10,7 +10,7 @@
 	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
 </script>
 
-<h1 class="leading-relaxed h1 gradient-heading-pink">
+<h1 class="gradient-heading-pink h1 leading-relaxed">
 	Update {title_case(data.form.data.name)} by
 	{title_case(find_brand_by_id(data.form.data.brand, data.brands))}
 </h1>
@@ -47,5 +47,5 @@
 			class="textarea variant-glass-surface"
 		></textarea>
 	</label>
-	<button class="btn variant-glass-primary">Add String</button>
+	<button class="variant-glass-primary btn">Add String</button>
 </form>

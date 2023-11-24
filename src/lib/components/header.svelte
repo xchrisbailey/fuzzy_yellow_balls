@@ -30,13 +30,13 @@
 >
 	<svelte:fragment slot="lead"><button on:click={drawerOpen}><Menu /></button></svelte:fragment>
 
-	<div class="font-bold leading-relaxed lowercase gradient-heading-pink h2 drop-shadow-sm">
+	<div class="gradient-heading-pink h2 font-bold lowercase leading-relaxed drop-shadow-sm">
 		Fuzzy Yellow Balls
 	</div>
 	<svelte:fragment slot="trail">
 		{#if !session?.user}
 			<a href="/login" class="variant-soft-primary btn">
-				<LogIn class="mr-2 w-4 h-4" />
+				<LogIn class="mr-2 h-4 w-4" />
 				login</a
 			>
 		{:else}

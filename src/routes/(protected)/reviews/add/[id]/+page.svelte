@@ -8,11 +8,11 @@
 	const { form, errors, enhance } = superForm(data.form);
 </script>
 
-<h1 class="leading-relaxed gradient-heading-pink h1">
+<h1 class="gradient-heading-pink h1 leading-relaxed">
 	Review {title_case(data.string.name)} by {title_case(data.string.Brand.name)}
 </h1>
 <form method="POST" action="?/add" use:enhance>
-	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
+	<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3">
 		<label class="label">
 			<span>Power</span>
 			<input type="range" name="power" bind:value={$form.power} max={5} step="1" class="rating" />

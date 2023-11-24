@@ -8,7 +8,7 @@
 </script>
 
 <div class="mx-auto w-full md:w-2/3">
-	<h1 class="mb-4 leading-relaxed gradient-heading-pink h1">Log In</h1>
+	<h1 class="gradient-heading-pink h1 mb-4 leading-relaxed">Log In</h1>
 	<form method="POST" class="flex flex-col gap-4" use:enhance>
 		<label class="label"
 			><span>Email</span>
