@@ -8,6 +8,8 @@ const schema = z.object({
 	about: z.string()
 });
 
+export type NewBrandForm = typeof schema;
+
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
