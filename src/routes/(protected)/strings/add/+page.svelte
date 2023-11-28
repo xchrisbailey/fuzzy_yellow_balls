@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -9,7 +10,7 @@
 	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
 </script>
 
-<h1 class="gradient-heading-pink h1 leading-relaxed">Add A String</h1>
+<h1 class="leading-relaxed gradient-heading-pink h1">Add A String</h1>
 <form use:enhance method="POST" class="flex flex-col gap-4">
 	<label class="label">
 		<span>Name</span>
@@ -22,6 +23,9 @@
 				<option value={brand.id}>{brand.name}</option>
 			{/each}
 		</select>
+		<span class="text-sm"
+			><a href={`/brands/add?return_to=${$page.url.pathname}`}>add brand</a></span
+		>
 	</label>
 	<label class="label">
 		<span>Material</span>
