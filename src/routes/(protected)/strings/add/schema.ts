@@ -7,4 +7,4 @@ export const schema = z.object({
 	description: z.string().min(1)
 });
 
-export type FormSchema = typeof schema;
+export type StringFormSchema = typeof schema;
