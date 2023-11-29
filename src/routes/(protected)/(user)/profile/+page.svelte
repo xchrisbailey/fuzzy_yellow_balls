@@ -1,12 +1,9 @@
 <script lang="ts">
 	import { title_case } from '$lib/helpers/title_case';
-	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
 	import ProfileForm from '$lib/components/forms/profile_form.svelte';
 
 	export let data: PageData;
-
-	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <h1 class="mb-3 leading-relaxed gradient-heading-pink h1">
