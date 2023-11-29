@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Brand } from '@prisma/client';
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import type { StringFormSchema } from '../../../routes/(protected)/strings/add/schema';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { page } from '$app/stores';
+	import type { StringFormSchema } from '$lib/form_schemas';
 
 	export let brands: Brand[];
 	export let data: SuperValidated<StringFormSchema>;
