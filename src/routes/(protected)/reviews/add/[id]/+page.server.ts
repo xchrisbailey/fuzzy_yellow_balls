@@ -3,13 +3,13 @@ import { fail, redirect } from '@sveltejs/kit';
 import { redirect as flash_redirect } from 'sveltekit-flash-message/server';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { schema } from './schema';
+import { review_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
-	const form = await superValidate(schema);
+	const form = await superValidate(review_schema);
 	const string = await locals.db.tennisString.findUnique({
 		where: { id: params.id },
 		include: {
@@ -31,7 +31,7 @@ export const actions = {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
 
-		const form = await superValidate(request, schema);
+		const form = await superValidate(request, review_schema);
 		if (!form.valid) {
 			return fail(400, { form });
 		}

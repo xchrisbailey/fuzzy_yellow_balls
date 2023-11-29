@@ -1,8 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { superValidate } from 'sveltekit-superforms/server';
-import { schema } from './schema';
 import type { Brand } from '@prisma/client';
+import { string_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
 	const brands: Brand[] = await locals.db.brand.findMany({});
 
-	const form = await superValidate({ ...string, brand: string.brand_id }, schema);
+	const form = await superValidate({ ...string, brand: string.brand_id }, string_schema);
 
 	return {
 		form,
@@ -29,7 +29,7 @@ export const actions = {
 		const session = await locals.auth.validate();
 		if (!session || session.user.role !== 'Admin') throw redirect(301, '/login');
 
-		const form = await superValidate(request, schema);
+		const form = await superValidate(request, string_schema);
 		if (!form.valid) {
 			return fail(400, { form });
 		}

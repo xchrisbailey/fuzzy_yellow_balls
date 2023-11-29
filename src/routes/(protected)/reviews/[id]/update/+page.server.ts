@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 import { superValidate } from 'sveltekit-superforms/server';
-import { schema } from './schema';
 import { fail, redirect } from '@sveltejs/kit';
+import { review_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals, params } = event;
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async (event) => {
 		throw redirect(302, `/string/${params.id}`);
 	}
 
-	const form = await superValidate(review, schema);
+	const form = await superValidate(review, review_schema);
 
 	return {
 		form
@@ -30,7 +30,7 @@ export const actions = {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
 
-		const form = await superValidate(request, schema);
+		const form = await superValidate(request, review_schema);
 		if (!form.valid) {
 			return fail(400, { form });
 		}
