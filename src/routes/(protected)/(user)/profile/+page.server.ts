@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { formSchema } from './schema';
+import { profile_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	});
 	if (!user) throw redirect(302, '/login');
 
-	const form = await superValidate(user, formSchema);
+	const form = await superValidate(user, profile_schema);
 
 	return {
 		form,
@@ -26,7 +26,7 @@ export const actions = {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
 
-		const form = await superValidate(request, formSchema);
+		const form = await superValidate(request, profile_schema);
 		if (!form.valid) {
 			return fail(400, { form });
 		}

@@ -2,7 +2,7 @@ import type { Brand, TennisString } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { schema } from './schema';
+import { string_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const brands: Brand[] = await locals.db.brand.findMany({});
 
-	const form = await superValidate(schema);
+	const form = await superValidate(string_schema);
 
 	return {
 		form,
@@ -23,7 +23,7 @@ export const actions = {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(301, '/login');
 
-		const form = await superValidate(request, schema);
+		const form = await superValidate(request, string_schema);
 		if (!form.valid) {
 			return fail(400, { form });
 		}
