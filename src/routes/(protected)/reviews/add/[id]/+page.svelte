@@ -1,31 +1,13 @@
 <script lang="ts">
-	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
 	import { title_case } from '$lib/helpers/title_case';
-	import StarRating from '$lib/components/star_rating.svelte';
+	import ReviewForm from '$lib/components/forms/review_form.svelte';
 
 	export let data: PageData;
-
-	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <h1 class="leading-relaxed gradient-heading-pink h1">
 	Review {title_case(data.string.name)} by {title_case(data.string.Brand.name)}
 </h1>
-<form method="POST" action="?/add" use:enhance>
-	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
-		<StarRating name="power" max={5} step={1} bind:value={$form.power} />
-		<StarRating name="feel" max={5} step={1} bind:value={$form.feel} />
-		<StarRating name="control" max={5} step={1} bind:value={$form.control} />
-		<StarRating name="durability" max={5} step={1} bind:value={$form.durability} />
-		<StarRating name="spin" max={5} step={1} bind:value={$form.spin} />
-		<StarRating name="comfort" max={5} step={1} bind:value={$form.comfort} />
-		<StarRating name="playability" max={5} step={1} bind:value={$form.playability} />
-	</div>
-	<label class="label">
-		<span>Comments</span>
-		<textarea bind:value={$form.comments} name="comments" cols="30" rows="10" class="textarea"
-		></textarea>
-	</label>
-	<button class="variant-glass-primary btn">Add Review</button>
-</form>
+
+<ReviewForm data={data.form} />
