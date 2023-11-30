@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 
 const schema = z.object({
 	name: z.string(),
@@ -31,7 +31,12 @@ export const actions = {
 		try {
 			await locals.db.brand.create({ data: form.data });
 		} catch (err) {
-			return fail(400, { form });
+			console.error(err);
+			if (err instanceof Error) {
+				return message(form, err.message);
+			} else {
+				return message(form, 'Unknown error');
+			}
 		}
 
 		const return_url = url.searchParams.get('return_to') || '/';
