@@ -1,6 +1,6 @@
 import type { Brand, TennisString } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { string_schema } from '$lib/form_schemas';
 
@@ -46,9 +46,12 @@ export const actions = {
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
-				return fail(500, { message: err.message });
+				if (err.message.includes('Unique constraint failed on the fields: (`name`,`brand_id`)')) {
+					return message(form, 'A string with this name already exists');
+				}
+				return message(form, err.message);
 			} else {
-				return fail(500, { message: 'Unknown error' });
+				return message(form, 'Unknown error');
 			}
 		}
 

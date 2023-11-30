@@ -2,7 +2,14 @@
 	import '../app.postcss';
 	import type { PageData } from './$types';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
-	import { AppShell, Drawer, Modal, initializeStores, storePopup } from '@skeletonlabs/skeleton';
+	import {
+		AppShell,
+		Drawer,
+		Modal,
+		Toast,
+		initializeStores,
+		storePopup
+	} from '@skeletonlabs/skeleton';
 	import Header from '$lib/components/header.svelte';
 	import NavigationLinks from '$lib/components/navigation_links.svelte';
 
@@ -15,7 +22,7 @@
 <Drawer>
 	<NavigationLinks />
 </Drawer>
-
+<Toast />
 <Modal />
 
 <AppShell slotSidebarLeft="p-4 w-0 md:w-64" scrollbarGutter="auto">

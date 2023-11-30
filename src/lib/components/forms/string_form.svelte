@@ -4,12 +4,21 @@
 	import { superForm } from 'sveltekit-superforms/client';
 	import { page } from '$app/stores';
 	import type { StringFormSchema } from '$lib/form_schemas';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 
 	export let brands: Brand[];
 	export let data: SuperValidated<StringFormSchema>;
 
-	const { form, enhance, constraints } = superForm(data);
+	const { form, enhance, constraints, message } = superForm(data);
 	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
+
+	const toast = getToastStore();
+	$: if ($message) {
+		toast.trigger({
+			message: $message,
+			background: 'variant-filled-error'
+		});
+	}
 </script>
 
 <form use:enhance method="POST" class="flex flex-col gap-4">
