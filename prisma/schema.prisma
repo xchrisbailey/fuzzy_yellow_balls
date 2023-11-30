@@ -29,7 +29,7 @@ model Review {
   string    TennisString @relation(fields: [string_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt @default(now())
+  updated_at DateTime @default(now()) @updatedAt
 
   @@unique([user_id, string_id])
 }
@@ -42,6 +42,8 @@ model TennisString {
   Brand       Brand    @relation(fields: [brand_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   brand_id    String
   Review      Review[]
+
+  @@unique([name, brand_id])
 }
 
 model Brand {
