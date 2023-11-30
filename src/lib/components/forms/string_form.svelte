@@ -9,16 +9,19 @@
 	export let brands: Brand[];
 	export let data: SuperValidated<StringFormSchema>;
 
-	const { form, enhance, constraints, message } = superForm(data);
-	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
-
 	const toast = getToastStore();
-	$: if ($message) {
-		toast.trigger({
-			message: $message,
-			background: 'variant-filled-error'
-		});
-	}
+
+	const { form, enhance, constraints, message } = superForm(data, {
+		onUpdated({ form }) {
+			if (form.message) {
+				toast.trigger({
+					message: $message,
+					background: 'variant-filled-error'
+				});
+			}
+		}
+	});
+	const materials = ['polyester', 'multifilament', 'natural gut', 'synthetic gut'];
 </script>
 
 <form use:enhance method="POST" class="flex flex-col gap-4">
