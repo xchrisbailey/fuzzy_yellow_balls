@@ -1,7 +1,8 @@
-import type { Actions, PageServerLoad } from './$types';
-import { superValidate } from 'sveltekit-superforms/server';
-import { fail, redirect } from '@sveltejs/kit';
 import { review_schema } from '$lib/form_schemas';
+import { error_message_format } from '$lib/helpers/errors';
+import { fail, redirect } from '@sveltejs/kit';
+import { message, superValidate } from 'sveltekit-superforms/server';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals, params } = event;
@@ -44,11 +45,7 @@ export const actions = {
 			return { form };
 		} catch (err) {
 			console.error(err);
-			if (err instanceof Error) {
-				return fail(500, { message: err.message });
-			} else {
-				return fail(500, { message: 'Unknown error' });
-			}
+			return message(form, error_message_format(err));
 		}
 	}
 } satisfies Actions;

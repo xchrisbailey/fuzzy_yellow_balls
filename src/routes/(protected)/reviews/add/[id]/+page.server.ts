@@ -1,9 +1,8 @@
-import { Prisma } from '@prisma/client';
 import { fail, redirect } from '@sveltejs/kit';
-import { redirect as flash_redirect } from 'sveltekit-flash-message/server';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { review_schema } from '$lib/form_schemas';
+import { error_message_format } from '$lib/helpers/errors';
 
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
@@ -46,19 +45,7 @@ export const actions = {
 			});
 		} catch (err) {
 			console.error(err);
-			if (err instanceof Prisma.PrismaClientKnownRequestError) {
-				if (err.code === 'P2002') {
-					const message = {
-						type: 'error',
-						message: 'You have already reviewed this string.'
-					} as const;
-
-					throw flash_redirect(message, event);
-				}
-			}
-			return fail(500, {
-				message: 'An unknown error occurred'
-			});
+			return message(form, error_message_format(err));
 		}
 
 		throw redirect(302, `/strings/${params.id}`);
