@@ -33,6 +33,11 @@ export const actions = {
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
+				if (err.message.includes('Unique constraint failed on the fields: (`name`)')) {
+					if (err.message.includes('brand.create')) {
+						return message(form, `Brand ${form.data.name} already exists`);
+					}
+				}
 				return message(form, err.message);
 			} else {
 				return message(form, 'Unknown error');
