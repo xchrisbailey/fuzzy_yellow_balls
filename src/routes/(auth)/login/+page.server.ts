@@ -1,9 +1,9 @@
+import { login_schema } from '$lib/form_schemas';
+import { error_message_format } from '$lib/helpers/errors';
 import { auth } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
-import { LuciaError } from 'lucia';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { login_schema } from '$lib/form_schemas';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -31,17 +31,8 @@ export const actions = {
 			});
 			locals.auth.setSession(session);
 		} catch (err) {
-			if (
-				err instanceof LuciaError &&
-				(err.message === 'AUTH_INVALID_KEY_ID' || err.message === 'AUTH_INVALID_PASSWORD')
-			) {
-				return fail(400, {
-					message: 'Incorrect email or password'
-				});
-			}
-			return fail(500, {
-				message: 'An unknown error occurred'
-			});
+			console.error(err);
+			return message(form, error_message_format(err));
 		}
 		throw redirect(302, '/');
 	}
