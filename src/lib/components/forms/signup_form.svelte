@@ -1,10 +1,23 @@
 <script lang="ts">
 	import type { SignupFormSchema } from '$lib/form_schemas';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: SuperValidated<SignupFormSchema>;
-	const { form, errors, enhance } = superForm(data);
+
+	const toast = getToastStore();
+
+	const { form, errors, enhance, message } = superForm(data, {
+		onUpdated({ form }) {
+			if (form.message) {
+				toast.trigger({
+					message: $message,
+					background: 'variant-filled-error'
+				});
+			}
+		}
+	});
 </script>
 
 <form method="POST" use:enhance class="flex flex-col gap-4">
