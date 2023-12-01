@@ -26,7 +26,7 @@ export const actions = {
 
 		const form = await superValidate(request, schema);
 		if (!form.valid) {
-			throw fail(400, { form });
+			return fail(400, { form });
 		}
 
 		try {
