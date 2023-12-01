@@ -1,7 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { profile_schema } from '$lib/form_schemas';
+import { error_message_format } from '$lib/helpers/errors';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -40,10 +41,7 @@ export const actions = {
 			return { form };
 		} catch (err) {
 			console.error(err);
-			if (err instanceof Error) {
-				return fail(400, { message: err.message });
-			}
-			return fail(400, { message: `something went wrong: ${err}` });
+			return message(form, error_message_format(err));
 		}
 	}
 } satisfies Actions;
