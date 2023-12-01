@@ -1,11 +1,24 @@
 <script lang="ts">
 	import StarRating from '$lib/components/star_rating.svelte';
 	import type { ReviewFormSchema } from '$lib/form_schemas';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: SuperValidated<ReviewFormSchema>;
-	const { form, errors, enhance } = superForm(data);
+
+	const toast = getToastStore();
+
+	const { form, enhance, message } = superForm(data, {
+		onUpdated({ form }) {
+			if (form.message) {
+				toast.trigger({
+					message: $message,
+					background: 'variant-filled-error'
+				});
+			}
+		}
+	});
 </script>
 
 <form method="POST" action="?/add" use:enhance>

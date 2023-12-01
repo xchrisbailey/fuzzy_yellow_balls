@@ -2,10 +2,22 @@
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { NewBrandForm } from '../../../routes/(protected)/brands/add/+page.server';
 	import type { SuperValidated } from 'sveltekit-superforms';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 
 	export let data: SuperValidated<NewBrandForm>;
 
-	const { form, enhance, constraints } = superForm(data);
+	const toast = getToastStore();
+
+	const { form, enhance, constraints, message } = superForm(data, {
+		onUpdated({ form }) {
+			if (form.message) {
+				toast.trigger({
+					message: $message,
+					background: 'variant-filled-error'
+				});
+			}
+		}
+	});
 </script>
 
 <form method="POST" use:enhance>

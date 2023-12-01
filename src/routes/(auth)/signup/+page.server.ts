@@ -1,8 +1,9 @@
 import { auth } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms/server';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { signup_schema } from '$lib/form_schemas';
+import { error_message_format } from '$lib/helpers/errors';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -45,9 +46,7 @@ export const actions: Actions = {
 			locals.auth.setSession(session); // set session cookie
 		} catch (err) {
 			console.error(err);
-			return fail(500, {
-				message: 'An unknown error occurred'
-			});
+			return message(form, error_message_format(err));
 		}
 		throw redirect(302, '/');
 	}
