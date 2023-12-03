@@ -1,4 +1,4 @@
-import type { Review } from '@prisma/client';
+import type { Review } from '$lib/db/schema';
 
 export function get_average_rating(reviews: Review[] | null): string {
 	if (!reviews) return '-';

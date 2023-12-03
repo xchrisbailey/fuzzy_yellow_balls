@@ -1,11 +1,23 @@
+import { strings, type Brand, type TString, type Review } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { eq } from 'drizzle-orm';
 import type { YoutubeSearchResponse } from '../../../api/youtube/[brand]/[string]/+server';
+import type { PageServerLoad } from './$types';
+
+interface StringWithReviews extends TString {
+	brand: Brand;
+	reviews: Review[];
+}
 
 export const load: PageServerLoad = async ({ locals, params, fetch }) => {
-	const string = await locals.db.tennisString.findFirst({
-		where: { id: params.id },
-		include: { Brand: true, Review: { take: 10 } }
+	const string: StringWithReviews | undefined = await locals.db.query.strings.findFirst({
+		where: eq(strings.id, params.id),
+		with: {
+			brand: true,
+			reviews: {
+				limit: 10
+			}
+		}
 	});
 
 	if (!string) {

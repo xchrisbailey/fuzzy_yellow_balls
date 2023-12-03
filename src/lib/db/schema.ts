@@ -37,6 +37,9 @@ export const reviews = pgTable(
 	})
 );
 
+export type Review = typeof reviews.$inferSelect;
+export type NewReview = typeof reviews.$inferInsert;
+
 export const strings = pgTable(
 	'strings',
 	{
@@ -53,11 +56,12 @@ export const strings = pgTable(
 	})
 );
 
-export const stringsRelations = relations(strings, ({ one }) => ({
+export const stringsRelations = relations(strings, ({ one, many }) => ({
 	brand: one(brands, {
 		fields: [strings.brand_id],
 		references: [brands.id]
-	})
+	}),
+	reviews: many(reviews)
 }));
 
 export type TString = typeof strings.$inferSelect;
@@ -81,6 +85,8 @@ export const user = pgTable('user', {
 	last_name: varchar('last_name', { length: 256 }),
 	role: role_enum('role').default('USER')
 });
+
+export type User = typeof user.$inferSelect;
 
 export const session = pgTable('session', {
 	id: varchar('id', { length: 128 }).primaryKey(),

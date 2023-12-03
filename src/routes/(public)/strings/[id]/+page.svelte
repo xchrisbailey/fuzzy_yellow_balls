@@ -8,32 +8,32 @@
 	export let data: PageData;
 </script>
 
-<h1 class="gradient-heading-pink h1 mb-4 leading-relaxed">
-	{title_case(data.string.name)} by {title_case(data.string.Brand.name)}
+<h1 class="mb-4 leading-relaxed gradient-heading-pink h1">
+	{title_case(data.string.name)} by {title_case(data.string.brand.name)}
 </h1>
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 	<section>
 		<article>
 			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Info</h2>
-			<p class="whitespace-pre-line py-2">{data.string.description}</p>
+			<p class="py-2 whitespace-pre-line">{data.string.description}</p>
 		</article>
 	</section>
 	<section>
 		<div class="mb-4">
-			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">User Reviews</h2>
-			{#each data.string.Review as review}
+			<h2 class="mb-2 gradient-heading-blue h2 drop-shadow-sm">User Reviews</h2>
+			{#each data.string.reviews as review}
 				<ReviewCard user_id={data.session?.user.userId} {review} />
 			{/each}
 
-			<div class="mt-3 flex justify-center">
+			<div class="flex justify-center mt-3">
 				<a href="/reviews/add/{data.string.id.trimEnd()}" class="variant-glass-primary btn"
-					><Pencil class="mr-2 h-4 w-4" />Add Review</a
+					><Pencil class="mr-2 w-4 h-4" />Add Review</a
 				>
 			</div>
 		</div>
 		<hr class="my-5 divide-gray-50" />
 		<div>
-			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">YouTube Reviews</h2>
+			<h2 class="mb-2 gradient-heading-blue h2 drop-shadow-sm">YouTube Reviews</h2>
 			<div class="space-y-4">
 				{#each data.youtube_reviews.items as youtube_review}
 					<article>
