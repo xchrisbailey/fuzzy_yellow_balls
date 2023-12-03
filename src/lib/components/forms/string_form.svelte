@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Brand } from '@prisma/client';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { page } from '$app/stores';
 	import type { StringFormSchema } from '$lib/form_schemas';
 	import { getToastStore } from '@skeletonlabs/skeleton';
+	import type { Brand } from '$lib/db/schema';
 
 	export let brands: Brand[];
 	export let data: SuperValidated<StringFormSchema>;
@@ -38,10 +38,10 @@
 	<label class="label">
 		<span>Brand</span>
 		<select
-			name="brand"
+			name="brand_id"
 			class="select variant-glass-surface"
-			bind:value={$form.brand}
-			{...$constraints.brand}
+			bind:value={$form.brand_id}
+			{...$constraints.brand_id}
 		>
 			{#each brands as brand}
 				<option value={brand.id}>{brand.name}</option>

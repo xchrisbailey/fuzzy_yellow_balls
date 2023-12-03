@@ -1,6 +1,6 @@
 {
-  "id": "8ffe9ef1-8f13-492a-8cc2-246a6cae8ea9",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "6553314d-1a21-447b-8b8e-cb2a2807003b",
+  "prevId": "082ab7e5-82a3-465d-bfe1-c642c2e742dd",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -12,19 +12,20 @@
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "about": {
           "name": "about",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
@@ -97,7 +98,8 @@
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "power": {
           "name": "power",
@@ -203,6 +205,13 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
+        "reviews_id_unique": {
+          "name": "reviews_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id"
+          ]
+        },
         "reviews_user_id_string_id_unique": {
           "name": "reviews_user_id_string_id_unique",
           "nullsNotDistinct": false,
@@ -269,25 +278,26 @@
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "material": {
           "name": "material",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "description": {
           "name": "description",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "brand_id": {
           "name": "brand_id",

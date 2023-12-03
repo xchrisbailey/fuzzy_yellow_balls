@@ -2,8 +2,8 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 /// <reference types="lucia" />
-
-import type { PrismaClient } from '@prisma/client';
+import * as schema from '$lib/db/schema';
+import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 declare global {
 	namespace App {
@@ -12,7 +12,7 @@ declare global {
 		}
 
 		interface Locals {
-			db: PrismaClient;
+			db: PostgresJsDatabase<typeof schema>;
 			auth: import('lucia').AuthRequest;
 		}
 		// interface Error {}
@@ -26,7 +26,7 @@ declare global {
 			email: string;
 			first_name: string;
 			last_name: string;
-			role: 'Admin' | 'User';
+			role: 'ADMIN' | 'USER';
 		};
 		// type DatabaseSessionAttributes = {};
 		type DatabaseSessionAttributes = Record<string, unknown>;

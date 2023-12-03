@@ -30,9 +30,8 @@ CREATE TABLE IF NOT EXISTS "reviews" (
 	"comments" text NOT NULL,
 	"created_at" timestamp,
 	"updated_at" timestamp,
-	"user_id" uuid NOT NULL,
+	"user_id" varchar NOT NULL,
 	"string_id" uuid NOT NULL,
-	CONSTRAINT "reviews_id_unique" UNIQUE("id"),
 	CONSTRAINT "reviews_user_id_string_id_unique" UNIQUE("user_id","string_id")
 );
 --> statement-breakpoint

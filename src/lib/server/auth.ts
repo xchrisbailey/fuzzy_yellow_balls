@@ -10,7 +10,7 @@ export const auth = lucia({
 	adapter: postgresAdapter(queryClient, {
 		user: 'user',
 		session: 'session',
-		key: 'key'
+		key: 'user_key'
 	}),
 	getUserAttributes: (data) => {
 		return {

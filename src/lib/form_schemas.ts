@@ -18,7 +18,7 @@ export type SignupFormSchema = typeof signup_schema;
 
 export const string_schema = z.object({
 	name: z.string().min(1),
-	brand: z.string().min(1),
+	brand_id: z.string().min(1),
 	material: z.string().min(1),
 	description: z.string().min(1)
 });
