@@ -36,7 +36,7 @@
 							<a href="/strings/{string.id}" class="variant-soft-primary btn-icon btn-icon-sm">
 								<Eye class="w-4 h-4" />
 							</a>
-							{#if data.session?.user?.role === 'Admin'}
+							{#if data.session?.user?.role === 'ADMIN'}
 								<a
 									href="/strings/{string.id}/update"
 									class="variant-soft-secondary btn-icon btn-icon-sm"

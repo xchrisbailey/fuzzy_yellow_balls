@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import {
 	bigint,
 	integer,
@@ -13,7 +14,7 @@ import {
 export const reviews = pgTable(
 	'reviews',
 	{
-		id: uuid('id').unique().primaryKey(),
+		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
 		power: integer('power').notNull(),
 		feel: integer('feel').notNull(),
 		control: integer('control').notNull(),
@@ -24,7 +25,7 @@ export const reviews = pgTable(
 		comments: text('comments').notNull(),
 		created_at: timestamp('created_at'),
 		updated_at: timestamp('updated_at'),
-		user_id: uuid('user_id')
+		user_id: varchar('user_id')
 			.notNull()
 			.references(() => user.id),
 		string_id: uuid('string_id')
@@ -39,10 +40,10 @@ export const reviews = pgTable(
 export const strings = pgTable(
 	'strings',
 	{
-		id: uuid('id').unique().primaryKey().notNull(),
-		name: varchar('name', { length: 256 }),
-		material: varchar('material', { length: 256 }),
-		description: text('description'),
+		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+		name: varchar('name', { length: 256 }).notNull(),
+		material: varchar('material', { length: 256 }).notNull(),
+		description: text('description').notNull(),
 		brand_id: uuid('brand_id')
 			.references(() => brands.id)
 			.notNull()
@@ -52,11 +53,24 @@ export const strings = pgTable(
 	})
 );
 
+export const stringsRelations = relations(strings, ({ one }) => ({
+	brand: one(brands, {
+		fields: [strings.brand_id],
+		references: [brands.id]
+	})
+}));
+
+export type TString = typeof strings.$inferSelect;
+export type NewTString = typeof strings.$inferInsert;
+
 export const brands = pgTable('brands', {
-	id: uuid('id').unique().primaryKey(),
-	name: varchar('name', { length: 256 }).unique(),
-	about: text('about')
+	id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+	name: varchar('name', { length: 256 }).unique().notNull(),
+	about: text('about').notNull()
 });
+
+export type Brand = typeof brands.$inferSelect;
+export type NewBrand = typeof brands.$inferInsert;
 
 export const role_enum = pgEnum('role', ['ADMIN', 'USER']);
 
