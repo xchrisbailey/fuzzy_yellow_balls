@@ -3,17 +3,17 @@ import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
 import { review_schema } from '$lib/form_schemas';
 import { error_message_format } from '$lib/helpers/errors';
+import { reviews, strings } from '$lib/db/schema';
+import { eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
 	const form = await superValidate(review_schema);
-	const string = await locals.db.tennisString.findUnique({
-		where: { id: params.id },
-		include: {
-			Brand: true
-		}
+	const string = await locals.db.query.strings.findFirst({
+		where: eq(strings.id, params.id),
+		with: { brand: true }
 	});
 
 	if (!string) throw redirect(302, '/strings');
@@ -36,12 +36,10 @@ export const actions = {
 		}
 
 		try {
-			await locals.db.review.create({
-				data: {
-					...form.data,
-					user: { connect: { id: session.user.userId } },
-					string: { connect: { id: params.id } }
-				}
+			await locals.db.insert(reviews).values({
+				...form.data,
+				string_id: params.id,
+				user_id: session.user.userId
 			});
 		} catch (err) {
 			console.error(err);

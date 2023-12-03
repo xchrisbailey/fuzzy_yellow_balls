@@ -7,7 +7,7 @@
 </script>
 
 <h1 class="leading-relaxed gradient-heading-pink h1">
-	Review {title_case(data.string.name)} by {title_case(data.string.Brand.name)}
+	Review {title_case(data.string.name)} by {title_case(data.string.brand.name)}
 </h1>
 
 <ReviewForm data={data.form} />

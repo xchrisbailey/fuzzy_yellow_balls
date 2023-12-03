@@ -3,15 +3,17 @@ import { error_message_format } from '$lib/helpers/errors';
 import { fail, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
+import { reviews } from '$lib/db/schema';
+import { and, eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals, params } = event;
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
-	const review = await locals.db.review.findFirst({
-		where: { user_id: session.user.userId },
-		include: { string: true, user: true }
+	const review = await locals.db.query.reviews.findFirst({
+		where: and(eq(reviews.id, params.id), eq(reviews.user_id, session.user.userId)),
+		with: { string: true, user: true }
 	});
 
 	if (!review) {
@@ -37,10 +39,10 @@ export const actions = {
 		}
 
 		try {
-			await locals.db.review.update({
-				where: { id: params.id, user_id: session.user.userId },
-				data: form.data
-			});
+			await locals.db
+				.update(reviews)
+				.set(form.data)
+				.where(and(eq(reviews.id, params.id), eq(reviews.user_id, session.user.userId)));
 
 			return { form };
 		} catch (err) {
