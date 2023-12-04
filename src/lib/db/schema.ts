@@ -51,11 +51,16 @@ export const user_relations = relations(reviews, ({ one }) => ({
 export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
 
+export const weight_unit_enum = pgEnum('weight_unit', ['grams', 'ounces']);
+
 export const rackets = pgTable(
 	'rackets',
 	{
 		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
 		name: varchar('name', { length: 256 }).notNull(),
+		weight: integer('weight').notNull(),
+		weight_unit: weight_unit_enum('weight_unit').notNull().default('grams'),
+		head_size: integer('head_size').notNull(),
 		description: text('description').notNull(),
 		brand_id: uuid('brand_id')
 			.references(() => brands.id)
