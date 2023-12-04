@@ -1,19 +1,7 @@
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { LuciaError } from 'lucia';
 
-export function error_message_format(
-	error: Error | PrismaClientKnownRequestError | LuciaError | unknown
-): string {
-	if (error instanceof PrismaClientKnownRequestError) {
-		switch (error.code) {
-			case 'P2002':
-				return `Item with that ${error.meta?.target ?? 'Item'} already exists`;
-			case 'P2014':
-				return `Invalid ID: ${error.meta?.target ?? null}`;
-			default:
-				return `Somethings gone wrong: ${error.code} ${error.message}`;
-		}
-	} else if (error instanceof LuciaError) {
+export function error_message_format(error: Error | LuciaError | unknown): string {
+	if (error instanceof LuciaError) {
 		switch (error.message) {
 			case 'AUTH_INVALID_KEY_ID':
 				return 'Incorrect email entered';
@@ -23,6 +11,11 @@ export function error_message_format(
 				return `Somethings gone wrong: ${error.message}`;
 		}
 	} else if (error instanceof Error) {
+		if (error.message.includes('duplicate key value violates unique constraint')) {
+			if (error.message.includes('user_id_string_id')) {
+				return 'Already reviewed this product';
+			}
+		}
 		return `Somethings gone wrong: ${error.message}`;
 	} else {
 		return 'Unknown error';
