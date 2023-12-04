@@ -1,22 +1,25 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { message, superValidate } from 'sveltekit-superforms/server';
-import type { Brand } from '@prisma/client';
 import { string_schema } from '$lib/form_schemas';
+import { eq } from 'drizzle-orm';
+import { strings, type Brand } from '$lib/db/schema';
 
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
-	if (!session || session.user.role !== 'Admin') throw redirect(302, '/login');
+	if (!session || session.user.role !== 'ADMIN') throw redirect(302, '/login');
 
 	const id = params.id;
 	if (!id) throw redirect(302, '/strings');
 
-	const string = await locals.db.tennisString.findUnique({ where: { id } });
+	const string = await locals.db.query.strings.findFirst({
+		where: eq(strings.id, id)
+	});
 	if (!string) throw redirect(302, '/strings');
 
-	const brands: Brand[] = await locals.db.brand.findMany({});
+	const brands: Brand[] = await locals.db.query.brands.findMany({});
 
-	const form = await superValidate({ ...string, brand: string.brand_id }, string_schema);
+	const form = await superValidate({ ...string, brand_id: string.brand_id }, string_schema);
 
 	return {
 		form,
@@ -27,7 +30,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 export const actions = {
 	default: async ({ request, locals, params }) => {
 		const session = await locals.auth.validate();
-		if (!session || session.user.role !== 'Admin') throw redirect(301, '/login');
+		if (!session || session.user.role !== 'ADMIN') throw redirect(301, '/login');
 
 		const form = await superValidate(request, string_schema);
 		if (!form.valid) {
@@ -35,17 +38,7 @@ export const actions = {
 		}
 
 		try {
-			await locals.db.tennisString.update({
-				where: { id: params.id },
-				data: {
-					...form.data,
-					Brand: {
-						connect: {
-							id: form.data.brand
-						}
-					}
-				}
-			});
+			await locals.db.update(strings).set(form.data).where(eq(strings.id, params.id));
 
 			return { form };
 		} catch (err) {

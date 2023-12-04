@@ -1,8 +1,9 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
-import { z } from 'zod';
-import { message, superValidate } from 'sveltekit-superforms/server';
 import { error_message_format } from '$lib/helpers/errors';
+import { fail, redirect } from '@sveltejs/kit';
+import { message, superValidate } from 'sveltekit-superforms/server';
+import { z } from 'zod';
+import type { Actions, PageServerLoad } from './$types';
+import { brands } from '$lib/db/schema';
 
 const schema = z.object({
 	name: z.string(),
@@ -30,7 +31,7 @@ export const actions = {
 		}
 
 		try {
-			await locals.db.brand.create({ data: form.data });
+			await locals.db.insert(brands).values(form.data);
 		} catch (err) {
 			console.error(err);
 			return message(form, error_message_format(err));

@@ -9,7 +9,7 @@
 
 <h1 class="leading-relaxed gradient-heading-pink h1">
 	Update {title_case(data.form.data.name)} by
-	{title_case(find_brand_by_id(data.form.data.brand, data.brands))}
+	{title_case(find_brand_by_id(data.form.data.brand_id, data.brands))}
 </h1>
 
 <StringForm data={data.form} brands={data.brands} />
