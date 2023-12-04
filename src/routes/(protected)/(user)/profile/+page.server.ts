@@ -1,20 +1,26 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { message, superValidate } from 'sveltekit-superforms/server';
-import type { Actions, PageServerLoad } from './$types';
+import { user } from '$lib/db/schema';
 import { profile_schema } from '$lib/form_schemas';
 import { error_message_format } from '$lib/helpers/errors';
+import { fail, redirect } from '@sveltejs/kit';
+import { eq } from 'drizzle-orm';
+import { message, superValidate } from 'sveltekit-superforms/server';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
-	const user = await locals.db.user.findUnique({
-		where: { id: session.user.userId },
-		select: { email: true, first_name: true, last_name: true }
+	const current_user = await locals.db.query.user.findFirst({
+		where: eq(user.id, session.user.userId),
+		columns: {
+			email: true,
+			first_name: true,
+			last_name: true
+		}
 	});
-	if (!user) throw redirect(302, '/login');
+	if (!current_user) throw redirect(302, '/login');
 
-	const form = await superValidate(user, profile_schema);
+	const form = await superValidate(current_user, profile_schema);
 
 	return {
 		form,
@@ -33,10 +39,7 @@ export const actions = {
 		}
 
 		try {
-			await locals.db.user.update({
-				where: { id: session.user.userId },
-				data: { ...form.data }
-			});
+			await locals.db.update(user).set(form.data).where(eq(user.id, session.user.userId));
 
 			return { form };
 		} catch (err) {
