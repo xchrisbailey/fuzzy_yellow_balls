@@ -9,16 +9,18 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/login');
 	}
 
-	const reviews = await locals.db.query.reviews.findMany({
+	const current_user = await locals.db.query.user.findFirst({
 		where: eq(user.id, session.user.userId),
 		with: {
-			string: {
-				with: { brand: true }
-			}
+			reviews: true
 		}
 	});
 
+	if (!current_user) {
+		throw redirect(302, '/login');
+	}
+
 	return {
-		reviews
+		reviews: current_user.reviews
 	};
 };

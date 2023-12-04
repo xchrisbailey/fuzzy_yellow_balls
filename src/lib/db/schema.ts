@@ -97,6 +97,10 @@ export const user = pgTable('user', {
 	role: role_enum('role').default('USER')
 });
 
+export const userRelations = relations(user, ({ many }) => ({
+	reviews: many(reviews)
+}));
+
 export type User = typeof user.$inferSelect;
 
 export const session = pgTable('session', {

@@ -10,8 +10,6 @@
 	interface Review extends DrizzleReview {
 		string?: TString & { brand?: Brand };
 	}
-
-	console.log(review);
 </script>
 
 <article class="p-4 card variant-glass">
