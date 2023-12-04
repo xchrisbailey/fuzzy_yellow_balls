@@ -51,6 +51,31 @@ export const user_relations = relations(reviews, ({ one }) => ({
 export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
 
+export const rackets = pgTable(
+	'rackets',
+	{
+		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+		name: varchar('name', { length: 256 }).notNull(),
+		description: text('description').notNull(),
+		brand_id: uuid('brand_id')
+			.references(() => brands.id)
+			.notNull()
+	},
+	(t) => ({
+		unq: unique().on(t.name, t.brand_id)
+	})
+);
+
+export const racketRelations = relations(rackets, ({ one }) => ({
+	brand: one(brands, {
+		fields: [rackets.brand_id],
+		references: [brands.id]
+	})
+}));
+
+export type Racket = typeof rackets.$inferSelect;
+export type NewRacket = typeof rackets.$inferInsert;
+
 export const strings = pgTable(
 	'strings',
 	{
