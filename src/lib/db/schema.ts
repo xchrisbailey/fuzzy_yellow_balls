@@ -37,6 +37,17 @@ export const reviews = pgTable(
 	})
 );
 
+export const user_relations = relations(reviews, ({ one }) => ({
+	user: one(user, {
+		fields: [reviews.user_id],
+		references: [user.id]
+	}),
+	string: one(strings, {
+		fields: [reviews.string_id],
+		references: [strings.id]
+	})
+}));
+
 export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
 
