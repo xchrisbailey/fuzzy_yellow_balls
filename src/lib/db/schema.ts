@@ -37,6 +37,17 @@ export const reviews = pgTable(
 	})
 );
 
+export const user_relations = relations(reviews, ({ one }) => ({
+	user: one(user, {
+		fields: [reviews.user_id],
+		references: [user.id]
+	}),
+	string: one(strings, {
+		fields: [reviews.string_id],
+		references: [strings.id]
+	})
+}));
+
 export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
 
@@ -80,9 +91,9 @@ export const role_enum = pgEnum('role', ['ADMIN', 'USER']);
 
 export const user = pgTable('user', {
 	id: varchar('id', { length: 15 }).unique().primaryKey(),
-	email: varchar('email', { length: 256 }).unique(),
-	first_name: varchar('first_name', { length: 256 }),
-	last_name: varchar('last_name', { length: 256 }),
+	email: varchar('email', { length: 256 }).unique().notNull(),
+	first_name: varchar('first_name', { length: 256 }).notNull(),
+	last_name: varchar('last_name', { length: 256 }).notNull(),
 	role: role_enum('role').default('USER')
 });
 

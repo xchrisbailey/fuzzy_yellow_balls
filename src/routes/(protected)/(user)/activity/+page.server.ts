@@ -1,4 +1,6 @@
+import { user } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
+import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -7,13 +9,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/login');
 	}
 
-	const reviews = await locals.db.review.findMany({
-		where: {
-			user_id: session.user.userId
-		},
-		include: {
+	const reviews = await locals.db.query.reviews.findMany({
+		where: eq(user.id, session.user.userId),
+		with: {
 			string: {
-				include: { Brand: true }
+				with: { brand: true }
 			}
 		}
 	});
