@@ -30,6 +30,11 @@
 	</label>
 
 	<label class="label">
+		<span>Model Year</span>
+		<input type="number" name="year" bind:value={$form.year} class="input" {...$constraints.year} />
+	</label>
+
+	<label class="label">
 		<span>Brand</span>
 		<select name="brand_id" class="select" bind:value={$form.brand_id} {...$constraints.brand_id}>
 			{#each brands as brand}

@@ -26,7 +26,7 @@
 			>
 		</li>
 		<li>
-			<a href="/" on:click={drawerClose} class={classesActive('/rackets')}
+			<a href="/rackets" on:click={drawerClose} class={classesActive('/rackets')}
 				><span class="badge bg-secondary-300"><BookHeart class="w-4 h-4" /></span>
 				<span class="flex-auto">rackets</span>
 			</a>

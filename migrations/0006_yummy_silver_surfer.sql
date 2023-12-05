@@ -1,0 +1,1 @@
+ALTER TABLE "rackets" ADD COLUMN "year" integer;
