@@ -27,6 +27,7 @@ export type StringFormSchema = typeof string_schema;
 
 export const racket_schema = z.object({
 	name: z.string().min(1),
+	year: z.coerce.number().int().min(1950).max(2025).step(1),
 	weight: z.coerce.number().int().min(1).max(500),
 	weight_unit: z.enum(['grams', 'ounces']).default('grams'),
 	balance: z.coerce.number().int().min(1).max(500),
