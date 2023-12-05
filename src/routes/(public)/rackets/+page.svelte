@@ -17,6 +17,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Brand</th>
+					<th>Year</th>
 					<th>Weight</th>
 					<th>Balance</th>
 					<th>Head Size</th>
@@ -30,6 +31,7 @@
 					<tr>
 						<td>{title_case(racket.name)}</td>
 						<td>{title_case(racket.brand.name)}</td>
+						<td>{racket.year}</td>
 						<td>{`${racket.weight} ${racket.weight_unit}`}</td>
 						<td
 							>{racket.balance}
