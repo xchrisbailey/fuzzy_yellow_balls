@@ -52,6 +52,7 @@ export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
 
 export const weight_unit_enum = pgEnum('weight_unit', ['grams', 'ounces']);
+export const balance_unit_enum = pgEnum('balance_unit', ['inches', 'centimeters', 'points']);
 
 export const rackets = pgTable(
 	'rackets',
@@ -60,7 +61,12 @@ export const rackets = pgTable(
 		name: varchar('name', { length: 256 }).notNull(),
 		weight: integer('weight').notNull(),
 		weight_unit: weight_unit_enum('weight_unit').notNull().default('grams'),
+		balance: integer('balance').notNull(),
+		balance_unit: balance_unit_enum('balance_unit').notNull().default('points'),
 		head_size: integer('head_size').notNull(),
+		swingweight: integer('swingweight').notNull(),
+		mains: integer('mains').notNull(),
+		crosses: integer('crosses').notNull(),
 		description: text('description').notNull(),
 		brand_id: uuid('brand_id')
 			.references(() => brands.id)
