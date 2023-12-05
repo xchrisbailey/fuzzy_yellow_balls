@@ -25,6 +25,22 @@ export const string_schema = z.object({
 
 export type StringFormSchema = typeof string_schema;
 
+export const racket_schema = z.object({
+	name: z.string().min(1),
+	weight: z.coerce.number().int().min(1).max(500),
+	weight_unit: z.enum(['grams', 'ounces']).default('grams'),
+	balance: z.coerce.number().int().min(1).max(500),
+	balance_unit: z.enum(['inches', 'centimeters', 'points']).default('points'),
+	head_size: z.coerce.number().int().min(1).max(500).step(1),
+	swingweight: z.coerce.number().int().min(1).max(500).step(1),
+	mains: z.coerce.number().int().min(1).max(500).step(1),
+	crosses: z.coerce.number().int().min(1).max(500).step(1),
+	description: z.string().min(1),
+	brand_id: z.string().min(1)
+});
+
+export type RacketFormSchema = typeof racket_schema;
+
 export const profile_schema = z.object({
 	email: z.string().email(),
 	first_name: z.string(),
