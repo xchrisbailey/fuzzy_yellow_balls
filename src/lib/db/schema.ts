@@ -59,6 +59,7 @@ export const rackets = pgTable(
 	{
 		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
 		name: varchar('name', { length: 256 }).notNull(),
+		year: integer('year').notNull(),
 		weight: integer('weight').notNull(),
 		weight_unit: weight_unit_enum('weight_unit').notNull().default('grams'),
 		balance: integer('balance').notNull(),

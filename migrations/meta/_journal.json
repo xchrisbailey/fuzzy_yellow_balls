@@ -43,6 +43,13 @@
       "when": 1701759753588,
       "tag": "0005_sudden_karnak",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1701789464241,
+      "tag": "0006_yummy_silver_surfer",
+      "breakpoints": true
     }
   ]
 }
