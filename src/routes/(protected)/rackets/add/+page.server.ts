@@ -1,7 +1,9 @@
-import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
-import { superValidate } from 'sveltekit-superforms/server';
+import { fail, redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
+import { message, superValidate } from 'sveltekit-superforms/server';
 import { racket_schema } from '$lib/form_schemas';
+import { rackets } from '$lib/db/schema';
+import { error_message_format } from '$lib/helpers/errors';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -18,3 +20,27 @@ export const load: PageServerLoad = async ({ locals }) => {
 		brands
 	};
 };
+
+export const actions = {
+	default: async ({ request, locals }) => {
+		const session = await locals.auth.validate();
+		if (!session) throw redirect(301, '/login');
+
+		const form = await superValidate(request, racket_schema);
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+
+		let racket_id: { id: string }[];
+
+		try {
+			racket_id = await locals.db.insert(rackets).values(form.data).returning({ id: rackets.id });
+			if (!racket_id[0]) throw new Error('Unknown error');
+		} catch (err) {
+			console.error(err);
+			return message(form, error_message_format(err));
+		}
+
+		throw redirect(302, `/rackets/${racket_id[0].id}`);
+	}
+} satisfies Actions;

@@ -37,7 +37,7 @@ export const reviews = pgTable(
 	})
 );
 
-export const user_relations = relations(reviews, ({ one }) => ({
+export const reviews_relations = relations(reviews, ({ one }) => ({
 	user: one(user, {
 		fields: [reviews.user_id],
 		references: [user.id]
@@ -119,6 +119,11 @@ export const brands = pgTable('brands', {
 	name: varchar('name', { length: 256 }).unique().notNull(),
 	about: text('about').notNull()
 });
+
+export const brands_relations = relations(brands, ({ many }) => ({
+	strings: many(strings),
+	rackets: many(rackets)
+}));
 
 export type Brand = typeof brands.$inferSelect;
 export type NewBrand = typeof brands.$inferInsert;
