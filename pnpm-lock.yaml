@@ -88,6 +88,9 @@ devDependencies:
   cz-conventional-changelog:
     specifier: ^3.3.0
     version: 3.3.0(typescript@5.3.2)
+  cz-git:
+    specifier: ^1.8.0
+    version: 1.8.0
   devmoji:
     specifier: ^2.3.0
     version: 2.3.0
@@ -2003,6 +2006,11 @@ packages:
       '@commitlint/load': 18.4.3(typescript@5.3.2)
     transitivePeerDependencies:
       - typescript
+    dev: true
+
+  /cz-git@1.8.0:
+    resolution: {integrity: sha512-XL5nXiqbW10YswQqWODrbwyWhydw3mLhP8OBrXyl8u4sIjTf/6mhGsizd6FA2VgPc4tZaNGguFoUyDj7vIBouw==}
+    engines: {node: '>=v12.20.0'}
     dev: true
 
   /d@1.0.1:
