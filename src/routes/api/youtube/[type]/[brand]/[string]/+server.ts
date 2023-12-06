@@ -44,7 +44,7 @@ type YoutubeSearchItem = {
 
 export const GET: RequestHandler = async ({ params }) => {
 	const youtube_response = await fetch(
-		`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${params.string}%20${params.brand}%20tennis%20string%20review&key=${GOOGLE_API_KEY}`
+		`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${params.string}%20${params.brand}%20tennis%20${params.type}%20review&key=${GOOGLE_API_KEY}`
 	);
 	const youtube_reviews: YoutubeSearchResponse = await youtube_response.json();
 
