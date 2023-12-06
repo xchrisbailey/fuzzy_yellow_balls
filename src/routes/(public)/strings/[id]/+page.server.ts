@@ -1,7 +1,7 @@
 import { strings } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
-import type { YoutubeSearchResponse } from '../../../api/youtube/[brand]/[string]/+server';
+import type { YoutubeSearchResponse } from '../../../api/youtube/[type]/[brand]/[string]/+server';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals, params, fetch }) => {
@@ -19,7 +19,9 @@ export const load: PageServerLoad = async ({ locals, params, fetch }) => {
 		throw redirect(302, '/string');
 	}
 
-	const youtube_reviews_response = await fetch(`/api/youtube/${string.name}/${string.name}`);
+	const youtube_reviews_response = await fetch(
+		`/api/youtube/string/${string.brand.name}/${string.name}`
+	);
 	const youtube_reviews: YoutubeSearchResponse = await youtube_reviews_response.json();
 
 	return { string, youtube_reviews };
