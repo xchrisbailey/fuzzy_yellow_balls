@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { title_case } from '$lib/helpers/title_case';
-	import { Eye, Pen } from 'lucide-svelte';
+	import { Eye, Pen, Plus } from 'lucide-svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -60,3 +60,15 @@
 		</table>
 	</div>
 {/if}
+
+<div class="add_action">
+	<a href="/rackets/add" class="shadow variant-soft-tertiary btn btn-icon"><Plus /></a>
+</div>
+
+<style>
+	.add_action {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+	}
+</style>
