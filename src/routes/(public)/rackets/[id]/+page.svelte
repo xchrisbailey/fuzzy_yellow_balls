@@ -16,11 +16,12 @@
 			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Info</h2>
 			<p class="py-2 whitespace-pre-line">{data.racket.description}</p>
 		</article>
+		<hr class="my-5 divide-gray-50" />
 		<article>
 			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Specs</h2>
 			<dl class="list-dl">
 				<div>
-					<span class="badge bg-primary-500/20">🎾</span>
+					<span class="badge bg-primary-500/20">✔️</span>
 					<span class="flex-auto">
 						<dt class="font-bold">Weight</dt>
 						<dd>{data.racket.weight} {data.racket.weight_unit}</dd>
@@ -29,7 +30,7 @@
 			</dl>
 			<dl class="list-dl">
 				<div>
-					<span class="badge bg-primary-500/20">🎾</span>
+					<span class="badge bg-primary-500/20">✔️</span>
 					<span class="flex-auto">
 						<dt class="font-bold">Balance</dt>
 						<dd>
@@ -41,7 +42,7 @@
 			</dl>
 			<dl class="list-dl">
 				<div>
-					<span class="badge bg-primary-500/20">🎾</span>
+					<span class="badge bg-primary-500/20">✔️</span>
 					<span class="flex-auto">
 						<dt class="font-bold">Head Size</dt>
 						<dd>
@@ -52,7 +53,7 @@
 			</dl>
 			<dl class="list-dl">
 				<div>
-					<span class="badge bg-primary-500/20">🎾</span>
+					<span class="badge bg-primary-500/20">✔️</span>
 					<span class="flex-auto">
 						<dt class="font-bold">Swingweight</dt>
 						<dd>
@@ -63,7 +64,7 @@
 			</dl>
 			<dl class="list-dl">
 				<div>
-					<span class="badge bg-primary-500/20">🎾</span>
+					<span class="badge bg-primary-500/20">✔️</span>
 					<span class="flex-auto">
 						<dt class="font-bold">String Pattern</dt>
 						<dd>
