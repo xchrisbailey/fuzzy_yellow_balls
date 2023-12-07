@@ -1,5 +1,5 @@
 {
-  "id": "2bac489b-4448-48af-b42d-ae4d15d35b7a",
+  "id": "ff3460ae-a5d0-45b0-a32d-b4cd61e85292",
   "prevId": "3e6ebb32-3962-4f25-81fd-7437362e5add",
   "version": "5",
   "dialect": "pg",
@@ -101,8 +101,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "power": {
-          "name": "power",
+        "groundstrokes": {
+          "name": "groundstrokes",
           "type": "integer",
           "primaryKey": false,
           "notNull": true
@@ -121,6 +121,12 @@
         },
         "returns": {
           "name": "returns",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "power": {
+          "name": "power",
           "type": "integer",
           "primaryKey": false,
           "notNull": true

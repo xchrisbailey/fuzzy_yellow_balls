@@ -13,7 +13,7 @@ import {
 
 export const racket_reviews = pgTable('racket_reviews', {
 	id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
-	groundstrokes: integer('power').notNull(),
+	groundstrokes: integer('groundstrokes').notNull(),
 	volleys: integer('volleys').notNull(),
 	serves: integer('serves').notNull(),
 	returns: integer('returns').notNull(),
@@ -115,11 +115,12 @@ export const rackets = pgTable(
 	})
 );
 
-export const racketRelations = relations(rackets, ({ one }) => ({
+export const racketRelations = relations(rackets, ({ one, many }) => ({
 	brand: one(brands, {
 		fields: [rackets.brand_id],
 		references: [brands.id]
-	})
+	}),
+	reviews: many(racket_reviews)
 }));
 
 export type Racket = typeof rackets.$inferSelect;
