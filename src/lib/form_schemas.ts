@@ -62,3 +62,21 @@ export const review_schema = z.object({
 });
 
 export type ReviewFormSchema = typeof review_schema;
+
+export const racket_review_schema = z.object({
+	groundstrokes: z.coerce.number().int().min(1).max(10),
+	volleys: z.coerce.number().int().min(1).max(10),
+	serves: z.coerce.number().int().min(1).max(10),
+	returns: z.coerce.number().int().min(1).max(10),
+	power: z.coerce.number().int().min(1).max(10),
+	control: z.coerce.number().int().min(1).max(10),
+	maneuverability: z.coerce.number().int().min(1).max(10),
+	stability: z.coerce.number().int().min(1).max(10),
+	comfort: z.coerce.number().int().min(1).max(10),
+	feel: z.coerce.number().int().min(1).max(10),
+	topspin: z.coerce.number().int().min(1).max(10),
+	slice: z.coerce.number().int().min(1).max(10),
+	comments: z.string().max(500)
+});
+
+export type RacketReviewFormSchema = typeof racket_review_schema;
