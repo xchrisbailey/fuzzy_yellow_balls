@@ -34,6 +34,20 @@ export const racket_reviews = pgTable('racket_reviews', {
 		.references(() => rackets.id)
 });
 
+export const racket_reviews_relations = relations(racket_reviews, ({ one }) => ({
+	user: one(user, {
+		fields: [racket_reviews.user_id],
+		references: [user.id]
+	}),
+	racket: one(rackets, {
+		fields: [racket_reviews.racket_id],
+		references: [rackets.id]
+	})
+}));
+
+export type RacketReview = typeof racket_reviews.$inferSelect;
+export type NewRacketReview = typeof racket_reviews.$inferInsert;
+
 export const reviews = pgTable(
 	'reviews',
 	{
