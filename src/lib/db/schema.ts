@@ -11,6 +11,29 @@ import {
 	varchar
 } from 'drizzle-orm/pg-core';
 
+export const racket_reviews = pgTable('racket_reviews', {
+	id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+	groundstrokes: integer('power').notNull(),
+	volleys: integer('volleys').notNull(),
+	serves: integer('serves').notNull(),
+	returns: integer('returns').notNull(),
+	power: integer('power').notNull(),
+	control: integer('control').notNull(),
+	maneuverability: integer('maneuverability').notNull(),
+	stability: integer('stability').notNull(),
+	comfort: integer('comfort').notNull(),
+	feel: integer('feel').notNull(),
+	topspin: integer('topspin').notNull(),
+	slice: integer('slice').notNull(),
+	comments: text('comments').notNull(),
+	user_id: varchar('user_id')
+		.notNull()
+		.references(() => user.id),
+	racket_id: uuid('racket_id')
+		.notNull()
+		.references(() => rackets.id)
+});
+
 export const reviews = pgTable(
 	'reviews',
 	{
