@@ -26,6 +26,7 @@
 		<StarRating name="groundstrokes" max={5} step={1} bind:value={$form.groundstrokes} />
 		<StarRating name="volleys" max={5} step={1} bind:value={$form.volleys} />
 		<StarRating name="serves" max={5} step={1} bind:value={$form.serves} />
+		<StarRating name="returns" max={5} step={1} bind:value={$form.returns} />
 		<StarRating name="power" max={5} step={1} bind:value={$form.power} />
 		<StarRating name="control" max={5} step={1} bind:value={$form.control} />
 		<StarRating name="maneuverability" max={5} step={1} bind:value={$form.maneuverability} />

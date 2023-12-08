@@ -2,6 +2,8 @@
 	import { htmlUnescape } from 'escape-goat';
 	import type { PageData } from './$types';
 	import { title_case } from '$lib/helpers/title_case';
+	import { Pencil } from 'lucide-svelte';
+	import { ReviewCard } from '$lib/components/review_card';
 
 	export let data: PageData;
 </script>
@@ -78,19 +80,19 @@
 	<section>
 		<div class="mb-4">
 			<h2 class="mb-2 gradient-heading-blue h2 drop-shadow-sm">User Reviews</h2>
-			<!-- {#if data.racket.reviews?.length > 0} -->
-			<!-- 	{#each data.racket.reviews as review} -->
-			<!-- 		<ReviewCard user_id={data.session?.user.userId} {review} /> -->
-			<!-- 	{/each} -->
-			<!-- {:else} -->
-			<!-- 	<p>No reviews yet. Be the first!</p> -->
-			<!-- {/if} -->
+			{#if data.racket.reviews?.length > 0}
+				{#each data.racket.reviews as review}
+					<ReviewCard user_id={data.session?.user.userId} {review} />
+				{/each}
+			{:else}
+				<p>No reviews yet. Be the first!</p>
+			{/if}
 
-			<!-- <div class="flex justify-center mt-3"> -->
-			<!-- 	<a href="/reviews/add/{data.racket.id.trimEnd()}" class="variant-glass-primary btn" -->
-			<!-- 		><Pencil class="mr-2 w-4 h-4" />Add Review</a -->
-			<!-- 	> -->
-			<!-- </div> -->
+			<div class="flex justify-center mt-3">
+				<a href="/reviews/rackets/add/{data.racket.id.trimEnd()}" class="variant-glass-primary btn"
+					><Pencil class="mr-2 w-4 h-4" />Add Review</a
+				>
+			</div>
 		</div>
 		<hr class="my-5 divide-gray-50" />
 		<div>

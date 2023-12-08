@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS "racket_reviews" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"power" integer NOT NULL,
+	"groundstrokes" integer NOT NULL,
 	"volleys" integer NOT NULL,
 	"serves" integer NOT NULL,
 	"returns" integer NOT NULL,
+	"power" integer NOT NULL,
 	"control" integer NOT NULL,
 	"maneuverability" integer NOT NULL,
 	"stability" integer NOT NULL,

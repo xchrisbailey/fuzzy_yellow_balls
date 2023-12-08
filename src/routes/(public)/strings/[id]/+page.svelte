@@ -3,7 +3,7 @@
 	import { htmlUnescape } from 'escape-goat';
 	import type { PageData } from './$types';
 	import { Pencil } from 'lucide-svelte';
-	import ReviewCard from '$lib/components/review_card.svelte';
+	import { ReviewCard } from '$lib/components/review_card';
 
 	export let data: PageData;
 </script>

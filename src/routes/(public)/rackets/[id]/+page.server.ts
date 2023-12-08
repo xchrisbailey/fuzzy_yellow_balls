@@ -8,7 +8,17 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
 	const racket = await locals.db.query.rackets.findFirst({
 		where: eq(rackets.id, params.id),
 		with: {
-			brand: true
+			brand: true,
+			reviews: {
+				with: {
+					racket: {
+						with: {
+							brand: true
+						}
+					}
+				},
+				limit: 10
+			}
 		}
 	});
 
