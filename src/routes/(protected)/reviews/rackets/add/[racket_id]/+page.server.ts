@@ -4,14 +4,22 @@ import { error_message_format } from '$lib/helpers/errors';
 import { fail, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
+import { eq } from 'drizzle-orm';
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals, params }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
 
 	const form = await superValidate(racket_review_schema);
 
-	return { form };
+	const racket = await locals.db.query.rackets.findFirst({
+		where: eq(racket_reviews.id, params.racket_id),
+		with: { brand: true }
+	});
+
+	if (!racket) throw redirect(302, '/rackets');
+
+	return { form, racket };
 };
 
 export const actions = {
