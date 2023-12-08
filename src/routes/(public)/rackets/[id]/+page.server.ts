@@ -11,7 +11,11 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
 			brand: true,
 			reviews: {
 				with: {
-					racket: true
+					racket: {
+						with: {
+							brand: true
+						}
+					}
 				},
 				limit: 10
 			}

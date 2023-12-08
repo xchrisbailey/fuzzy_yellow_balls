@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	import { title_case } from '$lib/helpers/title_case';
 	import { Pencil } from 'lucide-svelte';
-	import ReviewCard from '$lib/components/review_card.svelte';
+	import { ReviewCard } from '$lib/components/review_card';
 
 	export let data: PageData;
 </script>

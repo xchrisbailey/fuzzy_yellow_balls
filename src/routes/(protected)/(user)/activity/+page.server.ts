@@ -12,7 +12,15 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const current_user = await locals.db.query.user.findFirst({
 		where: eq(user.id, session.user.userId),
 		with: {
-			reviews: true
+			reviews: {
+				with: {
+					string: {
+						with: {
+							brand: true
+						}
+					}
+				}
+			}
 		}
 	});
 

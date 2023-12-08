@@ -8,8 +8,8 @@
 	} from '$lib/db/schema';
 	import { title_case } from '$lib/helpers/title_case';
 	import { Pencil } from 'lucide-svelte';
-	import ReviewCardRacketFields from './review_card_racket_fields.svelte';
-	import ReviewCardStringFields from './review_card_string_fields.svelte';
+	import RacketFields from './racket_fields.svelte';
+	import StringFields from './string_fields.svelte';
 
 	export let user_id: string | undefined;
 	export let review: Review;
@@ -47,12 +47,12 @@
 	{#if isStringReview(review)}
 		<h4 class="h4">Rating</h4>
 		<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
-			<ReviewCardStringFields {review} />
+			<StringFields {review} />
 		</div>
 	{:else if isRacketReview(review)}
 		<h4 class="h4">Rating</h4>
 		<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
-			<ReviewCardRacketFields {review} />
+			<RacketFields {review} />
 		</div>
 	{/if}
 
