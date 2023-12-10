@@ -5,5 +5,5 @@
 	export let data: PageData;
 </script>
 
-<h1 class="leading-relaxed gradient-heading-pink h1">Add A String</h1>
+<h1 class="gradient-heading-pink h1 leading-relaxed">Add A String</h1>
 <StringForm brands={data.brands} data={data.form} />

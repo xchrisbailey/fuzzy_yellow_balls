@@ -22,7 +22,7 @@
 </script>
 
 <form method="POST" action="?/add" use:enhance>
-	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
+	<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3">
 		<StarRating name="power" max={5} step={1} bind:value={$form.power} />
 		<StarRating name="feel" max={5} step={1} bind:value={$form.feel} />
 		<StarRating name="control" max={5} step={1} bind:value={$form.control} />

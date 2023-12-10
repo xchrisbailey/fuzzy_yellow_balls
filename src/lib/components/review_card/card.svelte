@@ -60,11 +60,16 @@
 	<h4 class="h4">Reviewer Notes</h4>
 	<p>{review.comments}</p>
 
-	{#if review.user_id === user_id}
-		<div class="flex justify-end">
+	<div class="flex justify-end">
+		{#if review.user_id === user_id && isStringReview(review)}
 			<a href="/reviews/{review.id}/update" class="variant-ghost-primary btn-icon btn-icon-sm"
 				><Pencil class="w-4 h-4" /></a
 			>
-		</div>
-	{/if}
+		{:else if review.user_id === user_id && isRacketReview(review)}
+			<a
+				href="/reviews/rackets/update/{review.id}"
+				class="variant-ghost-primary btn-icon btn-icon-sm"><Pencil class="w-4 h-4" /></a
+			>
+		{/if}
+	</div>
 </article>

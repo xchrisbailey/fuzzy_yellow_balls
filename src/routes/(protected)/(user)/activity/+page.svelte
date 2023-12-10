@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { ReviewCard } from '$lib/components/review_card';
 	import type { PageData } from './$types';
-	import ReviewCard from '$lib/components/review_card.svelte';
 
 	export let data: PageData;
 </script>

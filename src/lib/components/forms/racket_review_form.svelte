@@ -21,7 +21,7 @@
 	});
 </script>
 
-<form method="POST" action="?/add" use:enhance>
+<form method="POST" use:enhance>
 	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
 		<StarRating name="groundstrokes" max={5} step={1} bind:value={$form.groundstrokes} />
 		<StarRating name="volleys" max={5} step={1} bind:value={$form.volleys} />
