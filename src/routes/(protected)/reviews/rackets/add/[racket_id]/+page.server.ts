@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 };
 
 export const actions = {
-	add: async ({ request, locals, params }) => {
+	default: async ({ request, locals, params }) => {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
 

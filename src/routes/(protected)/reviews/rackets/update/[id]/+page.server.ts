@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { and, eq } from 'drizzle-orm';
-import { racket_reviews, user } from '$lib/db/schema';
+import { racket_reviews } from '$lib/db/schema';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import { racket_review_schema } from '$lib/form_schemas';
 import { error_message_format } from '$lib/helpers/errors';
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
 	const review = await locals.db.query.racket_reviews.findFirst({
 		with: { user: true, racket: true },
-		where: and(eq(user.id, session.user.userId), eq(racket_reviews.id, params.id))
+		where: and(eq(racket_reviews.user_id, session.user.userId), eq(racket_reviews.id, params.id))
 	});
 
 	if (!review) {
