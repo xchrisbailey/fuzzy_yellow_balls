@@ -7,7 +7,7 @@
 	export let data: PageData;
 </script>
 
-<h1 class="mb-3 leading-relaxed gradient-heading-pink h1">Tennis Strings</h1>
+<h1 class="gradient-heading-pink h1 mb-3 leading-relaxed">Tennis Strings</h1>
 
 {#if !data.strings || data.strings.length === 0}
 	<p>no tennis strings added yet</p>
@@ -34,14 +34,14 @@
 						<td>{get_average_rating(string.reviews)}/5</td>
 						<td class="flex gap-3">
 							<a href="/strings/{string.id}" class="variant-soft-primary btn-icon btn-icon-sm">
-								<Eye class="w-4 h-4" />
+								<Eye class="h-4 w-4" />
 							</a>
 							{#if data.session?.user?.role === 'ADMIN'}
 								<a
 									href="/strings/{string.id}/update"
 									class="variant-soft-secondary btn-icon btn-icon-sm"
 								>
-									<Pen class="w-4 h-4" />
+									<Pen class="h-4 w-4" />
 								</a>
 							{/if}
 						</td>
@@ -53,7 +53,7 @@
 {/if}
 
 <div class="add_action">
-	<a href="/strings/add" class="shadow variant-soft-tertiary btn btn-icon"><Plus /></a>
+	<a href="/strings/add" class="variant-soft-tertiary btn btn-icon shadow"><Plus /></a>
 </div>
 
 <style>
