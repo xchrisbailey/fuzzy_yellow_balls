@@ -38,7 +38,7 @@ export const actions = {
 			if (!racket_id[0]) throw new Error('Unknown error');
 		} catch (err) {
 			console.error(err);
-			return message(form, error_message_format(err));
+			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
 		throw redirect(302, `/rackets/${racket_id[0].id}`);

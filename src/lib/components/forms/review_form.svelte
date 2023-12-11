@@ -9,12 +9,13 @@
 
 	const toast = getToastStore();
 
-	const { form, enhance, message } = superForm(data, {
+	const { form, enhance } = superForm(data, {
 		onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
-					message: $message,
-					background: 'variant-filled-error'
+					message: form.message.text ?? 'something went wrong',
+					background:
+						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
 			}
 		}
@@ -22,7 +23,7 @@
 </script>
 
 <form method="POST" action="?/add" use:enhance>
-	<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
 		<StarRating name="power" max={5} step={1} bind:value={$form.power} />
 		<StarRating name="feel" max={5} step={1} bind:value={$form.feel} />
 		<StarRating name="control" max={5} step={1} bind:value={$form.control} />

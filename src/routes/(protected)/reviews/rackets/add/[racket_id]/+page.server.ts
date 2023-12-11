@@ -40,7 +40,7 @@ export const actions = {
 			});
 		} catch (err) {
 			console.error(err);
-			return message(form, error_message_format(err));
+			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
 		throw redirect(302, `/rackets/${params.racket_id}`);

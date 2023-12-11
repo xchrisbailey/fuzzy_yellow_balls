@@ -7,6 +7,12 @@ import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 declare global {
 	namespace App {
+		namespace Superforms {
+			type Message = {
+				type: 'error' | 'success';
+				text: string;
+			};
+		}
 		interface PageData {
 			flash?: { type: 'success' | 'error'; message: string };
 		}

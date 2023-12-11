@@ -46,7 +46,7 @@ export const actions: Actions = {
 			locals.auth.setSession(session); // set session cookie
 		} catch (err) {
 			console.error(err);
-			return message(form, error_message_format(err));
+			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 		throw redirect(302, '/');
 	}

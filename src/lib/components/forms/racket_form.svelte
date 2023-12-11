@@ -11,12 +11,13 @@
 
 	const toast = getToastStore();
 
-	const { form, enhance, constraints, message } = superForm(data, {
+	const { form, enhance, constraints } = superForm(data, {
 		onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
-					message: $message,
-					background: 'variant-filled-error'
+					message: form.message.text,
+					background:
+						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
 			}
 		}
@@ -46,7 +47,7 @@
 		>
 	</label>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-		<label class="label flex-grow">
+		<label class="flex-grow label">
 			<span>Weight</span>
 			<div class="input-group input-group-divider grid-cols-[1fr_auto]">
 				<input
@@ -54,7 +55,7 @@
 					name="weight"
 					bind:value={$form.weight}
 					{...$constraints.weight}
-					class="input flex-grow"
+					class="flex-grow input"
 				/>
 				<select name="weight_unit" bind:value={$form.weight_unit} class="select">
 					<option value="grams">Grams</option>
@@ -62,7 +63,7 @@
 				</select>
 			</div>
 		</label>
-		<label class="label flex-grow">
+		<label class="flex-grow label">
 			<span>Balance</span>
 			<div class="input-group input-group-divider grid-cols-[1fr_auto]">
 				<input
@@ -70,7 +71,7 @@
 					name="balance"
 					bind:value={$form.balance}
 					{...$constraints.balance}
-					class="input flex-grow"
+					class="flex-grow input"
 				/>
 				<select name="balance_unit" bind:value={$form.balance_unit} class="select">
 					<option value="points">Points HL</option>
@@ -80,7 +81,7 @@
 			</div>
 		</label>
 
-		<label class="label flex-grow">
+		<label class="flex-grow label">
 			<span>Head Size (inches)</span>
 			<input
 				type="number"
@@ -90,7 +91,7 @@
 				{...$constraints.head_size}
 			/>
 		</label>
-		<label class="label flex-grow">
+		<label class="flex-grow label">
 			<span>Swingweight</span>
 			<input
 				type="number"
@@ -101,7 +102,7 @@
 			/>
 		</label>
 	</div>
-	<div class="rounded border border-surface-500/20 bg-surface-400/20 p-4">
+	<div class="p-4 rounded border border-surface-500/20 bg-surface-400/20">
 		<span class="text-lg font-bold">String Pattern</span>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<label class="label">

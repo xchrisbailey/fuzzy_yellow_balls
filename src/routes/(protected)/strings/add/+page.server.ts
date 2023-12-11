@@ -39,11 +39,11 @@ export const actions = {
 			console.error(err);
 			if (err instanceof Error) {
 				if (err.message.includes('Unique constraint failed on the fields: (`name`,`brand_id`)')) {
-					return message(form, 'A string with this name already exists');
+					return message(form, { type: 'error', text: 'A string with this name already exists' });
 				}
-				return message(form, err.message);
+				return message(form, { type: 'error', text: err.message });
 			} else {
-				return message(form, 'Unknown error');
+				return message(form, { type: 'error', text: 'Unknown error' });
 			}
 		}
 

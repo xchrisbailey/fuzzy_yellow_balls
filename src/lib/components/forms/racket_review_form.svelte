@@ -11,10 +11,10 @@
 
 	const { form, enhance, message } = superForm(data, {
 		onUpdated({ form }) {
-			if (form.message) {
+			if (form.message && $message) {
 				toast.trigger({
-					message: $message,
-					background: 'variant-filled-error'
+					message: $message.text,
+					background: $message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
 			}
 		}
