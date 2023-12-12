@@ -28,13 +28,10 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-		let tennis_string: { id: string }[];
+		// let tennis_string: { id: string }[];
 
 		try {
-			tennis_string = await locals.db
-				.insert(strings)
-				.values(form.data)
-				.returning({ id: strings.id });
+			await locals.db.insert(strings).values(form.data).returning({ id: strings.id });
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
@@ -47,6 +44,7 @@ export const actions = {
 			}
 		}
 
-		throw redirect(302, `/strings/${tennis_string[0].id}`);
+		// throw redirect(302, `/strings/${tennis_string[0].id}`);
+		return message(form, { type: 'success', text: `${form.data.name} added to database` });
 	}
 } satisfies Actions;
