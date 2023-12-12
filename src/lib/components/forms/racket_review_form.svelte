@@ -4,18 +4,23 @@
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import type { RacketReviewFormSchema } from '$lib/form_schemas';
 	import StarRating from '../star_rating.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: SuperValidated<RacketReviewFormSchema>;
 
 	const toast = getToastStore();
 
 	const { form, enhance, message } = superForm(data, {
-		onUpdated({ form }) {
+		async onUpdated({ form }) {
 			if (form.message && $message) {
 				toast.trigger({
 					message: $message.text,
 					background: $message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
+
+				if (form.message.type === 'success') {
+					await goto(`/rackets`);
+				}
 			}
 		}
 	});

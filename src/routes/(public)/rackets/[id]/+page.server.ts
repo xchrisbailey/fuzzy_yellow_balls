@@ -29,7 +29,8 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
 	const youtube_reviews_response = await fetch(
 		`/api/youtube/racket/${racket.brand.name}/${racket.name}`
 	);
-	const youtube_reviews: YoutubeSearchResponse = await youtube_reviews_response.json();
+
+	const youtube_reviews = await youtube_reviews_response.json();
 
 	return {
 		racket,

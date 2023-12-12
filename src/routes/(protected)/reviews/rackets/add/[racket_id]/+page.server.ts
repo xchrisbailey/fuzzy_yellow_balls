@@ -43,6 +43,7 @@ export const actions = {
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
-		throw redirect(302, `/rackets/${params.racket_id}`);
+		return message(form, { type: 'success', text: 'review added' });
+		// throw redirect(302, `/rackets/${params.racket_id}`);
 	}
 } satisfies Actions;

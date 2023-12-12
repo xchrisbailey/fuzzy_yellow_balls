@@ -5,6 +5,7 @@
 	import type { Brand } from '$lib/db/schema';
 	import type { RacketFormSchema } from '$lib/form_schemas';
 	import type { SuperValidated } from 'sveltekit-superforms';
+	import { goto } from '$app/navigation';
 
 	export let brands: Brand[];
 	export let data: SuperValidated<RacketFormSchema>;
@@ -12,13 +13,17 @@
 	const toast = getToastStore();
 
 	const { form, enhance, constraints } = superForm(data, {
-		onUpdated({ form }) {
+		async onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
 					message: form.message.text,
 					background:
 						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
+			}
+
+			if (form.message?.type === 'success') {
+				await goto('/rackets');
 			}
 		}
 	});

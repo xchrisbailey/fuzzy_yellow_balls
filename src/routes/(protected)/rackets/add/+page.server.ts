@@ -41,6 +41,7 @@ export const actions = {
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
-		throw redirect(302, `/rackets/${racket_id[0].id}`);
+		return message(form, { type: 'success', text: `${form.data.name} added to database` });
+		// throw redirect(302, `/rackets/${racket_id[0].id}`);
 	}
 } satisfies Actions;
