@@ -7,7 +7,7 @@
 	export let data: PageData;
 </script>
 
-<h1 class="leading-relaxed gradient-heading-pink h1">
+<h1 class="gradient-heading-pink h1 leading-relaxed">
 	Update {title_case(data.form.data.name)} by
 	{title_case(find_brand_by_id(data.form.data.brand_id, data.brands))}
 </h1>

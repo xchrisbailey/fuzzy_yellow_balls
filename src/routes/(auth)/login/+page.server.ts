@@ -32,7 +32,7 @@ export const actions = {
 			locals.auth.setSession(session);
 		} catch (err) {
 			console.error(err);
-			return message(form, error_message_format(err));
+			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 		throw redirect(302, '/');
 	}

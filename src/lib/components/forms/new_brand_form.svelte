@@ -8,12 +8,13 @@
 
 	const toast = getToastStore();
 
-	const { form, enhance, constraints, message } = superForm(data, {
+	const { form, enhance, constraints } = superForm(data, {
 		onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
-					message: $message,
-					background: 'variant-filled-error'
+					message: form.message.text,
+					background:
+						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
 			}
 		}

@@ -6,16 +6,16 @@
 	export let data: PageData;
 </script>
 
-<h1 class="mb-3 leading-relaxed gradient-heading-pink h1">
+<h1 class="gradient-heading-pink h1 mb-3 leading-relaxed">
 	Hello {title_case(data.session.user.first_name)}
 </h1>
 
 <section class="grid grid-cols-1 gap-5 md:grid-cols-2">
 	<article>
-		<h2 class="leading-relaxed gradient-heading-red h2">Your reviews</h2>
+		<h2 class="gradient-heading-red h2 leading-relaxed">Your reviews</h2>
 	</article>
 	<article>
-		<h2 class="leading-relaxed gradient-heading-red h2">Edit Your Profile</h2>
+		<h2 class="gradient-heading-red h2 leading-relaxed">Edit Your Profile</h2>
 		<ProfileForm data={data.form} />
 	</article>
 </section>

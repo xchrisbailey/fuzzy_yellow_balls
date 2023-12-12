@@ -34,7 +34,7 @@ export const actions = {
 			await locals.db.insert(brands).values(form.data);
 		} catch (err) {
 			console.error(err);
-			return message(form, error_message_format(err));
+			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
 		const return_url = url.searchParams.get('return_to') || '/';

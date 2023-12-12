@@ -11,6 +11,43 @@ import {
 	varchar
 } from 'drizzle-orm/pg-core';
 
+export const racket_reviews = pgTable('racket_reviews', {
+	id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+	groundstrokes: integer('groundstrokes').notNull(),
+	volleys: integer('volleys').notNull(),
+	serves: integer('serves').notNull(),
+	returns: integer('returns').notNull(),
+	power: integer('power').notNull(),
+	control: integer('control').notNull(),
+	maneuverability: integer('maneuverability').notNull(),
+	stability: integer('stability').notNull(),
+	comfort: integer('comfort').notNull(),
+	feel: integer('feel').notNull(),
+	topspin: integer('topspin').notNull(),
+	slice: integer('slice').notNull(),
+	comments: text('comments').notNull(),
+	user_id: varchar('user_id')
+		.notNull()
+		.references(() => user.id),
+	racket_id: uuid('racket_id')
+		.notNull()
+		.references(() => rackets.id)
+});
+
+export const racket_reviews_relations = relations(racket_reviews, ({ one }) => ({
+	user: one(user, {
+		fields: [racket_reviews.user_id],
+		references: [user.id]
+	}),
+	racket: one(rackets, {
+		fields: [racket_reviews.racket_id],
+		references: [rackets.id]
+	})
+}));
+
+export type RacketReview = typeof racket_reviews.$inferSelect;
+export type NewRacketReview = typeof racket_reviews.$inferInsert;
+
 export const reviews = pgTable(
 	'reviews',
 	{
@@ -37,7 +74,7 @@ export const reviews = pgTable(
 	})
 );
 
-export const user_relations = relations(reviews, ({ one }) => ({
+export const reviews_relations = relations(reviews, ({ one }) => ({
 	user: one(user, {
 		fields: [reviews.user_id],
 		references: [user.id]
@@ -50,6 +87,44 @@ export const user_relations = relations(reviews, ({ one }) => ({
 
 export type Review = typeof reviews.$inferSelect;
 export type NewReview = typeof reviews.$inferInsert;
+
+export const weight_unit_enum = pgEnum('weight_unit', ['grams', 'ounces']);
+export const balance_unit_enum = pgEnum('balance_unit', ['inches', 'centimeters', 'points']);
+
+export const rackets = pgTable(
+	'rackets',
+	{
+		id: uuid('id').defaultRandom().primaryKey().notNull().unique(),
+		name: varchar('name', { length: 256 }).notNull(),
+		year: integer('year').notNull(),
+		weight: integer('weight').notNull(),
+		weight_unit: weight_unit_enum('weight_unit').notNull().default('grams'),
+		balance: integer('balance').notNull(),
+		balance_unit: balance_unit_enum('balance_unit').notNull().default('points'),
+		head_size: integer('head_size').notNull(),
+		swingweight: integer('swingweight').notNull(),
+		mains: integer('mains').notNull(),
+		crosses: integer('crosses').notNull(),
+		description: text('description').notNull(),
+		brand_id: uuid('brand_id')
+			.references(() => brands.id)
+			.notNull()
+	},
+	(t) => ({
+		unq: unique().on(t.name, t.brand_id)
+	})
+);
+
+export const racketRelations = relations(rackets, ({ one, many }) => ({
+	brand: one(brands, {
+		fields: [rackets.brand_id],
+		references: [brands.id]
+	}),
+	reviews: many(racket_reviews)
+}));
+
+export type Racket = typeof rackets.$inferSelect;
+export type NewRacket = typeof rackets.$inferInsert;
 
 export const strings = pgTable(
 	'strings',
@@ -83,6 +158,11 @@ export const brands = pgTable('brands', {
 	name: varchar('name', { length: 256 }).unique().notNull(),
 	about: text('about').notNull()
 });
+
+export const brands_relations = relations(brands, ({ many }) => ({
+	strings: many(strings),
+	rackets: many(rackets)
+}));
 
 export type Brand = typeof brands.$inferSelect;
 export type NewBrand = typeof brands.$inferInsert;

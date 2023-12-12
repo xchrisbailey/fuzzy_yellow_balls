@@ -5,19 +5,25 @@
 	import type { StringFormSchema } from '$lib/form_schemas';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { Brand } from '$lib/db/schema';
+	import { goto } from '$app/navigation';
 
 	export let brands: Brand[];
 	export let data: SuperValidated<StringFormSchema>;
 
 	const toast = getToastStore();
 
-	const { form, enhance, constraints, message } = superForm(data, {
-		onUpdated({ form }) {
+	const { form, enhance, constraints } = superForm(data, {
+		async onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
-					message: $message,
-					background: 'variant-filled-error'
+					message: form.message.text,
+					background:
+						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
+
+				if (form.message?.type === 'success') {
+					await goto('/strings');
+				}
 			}
 		}
 	});
