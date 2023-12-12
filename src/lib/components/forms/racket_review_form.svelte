@@ -5,21 +5,25 @@
 	import type { RacketReviewFormSchema } from '$lib/form_schemas';
 	import StarRating from '../star_rating.svelte';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data: SuperValidated<RacketReviewFormSchema>;
 
 	const toast = getToastStore();
 
-	const { form, enhance, message } = superForm(data, {
+	const racket_id = $page.params.racket_id;
+
+	const { form, enhance } = superForm(data, {
 		async onUpdated({ form }) {
-			if (form.message && $message) {
+			if (form.message) {
 				toast.trigger({
-					message: $message.text,
-					background: $message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
+					message: form.message.text,
+					background:
+						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
 
 				if (form.message.type === 'success') {
-					await goto(`/rackets`);
+					await goto(`/rackets/${racket_id}`);
 				}
 			}
 		}
