@@ -10,6 +10,8 @@
 	export let brands: Brand[];
 	export let data: SuperValidated<RacketFormSchema>;
 
+	const id = $page.params.id;
+
 	const toast = getToastStore();
 
 	const { form, enhance, constraints } = superForm(data, {
@@ -23,7 +25,7 @@
 			}
 
 			if (form.message?.type === 'success') {
-				await goto('/rackets');
+				await goto(`/rackets/${id}`);
 			}
 		}
 	});
