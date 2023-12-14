@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { ProfileFormSchema } from '$lib/form_schemas';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { SuperValidated } from 'sveltekit-superforms';
@@ -9,13 +10,17 @@
 	const toast = getToastStore();
 
 	const { form, errors, enhance } = superForm(data, {
-		onUpdated({ form }) {
+		async onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
 					message: form.message.text,
 					background:
 						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
+
+				if (form.message?.type === 'success') {
+					await goto('/profile');
+				}
 			}
 		}
 	});

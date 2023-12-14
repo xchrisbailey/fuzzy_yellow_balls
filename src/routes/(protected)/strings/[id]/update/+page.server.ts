@@ -39,8 +39,6 @@ export const actions = {
 
 		try {
 			await locals.db.update(strings).set(form.data).where(eq(strings.id, params.id));
-
-			return { form };
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
@@ -52,5 +50,7 @@ export const actions = {
 				return message(form, { type: 'error', text: 'Unknown error' });
 			}
 		}
+
+		return message(form, { type: 'success', text: `${form.data.name} updated` });
 	}
 } satisfies Actions;
