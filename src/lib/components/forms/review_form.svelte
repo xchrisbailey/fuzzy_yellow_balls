@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import StarRating from '$lib/components/star_rating.svelte';
 	import type { ReviewFormSchema } from '$lib/form_schemas';
 	import { getToastStore } from '@skeletonlabs/skeleton';
@@ -9,21 +11,27 @@
 
 	const toast = getToastStore();
 
+	const string_id = $page.params.string_id;
+
 	const { form, enhance } = superForm(data, {
-		onUpdated({ form }) {
+		async onUpdated({ form }) {
 			if (form.message) {
 				toast.trigger({
-					message: form.message.text ?? 'something went wrong',
+					message: form.message.text,
 					background:
 						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
 				});
+
+				if (form.message?.type === 'success') {
+					await goto(`/strings/${string_id}`);
+				}
 			}
 		}
 	});
 </script>
 
 <form method="POST" action="?/add" use:enhance>
-	<div class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3">
+	<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3">
 		<StarRating name="power" max={5} step={1} bind:value={$form.power} />
 		<StarRating name="feel" max={5} step={1} bind:value={$form.feel} />
 		<StarRating name="control" max={5} step={1} bind:value={$form.control} />
