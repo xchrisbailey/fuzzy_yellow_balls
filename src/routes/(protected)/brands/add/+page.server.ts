@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions = {
-	default: async ({ request, locals, url }) => {
+	default: async ({ request, locals }) => {
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
 
@@ -37,7 +37,8 @@ export const actions = {
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
-		const return_url = url.searchParams.get('return_to') || '/';
-		throw redirect(302, return_url);
+		// const return_url = url.searchParams.get('return_to') || '/';
+		// throw redirect(302, return_url);
+		return message(form, { type: 'success', text: 'brand added' });
 	}
 } satisfies Actions;

@@ -3,7 +3,6 @@
 	import type { NewBrandForm } from '../../../routes/(protected)/brands/add/+page.server';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import { goto } from '$app/navigation';
 
 	export let data: SuperValidated<NewBrandForm>;
 
