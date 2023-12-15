@@ -34,24 +34,24 @@
 	};
 </script>
 
-<article class="p-4 card variant-glass">
+<article class="card variant-glass p-4">
 	{#if header && isStringReview(review)}
-		<h3 class="mb-1 gradient-heading-red h3">
+		<h3 class="gradient-heading-red h3 mb-1">
 			{title_case(review.string.name)} by {title_case(review.string.brand.name)}
 		</h3>
 	{:else if header && isRacketReview(review)}
-		<h3 class="mb-1 gradient-heading-red h3">
+		<h3 class="gradient-heading-red h3 mb-1">
 			{title_case(review.racket.name)} by {title_case(review.racket.brand.name)}
 		</h3>
 	{/if}
 	{#if isStringReview(review)}
 		<h4 class="h4">Rating</h4>
-		<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
+		<div class="gird-cols-1 mt-1 grid gap-1 md:grid-cols-2">
 			<StringFields {review} />
 		</div>
 	{:else if isRacketReview(review)}
 		<h4 class="h4">Rating</h4>
-		<div class="grid gap-1 mt-1 md:grid-cols-2 gird-cols-1">
+		<div class="gird-cols-1 mt-1 grid gap-1 md:grid-cols-2">
 			<RacketFields {review} />
 		</div>
 	{/if}
@@ -63,12 +63,12 @@
 	<div class="flex justify-end">
 		{#if review.user_id === user_id && isStringReview(review)}
 			<a href="/reviews/{review.id}/update" class="variant-ghost-primary btn-icon btn-icon-sm"
-				><Pencil class="w-4 h-4" /></a
+				><Pencil class="h-4 w-4" /></a
 			>
 		{:else if review.user_id === user_id && isRacketReview(review)}
 			<a
 				href="/reviews/rackets/update/{review.id}"
-				class="variant-ghost-primary btn-icon btn-icon-sm"><Pencil class="w-4 h-4" /></a
+				class="variant-ghost-primary btn-icon btn-icon-sm"><Pencil class="h-4 w-4" /></a
 			>
 		{/if}
 	</div>

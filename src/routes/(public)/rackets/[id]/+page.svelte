@@ -8,7 +8,7 @@
 	export let data: PageData;
 </script>
 
-<h1 class="mb-4 leading-relaxed gradient-heading-pink h1">
+<h1 class="gradient-heading-pink h1 mb-4 leading-relaxed">
 	{data.racket.year}
 	{title_case(data.racket.name)} by {title_case(data.racket.brand.name)}
 </h1>
@@ -16,7 +16,7 @@
 	<section>
 		<article>
 			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Info</h2>
-			<p class="py-2 whitespace-pre-line">{data.racket.description}</p>
+			<p class="whitespace-pre-line py-2">{data.racket.description}</p>
 		</article>
 		<hr class="my-5 divide-gray-50" />
 		<article>
@@ -79,7 +79,7 @@
 	</section>
 	<section>
 		<div class="mb-4">
-			<h2 class="mb-2 gradient-heading-blue h2 drop-shadow-sm">User Reviews</h2>
+			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">User Reviews</h2>
 			{#if data.racket.reviews?.length > 0}
 				{#each data.racket.reviews as review}
 					<ReviewCard user_id={data.session?.user.userId} {review} />
@@ -88,15 +88,15 @@
 				<p>No reviews yet. Be the first!</p>
 			{/if}
 
-			<div class="flex justify-center mt-3">
+			<div class="mt-3 flex justify-center">
 				<a href="/reviews/rackets/add/{data.racket.id.trimEnd()}" class="variant-glass-primary btn"
-					><Pencil class="mr-2 w-4 h-4" />Add Review</a
+					><Pencil class="mr-2 h-4 w-4" />Add Review</a
 				>
 			</div>
 		</div>
 		<hr class="my-5 divide-gray-50" />
 		<div>
-			<h2 class="mb-2 gradient-heading-blue h2 drop-shadow-sm">YouTube Reviews</h2>
+			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">YouTube Reviews</h2>
 			<div class="space-y-4">
 				{#if data.youtube_reviews.items.length > 0}
 					{#each data.youtube_reviews.items as youtube_review}
