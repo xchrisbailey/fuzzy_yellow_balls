@@ -46,6 +46,7 @@ export const actions = {
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
-		throw redirect(302, `/strings/${params.id}`);
+		// throw redirect(302, `/strings/${params.id}`);
+		return message(form, { type: 'success', text: 'review added' });
 	}
 } satisfies Actions;
