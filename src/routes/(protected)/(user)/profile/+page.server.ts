@@ -40,11 +40,11 @@ export const actions = {
 
 		try {
 			await locals.db.update(user).set(form.data).where(eq(user.id, session.user.userId));
-
-			return { form };
 		} catch (err) {
 			console.error(err);
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
+
+		return message(form, { type: 'error', text: 'profile updated' });
 	}
 } satisfies Actions;
