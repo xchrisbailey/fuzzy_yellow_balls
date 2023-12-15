@@ -22,7 +22,7 @@
 				});
 
 				if (form.message?.type === 'success') {
-					await goto('/strings');
+					await goto(`/strings/`);
 				}
 			}
 		}
