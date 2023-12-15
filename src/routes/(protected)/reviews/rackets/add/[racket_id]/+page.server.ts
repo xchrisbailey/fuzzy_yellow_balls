@@ -44,6 +44,5 @@ export const actions = {
 		}
 
 		return message(form, { type: 'success', text: 'review added' });
-		// throw redirect(302, `/rackets/${params.racket_id}`);
 	}
 } satisfies Actions;

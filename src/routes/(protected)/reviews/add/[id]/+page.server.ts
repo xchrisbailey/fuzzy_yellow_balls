@@ -25,7 +25,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 };
 
 export const actions = {
-	add: async (event) => {
+	default: async (event) => {
 		const { locals, params, request } = event;
 		const session = await locals.auth.validate();
 		if (!session) throw redirect(302, '/login');
@@ -46,6 +46,7 @@ export const actions = {
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
 
-		throw redirect(302, `/strings/${params.id}`);
+		// throw redirect(302, `/strings/${params.id}`);
+		return message(form, { type: 'success', text: 'review added' });
 	}
 } satisfies Actions;
