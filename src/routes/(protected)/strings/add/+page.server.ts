@@ -1,8 +1,8 @@
+import { strings, type TString } from '$lib/db/schema';
+import { string_schema } from '$lib/form_schemas';
 import { fail, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { string_schema } from '$lib/form_schemas';
-import { strings } from '$lib/db/schema';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -30,8 +30,9 @@ export const actions = {
 
 		// let tennis_string: { id: string }[];
 
+		let string: TString[];
 		try {
-			await locals.db.insert(strings).values(form.data).returning({ id: strings.id });
+			string = await locals.db.insert(strings).values(form.data).returning();
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
@@ -44,7 +45,10 @@ export const actions = {
 			}
 		}
 
-		// throw redirect(302, `/strings/${tennis_string[0].id}`);
-		return message(form, { type: 'success', text: `${form.data.name} added to database` });
+		return message(form, {
+			type: 'success',
+			text: `${form.data.name} added to database`,
+			tstring: string[0]
+		});
 	}
 } satisfies Actions;

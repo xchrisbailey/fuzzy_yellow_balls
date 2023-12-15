@@ -1,10 +1,10 @@
+import { reviews } from '$lib/db/schema';
 import { review_schema } from '$lib/form_schemas';
 import { error_message_format } from '$lib/helpers/errors';
 import { fail, redirect } from '@sveltejs/kit';
+import { and, eq } from 'drizzle-orm';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import type { Actions, PageServerLoad } from './$types';
-import { reviews } from '$lib/db/schema';
-import { and, eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals, params } = event;
@@ -43,11 +43,11 @@ export const actions = {
 				.update(reviews)
 				.set(form.data)
 				.where(and(eq(reviews.id, params.id), eq(reviews.user_id, session.user.userId)));
-
-			return { form };
 		} catch (err) {
 			console.error(err);
 			return message(form, { type: 'error', text: error_message_format(err) });
 		}
+
+		return message(form, { type: 'success', text: 'Review updated successfully' });
 	}
 } satisfies Actions;
