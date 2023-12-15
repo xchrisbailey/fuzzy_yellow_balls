@@ -11,13 +11,20 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 	if (!session) throw redirect(302, '/login');
 
 	const review = await locals.db.query.racket_reviews.findFirst({
-		where: eq(rackets.id, params.id)
+		where: eq(rackets.id, params.id),
+		with: {
+			racket: {
+				with: {
+					brand: true
+				}
+			}
+		}
 	});
 	if (!review) throw redirect(302, '/rackets');
 
 	const form = await superValidate(review, racket_review_schema);
 
-	return { form };
+	return { form, review };
 };
 
 export const actions = {
