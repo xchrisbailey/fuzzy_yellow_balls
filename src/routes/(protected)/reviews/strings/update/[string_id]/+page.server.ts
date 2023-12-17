@@ -12,12 +12,12 @@ export const load: PageServerLoad = async (event) => {
 	if (!session) throw redirect(302, '/login');
 
 	const review = await locals.db.query.reviews.findFirst({
-		where: and(eq(reviews.id, params.id), eq(reviews.user_id, session.user.userId)),
+		where: and(eq(reviews.id, params.string_id), eq(reviews.user_id, session.user.userId)),
 		with: { string: true, user: true }
 	});
 
 	if (!review) {
-		throw redirect(302, `/string/${params.id}`);
+		throw redirect(302, `/string/${params.string_id}`);
 	}
 
 	const form = await superValidate(review, review_schema);
@@ -42,7 +42,7 @@ export const actions = {
 			await locals.db
 				.update(reviews)
 				.set(form.data)
-				.where(and(eq(reviews.id, params.id), eq(reviews.user_id, session.user.userId)));
+				.where(and(eq(reviews.id, params.string_id), eq(reviews.user_id, session.user.userId)));
 		} catch (err) {
 			console.error(err);
 			return message(form, { type: 'error', text: error_message_format(err) });
