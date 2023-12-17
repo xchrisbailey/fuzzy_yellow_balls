@@ -1,4 +1,4 @@
-import { strings, type TString } from '$lib/db/schema';
+import { strings } from '$lib/db/schema';
 import { string_schema } from '$lib/form_schemas';
 import { fail, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms/server';
@@ -30,9 +30,8 @@ export const actions = {
 
 		// let tennis_string: { id: string }[];
 
-		let string: TString[];
 		try {
-			string = await locals.db.insert(strings).values(form.data).returning();
+			await locals.db.insert(strings).values(form.data).returning();
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) {
@@ -47,8 +46,7 @@ export const actions = {
 
 		return message(form, {
 			type: 'success',
-			text: `${form.data.name} added to database`,
-			tstring: string[0]
+			text: `${form.data.name} added to database`
 		});
 	}
 } satisfies Actions;
