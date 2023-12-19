@@ -32,6 +32,7 @@
 		<input
 			class="input {$errors.email && 'input-error'}"
 			aria-invalid={$errors.email ? 'true' : undefined}
+			id="email"
 			name="email"
 			type="email"
 			placeholder="email address"
@@ -44,6 +45,7 @@
 		<input
 			class="input {$errors.first_name && 'input-error'}"
 			aria-invalid={$errors.first_name ? 'true' : undefined}
+			id="first_name"
 			name="first_name"
 			type="text"
 			placeholder="First Name"
@@ -56,6 +58,7 @@
 		<input
 			class="input {$errors.last_name && 'input-error'}"
 			aria-invalid={$errors.last_name ? 'true' : undefined}
+			id="last_name"
 			name="last_name"
 			type="text"
 			placeholder="Last Name"
@@ -68,6 +71,7 @@
 		<input
 			class="input {$errors.password && 'input-error'}"
 			aria-invalid={$errors.password ? 'true' : undefined}
+			id="password"
 			name="password"
 			type="password"
 			placeholder="password"
@@ -76,5 +80,5 @@
 		{#if $errors.password}<span class="text-sm text-rose-500">{$errors.password}</span>{/if}
 	</label>
 
-	<button class="variant-soft-primary btn">Create Account</button>
+	<button class="variant-soft-primary btn" type="submit">Create Account</button>
 </form>
