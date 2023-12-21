@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StarRating > should render a star rating 1`] = `
+<body>
+  <div>
+    <label
+      class="label s-eyYaLZR3NLvp"
+    >
+      <span
+        class="s-eyYaLZR3NLvp"
+      >
+        Test
+      </span>
+       
+      <input
+        class="rating s-eyYaLZR3NLvp"
+        max="5"
+        name="test"
+        step="1"
+        type="range"
+      />
+    </label>
+    <!--&lt;Star_rating&gt;-->
+  </div>
+</body>
+`;
