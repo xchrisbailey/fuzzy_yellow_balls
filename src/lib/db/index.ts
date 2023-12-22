@@ -1,10 +1,9 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema';
-import { env } from '$env/dynamic/private';
 
 const dbUrl =
-	env.NODE_ENV === 'test'
+	process.env.NODE_ENV === 'test'
 		? 'postgres://postgres:postgres@0.0.0.0:5432/fuzzy_yellow_balls_test'
 		: 'postgres://postgres:postgres@0.0.0.0:5432/fuzzy_yellow_balls';
 // for migrations
