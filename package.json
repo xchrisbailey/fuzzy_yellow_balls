@@ -36,7 +36,7 @@
 		"cz-git": "^1.8.0",
 		"devmoji": "^2.3.0",
 		"dotenv": "^16.3.1",
-		"drizzle-kit": "^0.20.8",
+		"drizzle-kit": "^0.20.9",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
