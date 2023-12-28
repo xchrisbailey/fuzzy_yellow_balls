@@ -2,7 +2,6 @@ import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { rackets } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
-import type { YoutubeSearchResponse } from '../../../api/youtube/[type]/[brand]/[string]/+server';
 
 export const load: PageServerLoad = async ({ params, locals, fetch }) => {
 	const racket = await locals.db.query.rackets.findFirst({
