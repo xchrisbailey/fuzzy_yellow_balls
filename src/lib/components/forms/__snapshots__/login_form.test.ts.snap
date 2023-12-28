@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`login form > should render a login form 1`] = `
+<body>
+  <div>
+    <form
+      class="flex flex-col gap-4"
+      method="POST"
+    >
+      <label
+        class="label"
+      >
+        <span>
+          Email
+        </span>
+         
+        <input
+          class="input "
+          name="email"
+          type="text"
+        />
+         
+      </label>
+       
+      <label
+        class="label"
+      >
+        <span>
+          Password
+        </span>
+         
+        <input
+          class="input "
+          name="password"
+          type="password"
+        />
+         
+      </label>
+       
+      <button
+        class="variant-soft-primary btn"
+      >
+        Log In
+      </button>
+    </form>
+    <!--&lt;Login_form&gt;-->
+  </div>
+</body>
+`;

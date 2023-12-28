@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import type { LoginFormSchema } from '$lib/form_schemas';
-	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { getToastStore, initializeStores } from '@skeletonlabs/skeleton';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: SuperValidated<LoginFormSchema>;
 
+	// Initialize stores (temp until can be done better way for testing)
+	initializeStores();
 	const toast = getToastStore();
 
 	const { form, errors, enhance } = superForm(data, {
