@@ -2,11 +2,12 @@
 	import { title_case } from '$lib/helpers/title_case';
 	import { Eye, Pen, Plus } from 'lucide-svelte';
 	import type { PageData } from './$types';
+	import { get_racket_review_average_rating } from '$lib/helpers/get_average_rating';
 
 	export let data: PageData;
 </script>
 
-<h1 class="gradient-heading-pink h1 mb-3 leading-relaxed">Tennis Rackets</h1>
+<h1 class="mb-3 leading-relaxed gradient-heading-pink h1">Tennis Rackets</h1>
 
 {#if !data.rackets || data.rackets.length === 0}
 	<p>No rackets found</p>
@@ -23,6 +24,7 @@
 					<th>Head Size</th>
 					<th>Swingweight</th>
 					<th>String Pattern</th>
+					<th>Rating</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -40,17 +42,17 @@
 						<td>{racket.head_size}</td>
 						<td>{racket.swingweight}</td>
 						<td>{`${racket.mains}M/${racket.crosses}C`}</td>
-
+						<td>{get_racket_review_average_rating(racket.reviews)}/5</td>
 						<td class="flex gap-3">
 							<a href="/rackets/{racket.id}" class="variant-soft-primary btn-icon btn-icon-sm">
-								<Eye class="h-4 w-4" />
+								<Eye class="w-4 h-4" />
 							</a>
 							{#if data.session?.user?.role === 'ADMIN'}
 								<a
 									href="/rackets/{racket.id}/update"
 									class="variant-soft-secondary btn-icon btn-icon-sm"
 								>
-									<Pen class="h-4 w-4" />
+									<Pen class="w-4 h-4" />
 								</a>
 							{/if}
 						</td>
@@ -62,7 +64,7 @@
 {/if}
 
 <div class="add_action">
-	<a href="/rackets/add" class="variant-soft-tertiary btn btn-icon shadow"><Plus /></a>
+	<a href="/rackets/add" class="shadow variant-soft-tertiary btn btn-icon"><Plus /></a>
 </div>
 
 <style>
