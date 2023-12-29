@@ -8,33 +8,33 @@
 	export let data: PageData;
 </script>
 
-<h1 class="gradient-heading-pink h1 mb-4 leading-relaxed">
+<h1>
 	{data.racket.year}
 	{title_case(data.racket.name)} by {title_case(data.racket.brand.name)}
 </h1>
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+<div>
 	<section>
 		<article>
-			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Info</h2>
-			<p class="whitespace-pre-line py-2">{data.racket.description}</p>
+			<h2>Info</h2>
+			<p>{data.racket.description}</p>
 		</article>
-		<hr class="my-5 divide-gray-50" />
+		<hr />
 		<article>
-			<h2 class="gradient-heading-blue h2 drop-shadow-sm">Specs</h2>
-			<dl class="list-dl">
+			<h2>Specs</h2>
+			<dl>
 				<div>
-					<span class="badge bg-primary-500/20">✔️</span>
-					<span class="flex-auto">
-						<dt class="font-bold">Weight</dt>
+					<span>✔️</span>
+					<span>
+						<dt>Weight</dt>
 						<dd>{data.racket.weight} {data.racket.weight_unit}</dd>
 					</span>
 				</div>
 			</dl>
-			<dl class="list-dl">
+			<dl>
 				<div>
-					<span class="badge bg-primary-500/20">✔️</span>
-					<span class="flex-auto">
-						<dt class="font-bold">Balance</dt>
+					<span>✔️</span>
+					<span>
+						<dt>Balance</dt>
 						<dd>
 							{data.racket.balance}
 							{data.racket.balance_unit === 'points' ? 'pts HL' : data.racket.balance_unit}
@@ -42,33 +42,33 @@
 					</span>
 				</div>
 			</dl>
-			<dl class="list-dl">
+			<dl>
 				<div>
-					<span class="badge bg-primary-500/20">✔️</span>
-					<span class="flex-auto">
-						<dt class="font-bold">Head Size</dt>
+					<span>✔️</span>
+					<span>
+						<dt>Head Size</dt>
 						<dd>
 							{data.racket.head_size} Inches
 						</dd>
 					</span>
 				</div>
 			</dl>
-			<dl class="list-dl">
+			<dl>
 				<div>
-					<span class="badge bg-primary-500/20">✔️</span>
-					<span class="flex-auto">
-						<dt class="font-bold">Swingweight</dt>
+					<span>✔️</span>
+					<span>
+						<dt>Swingweight</dt>
 						<dd>
 							{data.racket.swingweight}
 						</dd>
 					</span>
 				</div>
 			</dl>
-			<dl class="list-dl">
+			<dl>
 				<div>
-					<span class="badge bg-primary-500/20">✔️</span>
-					<span class="flex-auto">
-						<dt class="font-bold">String Pattern</dt>
+					<span>✔️</span>
+					<span>
+						<dt>String Pattern</dt>
 						<dd>
 							{data.racket.mains} Mains / {data.racket.crosses} Crosses
 						</dd>
@@ -78,8 +78,8 @@
 		</article>
 	</section>
 	<section>
-		<div class="mb-4">
-			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">User Reviews</h2>
+		<div>
+			<h2>User Reviews</h2>
 			{#if data.racket.reviews?.length > 0}
 				{#each data.racket.reviews as review}
 					<ReviewCard user_id={data.session?.user.userId} {review} />
@@ -88,16 +88,14 @@
 				<p>No reviews yet. Be the first!</p>
 			{/if}
 
-			<div class="mt-3 flex justify-center">
-				<a href="/reviews/rackets/add/{data.racket.id.trimEnd()}" class="variant-glass-primary btn"
-					><Pencil class="mr-2 h-4 w-4" />Add Review</a
-				>
+			<div>
+				<a href="/reviews/rackets/add/{data.racket.id.trimEnd()}"><Pencil />Add Review</a>
 			</div>
 		</div>
-		<hr class="my-5 divide-gray-50" />
+		<hr />
 		<div>
-			<h2 class="gradient-heading-blue h2 mb-2 drop-shadow-sm">YouTube Reviews</h2>
-			<div class="space-y-4">
+			<h2>YouTube Reviews</h2>
+			<div>
 				{#if data.youtube_reviews.items.length > 0}
 					{#each data.youtube_reviews.items as youtube_review}
 						<article>

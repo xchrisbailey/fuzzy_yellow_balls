@@ -5,38 +5,38 @@
 	export let review: Review;
 </script>
 
-<div class="flex items-center gap-1">
+<div>
 	comfort: {#each Array(review.comfort) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	power: {#each Array(review.power) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	feel: {#each Array(review.feel) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	control: {#each Array(review.control) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	durability: {#each Array(review.durability) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	spin: {#each Array(review.spin) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-2">
+<div>
 	playability: {#each Array(review.playability) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>

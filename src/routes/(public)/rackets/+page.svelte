@@ -7,13 +7,13 @@
 	export let data: PageData;
 </script>
 
-<h1 class="mb-3 leading-relaxed gradient-heading-pink h1">Tennis Rackets</h1>
+<h1>Tennis Rackets</h1>
 
 {#if !data.rackets || data.rackets.length === 0}
 	<p>No rackets found</p>
 {:else}
-	<div class="table-container">
-		<table class="table table-hover">
+	<div>
+		<table>
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -43,16 +43,13 @@
 						<td>{racket.swingweight}</td>
 						<td>{`${racket.mains}M/${racket.crosses}C`}</td>
 						<td>{get_racket_review_average_rating(racket.reviews)}/5</td>
-						<td class="flex gap-3">
-							<a href="/rackets/{racket.id}" class="variant-soft-primary btn-icon btn-icon-sm">
-								<Eye class="w-4 h-4" />
+						<td>
+							<a href="/rackets/{racket.id}">
+								<Eye />
 							</a>
 							{#if data.session?.user?.role === 'ADMIN'}
-								<a
-									href="/rackets/{racket.id}/update"
-									class="variant-soft-secondary btn-icon btn-icon-sm"
-								>
-									<Pen class="w-4 h-4" />
+								<a href="/rackets/{racket.id}/update">
+									<Pen />
 								</a>
 							{/if}
 						</td>
@@ -64,7 +61,7 @@
 {/if}
 
 <div class="add_action">
-	<a href="/rackets/add" class="shadow variant-soft-tertiary btn btn-icon"><Plus /></a>
+	<a href="/rackets/add"><Plus /></a>
 </div>
 
 <style>

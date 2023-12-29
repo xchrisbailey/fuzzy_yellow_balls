@@ -5,12 +5,12 @@
 	export let data: PageData;
 </script>
 
-<div class="mx-auto w-full md:w-2/3">
-	<h1 class="gradient-heading-pink h1 mb-4 leading-relaxed">Sign Up</h1>
+<div>
+	<h1>Sign Up</h1>
 
 	<SignupForm data={data.form} />
 
-	<p class="text-small text-primary mt-2 font-medium leading-none hover:underline">
+	<p>
 		<a href="/login">or login</a>
 	</p>
 </div>

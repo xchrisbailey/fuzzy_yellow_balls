@@ -6,7 +6,7 @@
 	export let data: PageData;
 </script>
 
-<h1 class="gradient-heading-pink h1 leading-relaxed">
+<h1>
 	Update {title_case(data.review.racket.name)} by
 	{title_case(data.review.racket.brand.name)}
 </h1>
