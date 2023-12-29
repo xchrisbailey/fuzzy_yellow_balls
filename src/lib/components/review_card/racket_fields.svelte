@@ -5,63 +5,63 @@
 	export let review: RacketReview;
 </script>
 
-<div class="flex items-center gap-1">
+<div>
 	groundstrokes: {#each Array(review.groundstrokes) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	volleys: {#each Array(review.volleys) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	serves: {#each Array(review.serves) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	returns: {#each Array(review.returns) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	power: {#each Array(review.power) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	control: {#each Array(review.control) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	maneuverability: {#each Array(review.maneuverability) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	stability: {#each Array(review.stability) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	comfort: {#each Array(review.comfort) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	feel: {#each Array(review.feel) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	topspin: {#each Array(review.topspin) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>
-<div class="flex items-center gap-1">
+<div>
 	slice: {#each Array(review.slice) as id}
-		<Star {id} class="h-4 w-4" />
+		<Star {id} />
 	{/each}
 </div>

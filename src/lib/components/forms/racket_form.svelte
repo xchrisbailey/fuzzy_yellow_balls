@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { Brand } from '$lib/db/schema';
 	import type { RacketFormSchema } from '$lib/form_schemas';
@@ -12,16 +11,14 @@
 
 	const id = $page.params.id;
 
-	const toast = getToastStore();
-
 	const { form, enhance, constraints } = superForm(data, {
 		async onUpdated({ form }) {
 			if (form.message) {
-				toast.trigger({
-					message: form.message.text,
-					background:
-						form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
-				});
+				// toast.trigger({
+				// 	message: form.message.text,
+				// 	background:
+				// 		form.message.type === 'error' ? 'variant-filled-error' : 'variant-filled-success'
+				// });
 			}
 
 			if (form.message?.type === 'success') {
@@ -31,56 +28,42 @@
 	});
 </script>
 
-<form method="POST" use:enhance class="flex flex-col gap-4">
-	<label class="label">
+<form method="POST" use:enhance>
+	<label>
 		<span>Name</span>
-		<input type="text" name="name" bind:value={$form.name} class="input" {...$constraints.name} />
+		<input type="text" name="name" bind:value={$form.name} {...$constraints.name} />
 	</label>
 
-	<label class="label">
+	<label>
 		<span>Model Year</span>
-		<input type="number" name="year" bind:value={$form.year} class="input" {...$constraints.year} />
+		<input type="number" name="year" bind:value={$form.year} {...$constraints.year} />
 	</label>
 
-	<label class="label">
+	<label>
 		<span>Brand</span>
-		<select name="brand_id" class="select" bind:value={$form.brand_id} {...$constraints.brand_id}>
+		<select name="brand_id" bind:value={$form.brand_id} {...$constraints.brand_id}>
 			{#each brands as brand}
 				<option value={brand.id}>{brand.name}</option>
 			{/each}
 		</select>
-		<span class="text-sm"
-			><a href={`/brands/add?return_to=${$page.url.pathname}`}>add brand</a></span
-		>
+		<span><a href={`/brands/add?return_to=${$page.url.pathname}`}>add brand</a></span>
 	</label>
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-		<label class="label flex-grow">
+	<div>
+		<label>
 			<span>Weight</span>
-			<div class="input-group input-group-divider grid-cols-[1fr_auto]">
-				<input
-					type="number"
-					name="weight"
-					bind:value={$form.weight}
-					{...$constraints.weight}
-					class="input flex-grow"
-				/>
-				<select name="weight_unit" bind:value={$form.weight_unit} class="select">
+			<div>
+				<input type="number" name="weight" bind:value={$form.weight} {...$constraints.weight} />
+				<select name="weight_unit" bind:value={$form.weight_unit}>
 					<option value="grams">Grams</option>
 					<option value="ounces">Ounces</option>
 				</select>
 			</div>
 		</label>
-		<label class="label flex-grow">
+		<label>
 			<span>Balance</span>
-			<div class="input-group input-group-divider grid-cols-[1fr_auto]">
-				<input
-					type="number"
-					name="balance"
-					bind:value={$form.balance}
-					{...$constraints.balance}
-					class="input flex-grow"
-				/>
-				<select name="balance_unit" bind:value={$form.balance_unit} class="select">
+			<div>
+				<input type="number" name="balance" bind:value={$form.balance} {...$constraints.balance} />
+				<select name="balance_unit" bind:value={$form.balance_unit}>
 					<option value="points">Points HL</option>
 					<option value="inches">Inches</option>
 					<option value="centimeters">Centimeters</option>
@@ -88,56 +71,41 @@
 			</div>
 		</label>
 
-		<label class="label flex-grow">
+		<label>
 			<span>Head Size (inches)</span>
 			<input
 				type="number"
 				name="head_size"
 				bind:value={$form.head_size}
-				class="input"
 				{...$constraints.head_size}
 			/>
 		</label>
-		<label class="label flex-grow">
+		<label>
 			<span>Swingweight</span>
 			<input
 				type="number"
 				name="swingweight"
-				class="input"
 				bind:value={$form.swingweight}
 				{...$constraints.swingweight}
 			/>
 		</label>
 	</div>
-	<div class="rounded border border-surface-500/20 bg-surface-400/20 p-4">
-		<span class="text-lg font-bold">String Pattern</span>
-		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-			<label class="label">
+	<div>
+		<span>String Pattern</span>
+		<div>
+			<label>
 				<span>Mains</span>
-				<input
-					type="number"
-					name="mains"
-					class="input"
-					bind:value={$form.mains}
-					{...$constraints.mains}
-				/>
+				<input type="number" name="mains" bind:value={$form.mains} {...$constraints.mains} />
 			</label>
-			<label class="label">
+			<label>
 				<span>Crosses</span>
-				<input
-					type="number"
-					name="crosses"
-					class="input"
-					bind:value={$form.crosses}
-					{...$constraints.crosses}
-				/>
+				<input type="number" name="crosses" bind:value={$form.crosses} {...$constraints.crosses} />
 			</label>
 		</div>
 	</div>
-	<label class="label"
+	<label
 		><span>Description</span>
 		<textarea
-			class="textarea"
 			name="description"
 			bind:value={$form.description}
 			{...$constraints.description}
@@ -145,5 +113,5 @@
 			rows="10"
 		></textarea>
 	</label>
-	<button class="variant-ghost-primary btn">Add</button>
+	<button>Add</button>
 </form>

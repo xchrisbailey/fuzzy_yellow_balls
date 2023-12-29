@@ -6,7 +6,7 @@
 	export let data: PageData;
 </script>
 
-<h1 class="gradient-heading-pink h1 leading-relaxed">
+<h1>
 	Review {title_case(data.string.name)} by {title_case(data.string.brand.name)}
 </h1>
 

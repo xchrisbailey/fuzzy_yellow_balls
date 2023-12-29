@@ -7,7 +7,7 @@
 	export let value: number = 0;
 </script>
 
-<label class="label">
+<label>
 	<span>{title_case(name)}</span>
 	<input type="range" class="rating" {value} {step} {max} {name} />
 </label>
