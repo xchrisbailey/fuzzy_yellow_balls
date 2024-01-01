@@ -1,0 +1,64 @@
+:root {
+	/* media sizes (copied from syntax ) */
+	@custom-media --below_small (width < 400px);
+	@custom-media --below_med (width < 700px);
+	@custom-media --below_large (width < 900px);
+	@custom-media --below_xlarge (width < 1200px);
+
+	@custom-media --above_small (width >400px);
+	@custom-media --above_med (width > 700px);
+	@custom-media --above_large (width > 900px);
+	@custom-media --above_xlarge (width > 1200px);
+
+	/* font sizes */
+	--font-size-md: 1rem;
+
+	/* colors */
+	--green: var(var(--green-500));
+	--green-50: oklch(97% 0.047 153.9);
+	--green-100: oklch(92% 0.112 153.4);
+	--green-200: oklch(87% 0.112 153.7);
+	--green-300: oklch(82.1% 0.113 153.4);
+	--green-400: oklch(76.9% 0.112 153.8);
+	--green-500: oklch(72.1% 0.116 153.3);
+	--green-600: oklch(61.7% 0.141 153.6);
+	--green-700: oklch(48.1% 0.123 153.4);
+	--green-800: oklch(33.9% 0.087 153.3);
+	--green-900: oklch(21% 0.053 153.6);
+
+	--blue: var(var(--blue-500));
+	--blue-50: oklch(96.9% 0.033 203.5);
+	--blue-100: oklch(92.8% 0.081 202.6);
+	--blue-200: oklch(88.8% 0.112 202.4);
+	--blue-300: oklch(84.8% 0.113 202.4);
+	--blue-400: oklch(80.6% 0.112 202.4);
+	--blue-500: oklch(76.7% 0.116 202.1);
+	--blue-600: oklch(65.4% 0.111 202.5);
+	--blue-700: oklch(50.6% 0.086 202.2);
+	--blue-800: oklch(34.9% 0.059 203.2);
+	--blue-900: oklch(21% 0.036 201.2);
+
+	--red: var(var(--red-500));
+	--red-50: oklch(97.1% 0.014 22.8);
+	--red-100: oklch(90.8% 0.047 21.3);
+	--red-200: oklch(84.8% 0.083 22.6);
+	--red-300: oklch(78.6% 0.124 22.1);
+	--red-400: oklch(72.5% 0.15 22.4);
+	--red-500: oklch(66.4% 0.154 22.2);
+	--red-600: oklch(57.3% 0.178 22.2);
+	--red-700: oklch(45% 0.181 22.2);
+	--red-800: oklch(32.2% 0.13 22.2);
+	--red-900: oklch(21% 0.085 22.4);
+
+	--yellow: var(var(--yellow-500));
+	--yellow-50: oklch(97% 0.09 103.9);
+	--yellow-100: oklch(94.9% 0.15 104);
+	--yellow-200: oklch(92.6% 0.15 103.6);
+	--yellow-300: oklch(90.4% 0.151 104.1);
+	--yellow-400: oklch(88.1% 0.15 103.7);
+	--yellow-500: oklch(85.9% 0.154 103.9);
+	--yellow-600: oklch(73% 0.154 103.6);
+	--yellow-700: oklch(55.4% 0.117 103.6);
+	--yellow-800: oklch(37.3% 0.079 103.7);
+	--yellow-900: oklch(21% 0.044 103.5);
+}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './styles.css';
 	import type { PageData } from './$types';
 	import Header from '$lib/components/header.svelte';
 	import NavigationLinks from '$lib/components/navigation_links.svelte';

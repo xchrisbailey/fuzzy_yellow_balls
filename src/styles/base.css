@@ -1,0 +1,21 @@
+@layer base {
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		box-sizing: border-box;
+		-webkit-text-size-adjust: none;
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+}
