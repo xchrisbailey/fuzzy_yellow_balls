@@ -14,7 +14,7 @@
 	--font-size-md: 1rem;
 
 	/* colors */
-	--green: var(var(--green-500));
+	--green: var(--green-500);
 	--green-50: oklch(97% 0.047 153.9);
 	--green-100: oklch(92% 0.112 153.4);
 	--green-200: oklch(87% 0.112 153.7);
@@ -26,7 +26,7 @@
 	--green-800: oklch(33.9% 0.087 153.3);
 	--green-900: oklch(21% 0.053 153.6);
 
-	--blue: var(var(--blue-500));
+	--blue: var(--blue-500);
 	--blue-50: oklch(96.9% 0.033 203.5);
 	--blue-100: oklch(92.8% 0.081 202.6);
 	--blue-200: oklch(88.8% 0.112 202.4);
@@ -38,7 +38,7 @@
 	--blue-800: oklch(34.9% 0.059 203.2);
 	--blue-900: oklch(21% 0.036 201.2);
 
-	--red: var(var(--red-500));
+	--red: var(--red-500);
 	--red-50: oklch(97.1% 0.014 22.8);
 	--red-100: oklch(90.8% 0.047 21.3);
 	--red-200: oklch(84.8% 0.083 22.6);
@@ -50,7 +50,7 @@
 	--red-800: oklch(32.2% 0.13 22.2);
 	--red-900: oklch(21% 0.085 22.4);
 
-	--yellow: var(var(--yellow-500));
+	--yellow: var(--yellow-500);
 	--yellow-50: oklch(97% 0.09 103.9);
 	--yellow-100: oklch(94.9% 0.15 104);
 	--yellow-200: oklch(92.6% 0.15 103.6);
