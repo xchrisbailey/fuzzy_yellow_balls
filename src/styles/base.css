@@ -17,5 +17,34 @@
 	body {
 		margin: 0;
 		padding: 0;
+		font-size: var(--font-md);
+	}
+
+	h1,
+	h2 {
+		font-weight: 800;
+	}
+
+	h1 {
+		font-size: var(--font-2xl);
+		color: var(--green-700);
+	}
+
+	h2 {
+		font-size: var(--font-xl);
+	}
+
+	h3 {
+		font-size: var(--font-lg);
+	}
+
+	a {
+		font-size: var(--font-sm);
+		color: var(--green-600);
+		text-decoration: none;
+		&:hover {
+			color: var(--green-700);
+			text-decoration: underline;
+		}
 	}
 }

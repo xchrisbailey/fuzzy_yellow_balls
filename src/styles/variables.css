@@ -61,4 +61,10 @@
 	--yellow-700: oklch(55.4% 0.117 103.6);
 	--yellow-800: oklch(37.3% 0.079 103.7);
 	--yellow-900: oklch(21% 0.044 103.5);
+
+	--font-sm: clamp(1rem, 0.447vw + 0.713rem, 1.25rem);
+	--font-md: clamp(1.125rem, 0.447vw + 0.838rem, 1.37rem);
+	--font-lg: clamp(1.5rem, 0.336vw + 1.347rem, 1.75rem);
+	--font-xl: clamp(2.25rem, 0.224vw + 1.982rem, 2.45rem);
+	--font-2xl: clamp(2.25rem, 0.447vw + 1.963rem, 2.5rem);
 }
