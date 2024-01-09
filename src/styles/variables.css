@@ -10,31 +10,28 @@
 	@custom-media --above_large (width > 900px);
 	@custom-media --above_xlarge (width > 1200px);
 
-	/* font sizes */
-	--font-size-md: 1rem;
-
 	/* colors */
 	--green: var(--green-500);
-	--green-50: oklch(97% 0.047 153.9);
-	--green-100: oklch(92% 0.112 153.4);
-	--green-200: oklch(87% 0.112 153.7);
-	--green-300: oklch(82.1% 0.113 153.4);
-	--green-400: oklch(76.9% 0.112 153.8);
-	--green-500: oklch(72.1% 0.116 153.3);
-	--green-600: oklch(61.7% 0.141 153.6);
-	--green-700: oklch(48.1% 0.123 153.4);
-	--green-800: oklch(33.9% 0.087 153.3);
-	--green-900: oklch(21% 0.053 153.6);
+	--green-50: oklch(97% 0.048 151);
+	--green-100: oklch(92.7% 0.065 151);
+	--green-200: oklch(88.5% 0.064 151.2);
+	--green-300: oklch(84.5% 0.066 150.3);
+	--green-400: oklch(80.2% 0.066 151);
+	--green-500: oklch(76% 0.069 151.3);
+	--green-600: oklch(65.1% 0.095 150.8);
+	--green-700: oklch(50.2% 0.118 151.2);
+	--green-800: oklch(34.8% 0.094 150.8);
+	--green-900: oklch(20.9% 0.056 151.4);
 
 	--blue: var(--blue-500);
-	--blue-50: oklch(96.9% 0.033 203.5);
-	--blue-100: oklch(92.8% 0.081 202.6);
-	--blue-200: oklch(88.8% 0.112 202.4);
-	--blue-300: oklch(84.8% 0.113 202.4);
-	--blue-400: oklch(80.6% 0.112 202.4);
-	--blue-500: oklch(76.7% 0.116 202.1);
-	--blue-600: oklch(65.4% 0.111 202.5);
-	--blue-700: oklch(50.6% 0.086 202.2);
+	--blue-50: oklch(97.1% 0.034 201.1);
+	--blue-100: oklch(93.1% 0.081 201.6);
+	--blue-200: oklch(89% 0.124 202.2);
+	--blue-300: oklch(85.1% 0.124 202.2);
+	--blue-400: oklch(80.9% 0.124 202.2);
+	--blue-500: oklch(77.1% 0.128 201.9);
+	--blue-600: oklch(65.7% 0.112 202.4);
+	--blue-700: oklch(50.9% 0.087 202.2);
 	--blue-800: oklch(34.9% 0.059 203.2);
 	--blue-900: oklch(21% 0.036 201.2);
 
@@ -78,6 +75,7 @@
 	--primary-dark: var(--green-800);
 	--primary-light: var(--green-200);
 
+	/* font sizes */
 	--font-sm: clamp(1rem, 0.447vw + 0.713rem, 1.25rem);
 	--font-md: clamp(1.125rem, 0.447vw + 0.838rem, 1.37rem);
 	--font-lg: clamp(1.5rem, 0.336vw + 1.347rem, 1.75rem);
