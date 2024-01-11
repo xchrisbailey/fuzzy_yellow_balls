@@ -28,11 +28,12 @@
 	header {
 		display: flex;
 		height: 4rem;
-		background: var(--green-400);
 		justify-content: space-between;
 		align-items: center;
 		padding: 0.5em;
 		margin-bottom: 1em;
+		margin: 0px 1.5em 1em 1.5em;
+		border-bottom: 1px solid var(--gray-50);
 	}
 
 	nav {
@@ -67,9 +68,13 @@
 		font-variation-settings:
 			'wght' 700,
 			'slnt' -3;
-		color: var(--primary-dark);
+		color: var(--green-800);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		margin-left: 0.25em;
+		background-image: var(--green-to-blue);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 </style>

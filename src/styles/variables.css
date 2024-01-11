@@ -75,6 +75,13 @@
 	--primary-dark: var(--green-800);
 	--primary-light: var(--green-200);
 
+	/* gradients */
+	--green-to-blue: linear-gradient(
+		to right in oklab,
+		oklch(76% 0.069 151.3) 0%,
+		oklch(65.7% 0.112 202.4) 100%
+	);
+
 	/* font sizes */
 	--font-sm: clamp(1rem, 0.447vw + 0.713rem, 1.25rem);
 	--font-md: clamp(1.125rem, 0.447vw + 0.838rem, 1.37rem);
