@@ -5,14 +5,16 @@
 	import { title_case } from '$lib/helpers/title_case';
 
 	export let user: LuciaUser;
+
+	let is_menu_open = false;
 </script>
 
 <div class="user-menu-container">
-	<div class="user-button">
+	<button class="user-button" on:click={() => (is_menu_open = !is_menu_open)}>
 		{user.first_name[0]}{user.last_name[0]}
-	</div>
+	</button>
 
-	<div class="user-menu">
+	<div class="user-menu {is_menu_open && 'display_menu'}">
 		<h2 class="mb-1 gradient-heading-blue h3">
 			{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}
 		</h2>
@@ -44,7 +46,15 @@
 <style>
 	.user-menu {
 		display: none;
+		position: absolute;
+		right: 0.5rem;
+		margin-top: 0.2em;
+		width: 250px;
+		background: var(--green-100);
+		border-radius: 1em;
+		padding: 0.2em;
 	}
+
 	.user-button {
 		display: grid;
 		place-content: center;
@@ -59,5 +69,9 @@
 		&:hover {
 			background: var(--green-500);
 		}
+	}
+
+	.display_menu {
+		display: block;
 	}
 </style>
