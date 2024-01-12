@@ -1,4 +1,5 @@
 <script lang="ts">
+	import UserButton from './user_button.svelte';
 	import type { Session } from 'lucia';
 	import { Book, BookHeart, Home } from 'lucide-svelte';
 	import { LogIn } from 'lucide-svelte';
@@ -13,14 +14,17 @@
 			<a href="/login"><LogIn /> login</a>
 		</div>
 	{:else}
-		<nav>
-			<ul>
-				<li><a href="/" class="nav-link"><Home /> home</a></li>
-				<li><a href="/strings" class="nav-link"><Book /> strings</a></li>
-				<li><a href="/rackets" class="nav-link"><BookHeart /> rackets</a></li>
-			</ul>
-		</nav>
-		<!-- <UserButton user={session.user} /> -->
+		<div class="flex align-center">
+			<nav>
+				<ul>
+					<li><a href="/" class="nav-link"><Home /> home</a></li>
+					<li><a href="/strings" class="nav-link"><Book /> strings</a></li>
+					<li><a href="/rackets" class="nav-link"><BookHeart /> rackets</a></li>
+				</ul>
+			</nav>
+
+			<UserButton user={session.user} />
+		</div>
 	{/if}
 </header>
 

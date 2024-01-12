@@ -7,27 +7,57 @@
 	export let user: LuciaUser;
 </script>
 
-<div class="z-50 p-4 w-72 shadow-xl card" data-popup="popup_menu">
-	<h2 class="mb-1 gradient-heading-blue h3">
-		{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}
-	</h2>
-	<nav class="gap-4 list-nav">
-		<ul>
-			<li>
-				<a href="/profile" class="flex align-middle"><User class="inline mr-2 w-4 h-4" />Profile</a>
-			</li>
-			<li>
-				<a href="/activity" class="flex align-middle"><Pen class="inline mr-2 w-4 h-4" />Activity</a
-				>
-			</li>
-			<li>
-				<form method="POST" action="/?/logout" use:enhance class="flex flex-col">
-					<button class="variant-filled-warning btn" type="submit">
-						<LogOut class="mr-2 w-4 h-4 text-warning-800" />
-						logout
-					</button>
-				</form>
-			</li>
-		</ul>
-	</nav>
+<div class="user-menu-container">
+	<div class="user-button">
+		{user.first_name[0]}{user.last_name[0]}
+	</div>
+
+	<div class="user-menu">
+		<h2 class="mb-1 gradient-heading-blue h3">
+			{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}
+		</h2>
+		<nav class="gap-4 list-nav">
+			<ul>
+				<li>
+					<a href="/profile" class="flex align-middle"
+						><User class="inline mr-2 w-4 h-4" />Profile</a
+					>
+				</li>
+				<li>
+					<a href="/activity" class="flex align-middle"
+						><Pen class="inline mr-2 w-4 h-4" />Activity</a
+					>
+				</li>
+				<li>
+					<form method="POST" action="/?/logout" use:enhance class="flex flex-col">
+						<button class="variant-filled-warning btn" type="submit">
+							<LogOut class="mr-2 w-4 h-4 text-warning-800" />
+							logout
+						</button>
+					</form>
+				</li>
+			</ul>
+		</nav>
+	</div>
 </div>
+
+<style>
+	.user-menu {
+		display: none;
+	}
+	.user-button {
+		display: grid;
+		place-content: center;
+		width: 2rem;
+		height: 2rem;
+		background: var(--green-400);
+		border-radius: 100%;
+		font-size: var(--font-xs);
+		margin-left: 1rem;
+		transition: background 0.2s ease-in-out;
+		cursor: pointer;
+		&:hover {
+			background: var(--green-500);
+		}
+	}
+</style>
