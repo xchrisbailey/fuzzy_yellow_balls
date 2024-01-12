@@ -15,9 +15,9 @@
 	{:else}
 		<nav>
 			<ul>
-				<li><a href="/"><Home /> home</a></li>
-				<li><a href="/strings"><Book /> strings</a></li>
-				<li><a href="/rackets"><BookHeart /> rackets</a></li>
+				<li><a href="/" class="nav-link"><Home /> home</a></li>
+				<li><a href="/strings" class="nav-link"><Book /> strings</a></li>
+				<li><a href="/rackets" class="nav-link"><BookHeart /> rackets</a></li>
 			</ul>
 		</nav>
 		<!-- <UserButton user={session.user} /> -->
@@ -53,20 +53,23 @@
 				&:hover {
 					background-color: var(--gray-50);
 				}
-				& svg {
-					width: 15px;
-					height: 15px;
-					margin-right: 0.25em;
-				}
 			}
 		}
-		& a {
-			color: var(--black);
-			transition: color 0.2s ease-in-out;
-			&:hover {
-				color: var(--green-700);
-				text-decoration: none;
-			}
+	}
+
+	.nav-link {
+		color: var(--black);
+		transition: color 0.2s ease-in-out;
+		display: flex;
+		align-items: center;
+		&:hover {
+			color: var(--green-700);
+			text-decoration: none;
+		}
+		& svg {
+			width: 15px;
+			height: 15px;
+			margin-right: 0.25em;
 		}
 	}
 
