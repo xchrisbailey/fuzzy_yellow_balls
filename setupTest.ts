@@ -4,14 +4,14 @@ import * as environment from '$app/environment';
 import * as navigation from '$app/navigation';
 import * as stores from '$app/stores';
 import type { Navigation, Page } from '@sveltejs/kit';
-import matchers from '@testing-library/jest-dom/matchers';
+// import matchers from '@testing-library/jest-dom/matchers';
+import * as matchers from 'vitest-dom/matchers';
+
 import { readable } from 'svelte/store';
 import { expect, vi } from 'vitest';
 
 // Add custom jest matchers
-if (matchers) {
-	expect.extend(matchers);
-}
+expect.extend(matchers);
 
 // Mock SvelteKit runtime module $app/environment
 vi.mock('$app/environment', (): typeof environment => ({
