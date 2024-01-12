@@ -1,4 +1,3 @@
-// FILEPATH: /Users/chrisbailey/dev/projects/vagar.xyz/fuzzy_yellow_balls/src/lib/components/header.test.js
 import { render, fireEvent } from '@testing-library/svelte';
 import { describe, it, expect } from 'vitest';
 import Header from './header.svelte';
