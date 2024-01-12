@@ -2,7 +2,7 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 /// <reference types="lucia" />
-import * as schema from '$lib/db/schema';
+import * as schema from './lib/db/schema';
 import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 declare global {
@@ -27,7 +27,7 @@ declare global {
 		// interface Platform {}
 	}
 	namespace Lucia {
-		type Auth = import('$lib/server/auth').Auth;
+		type Auth = import('./lib/server/auth').Auth;
 		type DatabaseUserAttributes = {
 			email: string;
 			first_name: string;
