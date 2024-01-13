@@ -36,25 +36,21 @@
 			class="user-menu {is_menu_open && 'display_menu'}"
 			transition:slide={{ delay: 250, duration: 300, easing: quintOut, axis: 'y' }}
 		>
-			<h2 class="mb-1 gradient-heading-blue h3">
+			<h2>
 				{`${title_case(user.first_name)}  ${title_case(user.last_name)}`}
 			</h2>
-			<nav class="gap-4 list-nav">
+			<nav>
 				<ul>
 					<li>
-						<a href="/profile" class="flex align-middle"
-							><User class="inline mr-2 w-4 h-4" />Profile</a
-						>
+						<a href="/profile"><User />Profile</a>
 					</li>
 					<li>
-						<a href="/activity" class="flex align-middle"
-							><Pen class="inline mr-2 w-4 h-4" />Activity</a
-						>
+						<a href="/activity"><Pen />Activity</a>
 					</li>
 					<li>
-						<form method="POST" action="/?/logout" use:enhance class="flex flex-col">
-							<button class="variant-filled-warning btn" type="submit">
-								<LogOut class="mr-2 w-4 h-4 text-warning-800" />
+						<form method="POST" action="/?/logout" use:enhance>
+							<button type="submit">
+								<LogOut />
 								logout
 							</button>
 						</form>
