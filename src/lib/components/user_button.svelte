@@ -9,7 +9,22 @@
 	let is_menu_open = false;
 </script>
 
-<div class="user-menu-container">
+<svelte:window
+	on:click={() => {
+		if (is_menu_open) {
+			is_menu_open = false;
+		}
+	}}
+/>
+
+<div
+	class="user-menu-container"
+	on:click|stopPropagation
+	on:keydown|stopPropagation
+	role="button"
+	aria-pressed="false"
+	tabindex="-1"
+>
 	<button class="user-button" on:click={() => (is_menu_open = !is_menu_open)}>
 		{user.first_name[0]}{user.last_name[0]}
 	</button>
