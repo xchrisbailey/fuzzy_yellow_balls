@@ -10,7 +10,7 @@ describe('StarRating component', () => {
 
 	it('should update value when range input changes', async () => {
 		const { getByLabelText } = render(StarRating, { name: 'rating', max: 5, step: 1, value: 0 });
-		const input = getByLabelText('Rating');
+		const input = <HTMLInputElement>getByLabelText('Rating');
 
 		await fireEvent.input(input, { target: { value: 3 } });
 

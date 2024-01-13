@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/(protected)/reviews/rackets/add/[racket_id]/+page.svelte";

@@ -1,0 +1,1 @@
+const p=e=>e.replace(/&gt;/g,">").replace(/&lt;/g,"<").replace(/&#0?39;/g,"'").replace(/&quot;/g,'"').replace(/&amp;/g,"&");function l(e,...r){if(typeof e=="string")return p(e);let t=e[0];for(const[a,c]of r.entries())t=t+p(String(c))+e[a+1];return t}export{l as h};

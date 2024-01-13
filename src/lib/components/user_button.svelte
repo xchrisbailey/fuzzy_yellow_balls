@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { title_case } from '$lib/helpers/title_case';
 	import type { User as LuciaUser } from 'lucia';
 	import { LogOut, Pen, User } from 'lucide-svelte';
@@ -48,7 +47,7 @@
 						<a href="/activity"><Pen />Activity</a>
 					</li>
 					<li>
-						<form method="POST" action="/?/logout" use:enhance>
+						<form method="POST" action="/?/logout">
 							<button type="submit">
 								<LogOut />
 								logout
