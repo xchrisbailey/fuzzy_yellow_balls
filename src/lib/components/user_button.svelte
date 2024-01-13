@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { LogOut, Pen, User } from 'lucide-svelte';
-	import type { User as LuciaUser } from 'lucia';
 	import { title_case } from '$lib/helpers/title_case';
-	import { slide } from 'svelte/transition';
+	import type { User as LuciaUser } from 'lucia';
+	import { LogOut, Pen, User } from 'lucide-svelte';
 	import { quintOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 
 	export let user: LuciaUser;
 
@@ -99,7 +99,7 @@
 			& li button {
 				background: var(--red-200);
 				border-radius: 0.25em;
-				padding: 0.35em;
+				padding: 0.4em 0.3em;
 				width: 100%;
 				margin-bottom: 0.25em;
 				cursor: pointer;
