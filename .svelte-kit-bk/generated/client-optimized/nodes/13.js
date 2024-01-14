@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/(protected)/reviews/strings/update/[string_id]/+page.svelte";
