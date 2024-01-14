@@ -14,7 +14,7 @@
 			<a href="/login"><LogIn /> login</a>
 		</div>
 	{:else}
-		<div class="flex align-center">
+		<div class="flex align-center nav-wrapper">
 			<nav>
 				<ul>
 					<li><a href="/" class="nav-link"><Home /> home</a></li>
@@ -90,5 +90,10 @@
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+	}
+
+	.nav-wrapper {
+		height: 100%;
+		align-items: center;
 	}
 </style>
