@@ -10,7 +10,7 @@
 <header>
 	<div class="brand">Fuzzy Yellow Balls</div>
 	{#if !session?.user}
-		<div>
+		<div class="login-link">
 			<a href="/login"><LogIn /> login</a>
 		</div>
 	{:else}
@@ -95,5 +95,21 @@
 	.nav-wrapper {
 		height: 100%;
 		align-items: center;
+	}
+
+	.login-link a {
+		background: var(--green-200);
+		border-radius: 0.25em;
+		padding: 0.4em 0.3em;
+		color: var(--black);
+		transition: background 0.2s ease-in-out;
+		& svg {
+			width: 15px;
+			height: 15px;
+			margin-right: 0.25em;
+		}
+		&:hover {
+			background: var(--green-300);
+		}
 	}
 </style>
