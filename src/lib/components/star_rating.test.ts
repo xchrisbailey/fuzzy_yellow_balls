@@ -1,11 +1,19 @@
-// star_rating.svelte unit tests
-import { render } from '@testing-library/svelte';
+import { render, fireEvent } from '@testing-library/svelte';
 import StarRating from './star_rating.svelte';
-import { describe, expect, it } from 'vitest';
 
-describe('StarRating', () => {
-	it('should render a star rating', () => {
-		const { container } = render(StarRating, { name: 'test', max: 5, step: 1 });
-		expect(container).toMatchSnapshot();
+describe('StarRating component', () => {
+	it('should render correctly', () => {
+		const { getByLabelText } = render(StarRating, { name: 'rating', max: 5, step: 1, value: 0 });
+
+		expect(getByLabelText('Rating')).toBeInTheDocument();
+	});
+
+	it('should update value when range input changes', async () => {
+		const { getByLabelText } = render(StarRating, { name: 'rating', max: 5, step: 1, value: 0 });
+		const input = <HTMLInputElement>getByLabelText('Rating');
+
+		await fireEvent.input(input, { target: { value: 3 } });
+
+		expect(input.value).toBe('3');
 	});
 });

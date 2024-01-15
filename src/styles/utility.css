@@ -1,0 +1,26 @@
+@layer utility {
+	/* display */
+	.flex {
+		display: flex;
+	}
+	.grid {
+		display: grid;
+	}
+	.block {
+		display: block;
+	}
+	.inline-block {
+		display: inline-block;
+	}
+	.inline {
+		display: inline;
+	}
+
+	/* alignment and positioning */
+	.align-center {
+		align-items: center;
+	}
+	.justify-center {
+		justify-content: center;
+	}
+}
