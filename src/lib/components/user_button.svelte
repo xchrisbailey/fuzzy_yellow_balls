@@ -42,10 +42,10 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="/profile"><User />Profile</a>
+						<a href="/profile" class="nav-button"><User />Profile</a>
 					</li>
 					<li>
-						<a href="/activity"><Pen />Activity</a>
+						<a href="/activity" class="nav-button"><Pen />Activity</a>
 					</li>
 					<li>
 						<form method="POST" action="/?/logout" use:enhance>
@@ -110,6 +110,23 @@
 					background: var(--red-300);
 				}
 			}
+		}
+	}
+
+	.nav-button {
+		padding: 0.4em 0.3em;
+		width: 100%;
+		margin-bottom: 0.25em;
+		cursor: pointer;
+		color: var(--black);
+	}
+
+	li:has(.nav-button) {
+		border-radius: 0.25em;
+		background: var(--green-100);
+		transition: background 0.2s ease-in-out;
+		&:hover {
+			background: var(--green-200);
 		}
 	}
 
