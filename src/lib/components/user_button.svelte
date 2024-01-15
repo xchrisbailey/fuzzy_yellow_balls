@@ -68,7 +68,13 @@
 		right: 0.5rem;
 		margin-top: 0.2em;
 		width: 250px;
-		background: var(--green-100);
+		background: var(--gray-50);
+		box-shadow:
+			0 1px 1px oklch(0% 0 109 / 0.075),
+			0 2px 2px oklch(0% 0 109 / 0.075),
+			0 4px 4px oklch(0% 0 109 / 0.075),
+			0 8px 8px oklch(0% 0 109 / 0.075),
+			0 16px 16px oklch(0% 0 109 / 0.075);
 		border-radius: 1em;
 		padding: 0.2em;
 		& h2 {
