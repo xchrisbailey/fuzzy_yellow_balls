@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { get_string_review_average_rating } from '$lib/helpers/get_average_rating';
+	import { title_case } from '$lib/helpers/title_case';
 	import { Eye, Pen, Plus } from 'lucide-svelte';
 	import type { PageData } from './$types';
-	import { title_case } from '$lib/helpers/title_case';
-	import { get_string_review_average_rating } from '$lib/helpers/get_average_rating';
 
 	export let data: PageData;
 </script>
