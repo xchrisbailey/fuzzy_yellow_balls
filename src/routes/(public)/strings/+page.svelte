@@ -54,6 +54,25 @@
 </div>
 
 <style>
+	h1 {
+		font-size: var(--font-xl);
+		font-variation-settings:
+			'wght' 700,
+			'slnt' -3;
+		background-image: var(--green-to-blue);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		margin-bottom: 0.25em;
+	}
+	table {
+		width: 100%;
+		& thead tr th {
+			font-size: var(--font-sm);
+			font-variation-settings: 'wght' 700;
+		}
+	}
+
 	.add_action {
 		position: absolute;
 		bottom: 1rem;

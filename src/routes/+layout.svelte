@@ -7,12 +7,6 @@
 </script>
 
 <Header session={data.session} />
-<main class="p-5">
+<main class="container">
 	<slot />
 </main>
-
-<style>
-	main {
-		margin: 0 1.5em;
-	}
-</style>

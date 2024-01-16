@@ -26,5 +26,30 @@
 
 	.container {
 		width: 100%;
+		margin: 0 auto;
+	}
+
+	@media (--above_small) {
+		.container {
+			max-width: 640px;
+		}
+	}
+
+	@media (--above_med) {
+		.container {
+			max-width: 768px;
+		}
+	}
+
+	@media (--above_large) {
+		.container {
+			max-width: 1024px;
+		}
+	}
+
+	@media (--above_xlarge) {
+		.container {
+			max-width: 1280px;
+		}
 	}
 }
