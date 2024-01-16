@@ -23,4 +23,8 @@
 	.justify-center {
 		justify-content: center;
 	}
+
+	.container {
+		width: 100%;
+	}
 }

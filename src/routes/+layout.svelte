@@ -10,3 +10,9 @@
 <main class="p-5">
 	<slot />
 </main>
+
+<style>
+	main {
+		margin: 0 1.5em;
+	}
+</style>
