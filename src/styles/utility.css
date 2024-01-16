@@ -26,30 +26,34 @@
 
 	.container {
 		width: 100%;
-		margin: 0 auto;
+		margin: 0 1.5em;
 	}
 
 	@media (--above_small) {
 		.container {
 			max-width: 640px;
+			margin: 0 auto;
 		}
 	}
 
 	@media (--above_med) {
 		.container {
 			max-width: 768px;
+			margin: 0 auto;
 		}
 	}
 
 	@media (--above_large) {
 		.container {
 			max-width: 1024px;
+			margin: 0 auto;
 		}
 	}
 
 	@media (--above_xlarge) {
 		.container {
 			max-width: 1280px;
+			margin: 0 auto;
 		}
 	}
 }
