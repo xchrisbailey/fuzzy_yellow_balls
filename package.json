@@ -66,6 +66,8 @@
 		"lucia": "^2.7.6",
 		"lucide-svelte": "^0.309.0",
 		"pg": "^8.11.3",
+		"postcss-import": "^16.0.0",
+		"postcss-preset-env": "^9.3.0",
 		"postgres": "^3.4.3",
 		"svelte-french-toast": "^1.2.0",
 		"sveltekit-superforms": "^1.13.3",
