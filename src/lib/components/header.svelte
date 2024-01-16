@@ -1,8 +1,7 @@
 <script lang="ts">
 	import UserButton from './user_button.svelte';
 	import type { Session } from 'lucia';
-	import { Book, BookHeart, Home } from 'lucide-svelte';
-	import { LogIn } from 'lucide-svelte';
+	import { Book, BookHeart, Home, LogIn } from 'lucide-svelte';
 
 	export let session: Session | null;
 </script>
@@ -11,15 +10,15 @@
 	<div class="brand">Fuzzy Yellow Balls</div>
 	{#if !session?.user}
 		<div class="login-link">
-			<a href="/login"><LogIn /> login</a>
+			<a href="/login"><LogIn size="15" /> login</a>
 		</div>
 	{:else}
 		<div class="flex align-center nav-wrapper">
 			<nav>
 				<ul>
-					<li><a href="/" class="nav-link"><Home /> home</a></li>
-					<li><a href="/strings" class="nav-link"><Book /> strings</a></li>
-					<li><a href="/rackets" class="nav-link"><BookHeart /> rackets</a></li>
+					<li><a href="/" class="nav-link"><Home size="15" /> home</a></li>
+					<li><a href="/strings" class="nav-link"><Book size="15" /> strings</a></li>
+					<li><a href="/rackets" class="nav-link"><BookHeart size="15" /> rackets</a></li>
 				</ul>
 			</nav>
 
@@ -70,11 +69,6 @@
 			color: var(--green-700);
 			text-decoration: none;
 		}
-		& svg {
-			width: 15px;
-			height: 15px;
-			margin-right: 0.25em;
-		}
 	}
 
 	.brand {
@@ -103,11 +97,6 @@
 		padding: 0.4em 0.3em;
 		color: var(--black);
 		transition: background 0.2s ease-in-out;
-		& svg {
-			width: 15px;
-			height: 15px;
-			margin-right: 0.25em;
-		}
 		&:hover {
 			background: var(--green-300);
 		}

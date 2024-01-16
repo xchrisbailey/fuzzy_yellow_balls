@@ -42,15 +42,15 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="/profile" class="nav-button"><User />Profile</a>
+						<a href="/profile" class="nav-button"><User size="15" />Profile</a>
 					</li>
 					<li>
-						<a href="/activity" class="nav-button"><Pen />Activity</a>
+						<a href="/activity" class="nav-button"><Pen size="15" />Activity</a>
 					</li>
 					<li>
 						<form method="POST" action="/?/logout" use:enhance>
 							<button type="submit">
-								<LogOut />
+								<LogOut size="15" />
 								logout
 							</button>
 						</form>
@@ -88,11 +88,6 @@
 			li button {
 				display: flex;
 				align-items: center;
-				& svg {
-					width: 15px;
-					height: 15px;
-					margin-right: 0.25em;
-				}
 				font-size: var(--font-sm);
 			}
 			& li:not(:last-child) {
