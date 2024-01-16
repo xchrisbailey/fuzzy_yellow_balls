@@ -16,9 +16,9 @@
 		"studio:test": "NODE_ENV=test drizzle-kit studio"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.40.1",
+		"@playwright/test": "^1.41.0",
 		"@sveltejs/adapter-auto": "^3.1.0",
-		"@sveltejs/kit": "^2.3.2",
+		"@sveltejs/kit": "^2.3.3",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@testing-library/dom": "^9.3.4",
 		"@testing-library/jest-dom": "^6.2.0",
@@ -64,7 +64,7 @@
 		"escape-goat": "^4.0.0",
 		"eslint-plugin-drizzle": "0.2.3",
 		"lucia": "^2.7.6",
-		"lucide-svelte": "^0.309.0",
+		"lucide-svelte": "^0.311.0",
 		"pg": "^8.11.3",
 		"postcss-import": "^16.0.0",
 		"postcss-preset-env": "^9.3.0",
