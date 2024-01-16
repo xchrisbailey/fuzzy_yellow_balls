@@ -67,9 +67,23 @@
 	}
 	table {
 		width: 100%;
-		& thead tr th {
-			font-size: var(--font-sm);
+		border-collapse: collapse;
+		font-size: var(--font-sm);
+		& th {
 			font-variation-settings: 'wght' 700;
+			padding: 0.5em;
+		}
+		& td {
+			border-top: 1px solid var(--gray-100);
+			text-align: left;
+			padding: 0.5em;
+		}
+		& td {
+			border-left: 1px solid var(--gray-100);
+			border-right: 1px solid var(--gray-100);
+		}
+		& tr:last-child {
+			border-bottom: 1px solid var(--gray-100);
 		}
 	}
 

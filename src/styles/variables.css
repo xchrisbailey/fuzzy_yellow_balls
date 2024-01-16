@@ -83,9 +83,9 @@
 	);
 
 	/* font sizes */
-	--font-xs: clamp(0.75rem, 0.336vw + 0.535rem, 0.938rem);
-	--font-sm: clamp(1rem, 0.447vw + 0.713rem, 1.25rem);
-	--font-md: clamp(1.125rem, 0.447vw + 0.838rem, 1.37rem);
+	--font-xs: clamp(0.625rem, 0.336vw + 0.41rem, 0.813rem);
+	--font-sm: clamp(0.75rem, 0.336vw + 0.535rem, 0.938rem);
+	--font-md: clamp(1rem, 0.447vw + 0.713rem, 1.25rem);
 	--font-lg: clamp(1.5rem, 0.336vw + 1.347rem, 1.75rem);
 	--font-xl: clamp(2.25rem, 0.224vw + 1.982rem, 2.45rem);
 	--font-2xl: clamp(2.25rem, 0.447vw + 1.963rem, 2.5rem);
