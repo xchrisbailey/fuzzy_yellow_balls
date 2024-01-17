@@ -34,7 +34,7 @@
 						<td>{get_string_review_average_rating(string.reviews)}/5</td>
 						<td>
 							<a href="/strings/{string.id}">
-								<Eye />
+								<Eye size="15" />
 							</a>
 							{#if data.session?.user?.role === 'ADMIN'}
 								<a href="/strings/{string.id}/update">
@@ -69,21 +69,38 @@
 		width: 100%;
 		border-collapse: collapse;
 		font-size: var(--font-sm);
-		& th {
-			font-variation-settings: 'wght' 700;
-			padding: 0.5em;
+		& thead {
+			& tr {
+				border-left: 1px solid var(--gray-100);
+				border-right: 1px solid var(--gray-100);
+			}
+			& th {
+				font-variation-settings:
+					'wght' 700,
+					'slnt' -4;
+				letter-spacing: 0.05em;
+				padding: 0.5em;
+				background-color: var(--green-100);
+				border-top: 1px solid var(--gray-100);
+			}
 		}
-		& td {
-			border-top: 1px solid var(--gray-100);
-			text-align: left;
-			padding: 0.5em;
-		}
-		& td {
-			border-left: 1px solid var(--gray-100);
-			border-right: 1px solid var(--gray-100);
-		}
-		& tr:last-child {
-			border-bottom: 1px solid var(--gray-100);
+		& tbody {
+			& tr:last-child {
+				border-bottom: 1px solid var(--gray-100);
+			}
+			& tr:nth-of-type(even) td {
+				background: var(--gray-50);
+			}
+			& td {
+				border-top: 1px solid var(--gray-100);
+				text-align: left;
+				padding: 0.5em;
+				border-left: 1px solid var(--gray-100);
+				border-right: 1px solid var(--gray-100);
+			}
+			& tr:hover td {
+				background-color: var(--gray-50);
+			}
 		}
 	}
 
